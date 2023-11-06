@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="KeyboardStyle" parent="@android:style/Widget.KeyboardView">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_alignParentBottom">true</item>
+		<item name="android:layout_centerHorizontal">true</item>
+		<item name="android:focusable">true</item>
+		<item name="android:focusableInTouchMode">true</item>
+		<item name="android:visibility">gone</item>
+		<item name="android:tag">kbv</item>
+	</style>
+
+	<style name="KeyboardStyle.ics">
+		<item name="android:keyTextSize">30sp</item>
+		<item name="android:labelTextSize">20sp</item>
+		<item name="android:background">@android:color/black</item>
+		<item name="android:keyTextColor">@android:color/white</item>
+		<item name="android:keyPreviewLayout">@layout/keyboard_key_preview_purple</item>
+	</style>
+
+	<style name="KeyboardStyle.trans">
+		<item name="android:keyTextSize">25sp</item>
+		<item name="android:labelTextSize">18sp</item>
+		<!--<item name="android:background">#FFEDEEF2</item>-->
+		<item name="android:background">#FFDEDEDE</item>
+		<item name="android:keyBackground">@xml/rounded_gradient</item>
+		<item name="android:keyTextColor">#FFFFFFFF</item>
+		<!--<item name="android:labelTexColor">#FF21262A</item>-->
+		<item name="android:keyPreviewLayout">@layout/keyboard_key_preview_orange</item>
+		
+	</style>
+
+	<style name="KeyboardStyle.fulltrans">
+		<item name="android:keyTextSize">20sp</item>
+		<item name="android:labelTextSize">20sp</item>
+		<item name="android:background">@android:color/holo_purple</item>
+		<item name="android:keyBackground">@drawable/btn_keyboard_key_fulltrans</item>
+		<item name="android:keyTextColor">@android:color/holo_green_light</item>
+		<item name="android:keyPreviewLayout">@layout/keyboard_key_preview_green</item>
+	</style>
+</resources>

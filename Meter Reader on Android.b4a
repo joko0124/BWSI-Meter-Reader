@@ -1,0 +1,449 @@
+﻿Build1=MeterReader,com.bwsi.MeterReader
+File1=avg.png
+File10=BookAssign.bal
+File100=roboto-thin.ttf
+File101=roboto-thinitalic.ttf
+File102=sbri.png
+File103=sbri-login.png
+File104=sd3h.png
+File105=sd3h-login.png
+File106=soliman.png
+File107=soliman-main.png
+File108=sourcesanspro-black.ttf
+File109=sourcesanspro-blackitalic.ttf
+File11=bookassignment.bal
+File110=sourcesanspro-bold.ttf
+File111=sourcesanspro-bolditalic.ttf
+File112=sourcesanspro-extralight.ttf
+File113=sourcesanspro-extralightitalic.ttf
+File114=sourcesanspro-italic.ttf
+File115=sourcesanspro-light.ttf
+File116=sourcesanspro-lightitalic.ttf
+File117=sourcesanspro-regular.ttf
+File118=sourcesanspro-semibold.ttf
+File119=sourcesanspro-semibolditalic.ttf
+File12=booklisting.bal
+File120=Splash.bal
+File121=splash.png
+File122=ultralight.ttf
+File123=unprinted.png
+File124=UnusualRdgReport.bal
+File125=upload icon.png
+File126=upload.png
+File127=upload_ok.png
+File128=usersettings.bal
+File129=validate.png
+File13=bookselection.bal
+File130=validationreport.bal
+File131=warning.png
+File132=wb.png
+File133=zero.png
+File14=branchsettings.bal
+File15=bwsi.png
+File16=bwsi-login.png
+File17=camera.bal
+File18=CameraLayout.bal
+File19=clp.png
+File2=baseline_auto_stories_white_24dp.png
+File20=clpi.png
+File21=clpi2.png
+File22=clpi2-login.png
+File23=clpi-login.png
+File24=custlist.bal
+File25=cuyapo.png
+File26=dashboard.jpg
+File27=dashboardorig.bal
+File28=datasync.bal
+File29=DataSyncingBack.bal
+File3=bcbi.png
+File30=DataSyncingNew.bal
+File31=datepicker.bal
+File32=download icon.png
+File33=download.png
+File34=edit.png
+File35=error.png
+File36=flag.png
+File37=gto-septage.png
+File38=gwd.png
+File39=hamburger.png
+File4=bcbi-login.png
+File40=hb.png
+File41=header.jpg
+File42=header.png
+File43=hiyas.png
+File44=hwri-login.png
+File45=ic_menu_less.png
+File46=ic_menu_more.png
+File47=ic_timer_off_black_24dp.png
+File48=lapid.png
+File49=lb.png
+File5=beep.wav
+File50=lbwi.png
+File51=lbwi-login.png
+File52=line.png
+File53=login.bal
+File54=login.png
+File55=LoginNew.bal
+File56=logout.png
+File57=macabebe.png
+File58=MainMenu.bal
+File59=MasterDB 2.db
+File6=billdetails.bal
+File60=MasterDB.db
+File61=mc.png
+File62=menu.png
+File63=mr3h.png
+File64=mr3h-login.png
+File65=mreading2.bal
+File66=myfont.ttf
+File67=myfont_bold.ttf
+File68=NewCamera.bal
+File69=NewMeterReading.bal
+File7=biri.png
+File70=next.png
+File71=Non-Op.png
+File72=notify.wav
+File73=period.png
+File74=previous.png
+File75=print.png
+File76=production.png
+File77=profile3.jpg
+File78=progress.bal
+File79=question_mark.png
+File8=biri-login.png
+File80=RdgValidation.bal
+File81=readingsettings.bal
+File82=readingvalidation.bal
+File83=repairs.png
+File84=reportgenerator.bal
+File85=reports.png
+File86=roboto-black.ttf
+File87=roboto-blackitalic.ttf
+File88=roboto-bold.ttf
+File89=roboto-boldcondensed.ttf
+File9=book.png
+File90=roboto-boldcondenseditalic.ttf
+File91=roboto-bolditalic.ttf
+File92=roboto-condensed.ttf
+File93=roboto-condenseditalic.ttf
+File94=roboto-italic.ttf
+File95=roboto-light.ttf
+File96=roboto-lightitalic.ttf
+File97=roboto-medium.ttf
+File98=roboto-mediumitalic.ttf
+File99=roboto-regular.ttf
+FileGroup1=Default Group
+FileGroup10=Default Group\2 Layouts
+FileGroup100=Default Group\Fonts
+FileGroup101=Default Group\Fonts
+FileGroup102=Default Group\4 SOA Logos
+FileGroup103=Default Group\3 Login Screens
+FileGroup104=Default Group\4 SOA Logos
+FileGroup105=Default Group\3 Login Screens
+FileGroup106=Default Group\Septage Logo
+FileGroup107=Default Group\Septage Logo
+FileGroup108=Default Group\Fonts
+FileGroup109=Default Group\Fonts
+FileGroup11=Default Group\2 Layouts
+FileGroup110=Default Group\Fonts
+FileGroup111=Default Group\Fonts
+FileGroup112=Default Group\Fonts
+FileGroup113=Default Group\Fonts
+FileGroup114=Default Group\Fonts
+FileGroup115=Default Group\Fonts
+FileGroup116=Default Group\Fonts
+FileGroup117=Default Group\Fonts
+FileGroup118=Default Group\Fonts
+FileGroup119=Default Group\Fonts
+FileGroup12=Default Group\2 Layouts
+FileGroup120=Default Group\2 Layouts
+FileGroup121=Default Group\5 Styles
+FileGroup122=Default Group
+FileGroup123=Default Group
+FileGroup124=Default Group\2 Layouts
+FileGroup125=Default Group\5 Styles
+FileGroup126=Default Group\Biller Shortcuts
+FileGroup127=Default Group\5 Styles
+FileGroup128=Default Group\2 Layouts
+FileGroup129=Default Group\Biller Shortcuts
+FileGroup13=Default Group\2 Layouts
+FileGroup130=Default Group\2 Layouts
+FileGroup131=Default Group\5 Styles
+FileGroup132=Default Group
+FileGroup133=Default Group
+FileGroup14=Default Group\2 Layouts
+FileGroup15=Default Group\4 SOA Logos
+FileGroup16=Default Group\3 Login Screens
+FileGroup17=Default Group\2 Layouts
+FileGroup18=Default Group\2 Layouts
+FileGroup19=Default Group\Septage Logo
+FileGroup2=Default Group\Biller Shortcuts
+FileGroup20=Default Group\4 SOA Logos
+FileGroup21=Default Group\3 Login Screens
+FileGroup22=Default Group\3 Login Screens
+FileGroup23=Default Group\3 Login Screens
+FileGroup24=Default Group\2 Layouts
+FileGroup25=Default Group\4 SOA Logos
+FileGroup26=Default Group\5 Styles
+FileGroup27=Default Group\2 Layouts
+FileGroup28=Default Group\2 Layouts
+FileGroup29=Default Group\2 Layouts
+FileGroup3=Default Group\4 SOA Logos
+FileGroup30=Default Group\2 Layouts
+FileGroup31=Default Group\2 Layouts
+FileGroup32=Default Group\5 Styles
+FileGroup33=Default Group\Biller Shortcuts
+FileGroup34=Default Group\5 Styles
+FileGroup35=Default Group\5 Styles
+FileGroup36=Default Group\5 Styles
+FileGroup37=Default Group\Septage Logo
+FileGroup38=Default Group\4 SOA Logos
+FileGroup39=Default Group\5 Styles
+FileGroup4=Default Group\3 Login Screens
+FileGroup40=Default Group
+FileGroup41=Default Group\5 Styles
+FileGroup42=Default Group\5 Styles
+FileGroup43=Default Group\4 SOA Logos
+FileGroup44=Default Group\3 Login Screens
+FileGroup45=Default Group\5 Styles
+FileGroup46=Default Group\5 Styles
+FileGroup47=Default Group\5 Styles
+FileGroup48=Default Group\4 SOA Logos
+FileGroup49=Default Group
+FileGroup5=Default Group\Sounds
+FileGroup50=Default Group\4 SOA Logos
+FileGroup51=Default Group\3 Login Screens
+FileGroup52=Default Group\5 Styles
+FileGroup53=Default Group\2 Layouts
+FileGroup54=Default Group\3 Login Screens
+FileGroup55=Default Group\2 Layouts
+FileGroup56=Default Group\Biller Shortcuts
+FileGroup57=Default Group\4 SOA Logos
+FileGroup58=Default Group\2 Layouts
+FileGroup59=Default Group\1 Database
+FileGroup6=Default Group\2 Layouts
+FileGroup60=Default Group
+FileGroup61=Default Group
+FileGroup62=Default Group\5 Styles
+FileGroup63=Default Group\4 SOA Logos
+FileGroup64=Default Group\3 Login Screens
+FileGroup65=Default Group\2 Layouts
+FileGroup66=Default Group\Fonts
+FileGroup67=Default Group\Fonts
+FileGroup68=Default Group\2 Layouts
+FileGroup69=Default Group\2 Layouts
+FileGroup7=Default Group\4 SOA Logos
+FileGroup70=Default Group\5 Styles
+FileGroup71=Default Group
+FileGroup72=Default Group\Sounds
+FileGroup73=Default Group\Biller Shortcuts
+FileGroup74=Default Group\5 Styles
+FileGroup75=Default Group\5 Styles
+FileGroup76=Default Group
+FileGroup77=Default Group\5 Styles
+FileGroup78=Default Group\2 Layouts
+FileGroup79=Default Group\5 Styles
+FileGroup8=Default Group\3 Login Screens
+FileGroup80=Default Group\2 Layouts
+FileGroup81=Default Group\2 Layouts
+FileGroup82=Default Group\2 Layouts
+FileGroup83=Default Group
+FileGroup84=Default Group\2 Layouts
+FileGroup85=Default Group
+FileGroup86=Default Group\Fonts
+FileGroup87=Default Group\Fonts
+FileGroup88=Default Group\Fonts
+FileGroup89=Default Group\Fonts
+FileGroup9=Default Group\5 Styles
+FileGroup90=Default Group\Fonts
+FileGroup91=Default Group\Fonts
+FileGroup92=Default Group\Fonts
+FileGroup93=Default Group\Fonts
+FileGroup94=Default Group\Fonts
+FileGroup95=Default Group\Fonts
+FileGroup96=Default Group\Fonts
+FileGroup97=Default Group\Fonts
+FileGroup98=Default Group\Fonts
+FileGroup99=Default Group\Fonts
+Group=Default Group
+Library1=core
+Library10=sql
+Library11=fiddlearound
+Library12=xmllayoutbuilder
+Library13=javaobject
+Library14=b4xencryption
+Library15=json
+Library16=stringutils
+Library17=dateutils
+Library18=mscircularimageview
+Library19=ime
+Library2=designsupport
+Library20=serial
+Library21=randomaccessfile
+Library22=camera
+Library23=reflection
+Library24=phone
+Library25=iconbutton
+Library26=http
+Library27=pdfwriter
+Library28=viewsex
+Library29=bignumbers
+Library3=togglewifidata
+Library30=audio
+Library31=byteconverter
+Library32=dgtexteffects
+Library33=customfonts
+Library34=fgtimekeyboard
+Library35=xui views
+Library36=tts
+Library37=customkeyboard
+Library38=ax_customalertviewdialog
+Library39=keyvaluestore
+Library4=runtimepermissions
+Library40=splashfade
+Library41=wobblemenu
+Library42=xcustomlistview
+Library43=sd_liquidprogress
+Library5=stringfunctions
+Library6=appcompat
+Library7=httputils2
+Library8=materialdialogs
+Library9=xui
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:maxSdkVersion="29" android:targetSdkVersion="29"/>~\n~<uses-library android:name="org.apache.http.legacy" android:required="false"/>~\n~<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>~\n~<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>~\n~<uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>~\n~<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />~\n~~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true"~\n~    android:smallScreens="true"~\n~    android:windowActionBar="false"~\n~    android:windowFullscreen="true"~\n~    android:windowNoTitle="true"~\n~	android:anyDensity="true"/>)~\n~AddManifestText(<uses-feature android:name="android.hardware.telephony" android:required="false" />)~\n~AddManifestText(<uses-feature android:name="android.hardware.camera" android:required="false" />)~\n~AddManifestText(<uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />)~\n~AddManifestText(<uses-feature android:name="android.hardware.camera.flash" android:required="false" />)~\n~AddApplicationText(<uses-library android:name="org.apache.http.legacy" android:required="false" />)~\n~~\n~SetManifestAttribute(android:installLocation, "auto")~\n~SetApplicationAttribute(android:usesCleartextTraffic, "true")~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~SetActivityAttribute(Main, android:windowSoftInputMode, adjustPan|stateHidden)~\n~SetActivityAttribute(Main, "android:excludeFromRecents", "true")~\n~~\n~~\n~'End of default text.~\n~SetApplicationAttribute(android:theme, "@style/MyAppTheme")~\n~~\n~CreateResource(values, themes.xml,~\n~<resources>~\n~	<style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">~\n~		<item name="android:colorPrimary">#01579b</item> <!-- action bar -->~\n~		<item name="android:colorPrimaryDark">#002f6c</item> <!-- status bar -->~\n~		<item name="android:colorAccent">#FF5252</item> <!-- checkboxes,, switches,, etc. #0091ea -->~\n~		<item name="android:textColorPrimary">#ffffff</item> <!-- ? -->~\n~		<item name="android:textColorSecondary">#2196f3</item> <!-- inactive editText line,, scrollbar -->~\n~		<item name="android:textColor">#000000</item> <!-- menu text,, msgbox title -->~\n~		<item name="android:textColorLink">#448aff</item>~\n~		<item name="android:textColorHighlight">#64b5f6</item>~\n~		<item name="android:windowNoTitle">true</item>~\n~		<item name="android:windowActionBar">true</item>~\n~		<item name="android:windowActionModeOverlay">true</item>~\n~~\n~		<item name="android:windowDrawsSystemBarBackgrounds">false</item>	~\n~~\n~		<item name="textAppearanceLargePopupMenu">@style/myPopupMenuTextAppearanceLarge</item>~\n~		<item name="android:textAppearanceLargePopupMenu">@style/myPopupMenuTextAppearanceLarge</item>~\n~		<item name="textAppearanceSmallPopupMenu">@style/myPopupMenuTextAppearanceSmall</item>~\n~		<item name="android:textAppearanceSmallPopupMenu">@style/myPopupMenuTextAppearanceSmall</item>~\n~		<item name="popupMenuStyle">@style/myPopupMenuStyle</item>~\n~		<item name="android:popupMenuStyle">@style/myPopupMenuStyle</item>~\n~	</style>~\n~	~\n~	<style name="myPopupMenuStyle" parent="@style/Widget.AppCompat.Light.PopupMenu">~\n~		<item name="android:popupBackground">#1976D2</item>~\n~		<item name="android:textColor">#ffffff</item>~\n~	</style>~\n~~\n~	<style name="myPopupMenuTextAppearanceSmall" parent="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Small">~\n~	    <item name="android:textColor">#ff0000</item>~\n~	</style>~\n~~\n~	<style name="myPopupMenuTextAppearanceLarge" parent="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large">~\n~	    <item name="android:textColor">#ff0000</item>~\n~	</style>~\n~	~\n~	<style name="MyAppOptionsMenu">~\n~		<item name="android:popupBackground">#17A2B7</item>~\n~		<item name="android:colorBackground">#17A2B7</item>~\n~	</style>~\n~  ~\n~	<style name="MyDialog" parent="Theme.AppCompat.Dialog">~\n~		<item name="colorPrimary">#3F51B5</item>~\n~		<item name="colorPrimaryDark">#151C51</item>~\n~		<item name="colorAccent">#303F9F</item>~\n~~\n~		<item name="android:windowNoTitle">true</item>~\n~		<item name="android:windowFullscreen">false</item>~\n~		<item name="android:windowContentOverlay">@null</item>~\n~		<item name="android:windowBackground">@android:color/transparent</item>~\n~		<item name="android:backgroundDimEnabled">true</item>~\n~		<item name="android:backgroundDimAmount">0.5</item>~\n~		<item name="android:windowIsFloating">false</item>~\n~		<item name="android:gravity">center</item>~\n~~\n~		<item name="android:textColorHint">#C8C8C8</item>~\n~		<item name="colorControlNormal">#C8C8C8</item>~\n~		<item name="colorControlHighlight">#C8C8C8</item>~\n~		<item name="colorControlActivated">#303F9F</item>~\n~	</style>~\n~~\n~	<style name="MyDialogDisableStatus" parent="MyDialog">~\n~		<item name="android:windowDrawsSystemBarBackgrounds">true</item>~\n~		<item name="android:statusBarColor">@android:color/transparent</item>~\n~		<item name="android:windowTranslucentStatus">false</item>~\n~		<item name="android:windowTranslucentNavigation">false</item>~\n~	</style>~\n~~\n~</resources>~\n~)~\n~~\n~CreateResource(values, fle.xml,~\n~<resources>~\n~    <style name="floating_hint" parent="@style/Theme.AppCompat.Light">~\n~	    <item name="android:textColor">#01579b</item>~\n~		<item name="android:textSize">16dp</item>~\n~    </style>~\n~</resources>~\n~)~\n~~\n~AddPermission(android.permission.ACCESS_SUPERUSER)~\n~AddPermission(android.permission.CHANGE_WIFI_STATE)~\n~AddPermission(android.permission.ACCESS_WIFI_STATE)~\n~AddPermission(android.permission.READ_EXTERNAL_STORAGE)~\n~AddPermission(android.permission.WRITE_EXTERNAL_STORAGE)~\n~AddPermission(android.permission.BLUETOOTH) ~\n~AddPermission(android.permission.BLUETOOTH_ADMIN)~\n~AddPermission(android.permission.BLUETOOTH_PRIVILEGED)~\n~AddPermission(android.permission.BIND_PRINT_SERVICE)~\n~AddPermission(android.permission.CAMERA)~\n~AddPermission(android.permission.VIBRATE)~\n~AddPermission(android.permission.MODIFY_AUDIO_SETTINGS)~\n~''api>=29~\n~AddPermission(android.permission.MANAGE_EXTERNAL_STORAGE) '' Special privileges ~\n~SetApplicationAttribute(android:allowBackup, "false")~\n~SetApplicationAttribute(android:requestLegacyExternalStorage, true)~\n~
+Module1=AnotherDatePicker
+Module10=CustomerBill
+Module11=CustomerList
+Module12=CustomFunctions
+Module13=DataSyncing
+Module14=DateDialogs
+Module15=DBaseFunctions
+Module16=DBUtils
+Module17=GlobalVar
+Module18=Login
+Module19=MainScreen
+Module2=B4XDrawer
+Module20=ManageExternalStorage
+Module21=MeterReading
+Module22=modVariables
+Module23=MyScale
+Module24=NewCam
+Module25=QRGenerator
+Module26=ReadingBooks
+Module27=ReadingSettings
+Module28=ReadingValidation
+Module29=SearchView
+Module3=Badger
+Module30=SLInpTypeConst
+Module31=Starter
+Module32=UserAccountSettings
+Module33=ValidationRptGenerator
+Module4=BytesBuilder
+Module5=Camera
+Module6=CameraExClass
+Module7=classCustomListView
+Module8=clsPrint
+Module9=CMRVR
+NumberOfFiles=133
+NumberOfLibraries=43
+NumberOfModules=33
+Version=10
+@EndOfDesignText@
+#Region Project Attributes 
+	#ApplicationLabel: Meter Reader on Android
+	#VersionCode: 11
+	#VersionName: Version 3.5
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: Portrait
+	#CanInstallToExternalStorage: False
+	
+'	#Extends: C:\Program Files (x86)\Anywhere Software\Basic4android\Additional Libraries\android.support.v7.app.appcompat
+	#AdditionalRes: C:\Meter Reader on Android\resource
+	#AdditionalRes: C:\Meter Reader on Android\md-app\res
+	#AdditionalRes: C:\Meter Reader on Android\md-lib\res
+	#AdditionalRes: ..\resAX_CustomAlertViewDialog
+#End Region
+	#Extends: android.support.v4.widget.DrawerLayout
+	#Extends: android.support.v7.app.AppCompatActivity
+	#AdditionalJar:WoosimLib251
+
+#Region  Activity Attributes 
+	#FullScreen: True
+	#IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+	Public Permissions As RuntimePermissions
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	'These variables can only be accessed from this module.
+	Dim MyFade As SplashFade
+	Private LiquidProgress1 As LiquidProgress
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	'Do not forget to load the layout file created with the visual designer. For example:
+	MyScale.SetRate(0.5)
+	Activity.LoadLayout("Splash")
+	MyFade.Initialize(Activity, Me, "splash.png", Gravity.FILL, 1500, 0, "Right", True)
+
+	CheckPermissions
+End Sub
+
+Sub Activity_KeyPress (KeyCode As Int) As Boolean 'Return True to consume the event
+	If KeyCode = 4 Then
+		Return False
+	End If
+End Sub
+
+Sub Activity_Resume
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+Private Sub CheckPermissions
+
+	'    Use Whatever permissions you require here - This is my set of permissions in one of my Apps
+	' Also CheckAndRequest - Checks - If not granted - then requests i.o.w's if it is the second time you are entering the App - it will check - if all is in place the user will not be requested to give permissions again.
+
+	Log("Checking Permissions")
+  
+	Permissions.CheckAndRequest(Permissions.PERMISSION_READ_EXTERNAL_STORAGE)
+	Permissions.CheckAndRequest(Permissions.PERMISSION_WRITE_EXTERNAL_STORAGE)
+	Permissions.CheckAndRequest(Permissions.PERMISSION_ACCESS_COARSE_LOCATION)
+	Permissions.GetAllSafeDirsExternal("")
+  
+	Permissions.CheckAndRequest(Permissions.PERMISSION_CAMERA)
+	Permissions.CheckAndRequest(Permissions.PERMISSION_BODY_SENSORS)
+	Return
+  
+End Sub
+
+Sub Activity_PermissionResult (Permission As String, Result As Boolean)
+	If Permission = Permissions.PERMISSION_CAMERA Then
+		Result = True
+		LogColor("YOU CAN USE THE CAMERA",Colors.Red)
+	Else
+		Result = False
+	End If
+	Log (Permission)
+End Sub
+
+Sub Splash_Complete
+	If CustomFunctions.IsThereUserData = True Then
+		CustomFunctions.RetrieveUserSettings
+		DBaseFunctions.GetUserInfo(GlobalVar.UserName, GlobalVar.UserPW)
+		DBaseFunctions.GetBranchInfo(GlobalVar.BranchID)
+		If DBaseFunctions.GetBillSettings(GlobalVar.BranchID) = False Then
+			ExitApplication
+		End If
+		Activity.Finish
+		StartActivity(MainScreen)
+	Else
+		Activity.Finish
+		StartActivity(Login)
+	End If
+End Sub

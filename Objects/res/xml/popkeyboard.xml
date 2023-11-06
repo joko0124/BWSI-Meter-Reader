@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+	android:keyHeight="10.0000%p"
+	android:keyWidth="32.6666%p"
+	android:horizontalGap="0.5%p" >
+
+	<Row android:rowEdgeFlags="top" >
+		<Key android:codes="97"    android:keyLabel="a" android:popupKeyboard="@xml/popup" android:popupCharacters="\u00e0\u00e1\u00e2\u00e3\u00e4\u00e5" android:keyEdgeFlags="left" />
+		<Key android:codes="101"    android:keyLabel="e" android:popupKeyboard="@xml/popup" android:popupCharacters="\u00e8\u00e9\u00ea\u00eb" />
+		<Key android:codes="105"    android:keyLabel="i" android:popupKeyboard="@xml/popup" android:popupCharacters="\u00ec\u00ed\u00ee\u00ef" android:keyEdgeFlags="right" />
+	</Row>
+
+	<Row>
+		<Key android:codes="111"    android:keyLabel="o" android:popupKeyboard="@xml/popup" android:popupCharacters="\u00f2\u00f3\u00f4\u00f5\u00f6" android:keyEdgeFlags="left" />
+		<Key android:codes="117"    android:keyLabel="u" android:popupKeyboard="@xml/popup" android:popupCharacters="\u00f9\u00fa\u00fb\u00fc" />
+		<Key android:codes="9786"    android:keyLabel="\u263a" android:popupKeyboard="@xml/popup" android:popupCharacters="\u2639\u263b\u2640\u2642\u2661\u2662\u2664\u2667" android:keyEdgeFlags="right" />
+	</Row>
+
+	<Row android:keyHeight="3sp">
+
+	</Row>
+
+</Keyboard>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="joko_keyboard_key_text_color">#ff333333</color>
+
+    <color name="joko_keyboard_key_special_text_color">#ff333333</color>
+
+    <color name="joko_keyboard_key_done_text_color">#ffeeeeee</color>
+
+    <color name="joko_keyboard_key_none_text_color">#7f999999</color>
+
+    <color name="joko_keyboard_key_icon_color">#ff333333</color>
+
+    <color name="joko_keyboard_key_bg_normal">#ffffffff</color>
+    <color name="joko_keyboard_key_bg_pressed">#ffbbbbbb</color>
+
+    <color name="joko_keyboard_special_key_bg_normal">#ffa8afbf</color>
+    <color name="joko_keyboard_special_key_bg_pressed">#ff989faf</color>
+
+    <color name="joko_keyboard_done_key_bg_normal">#FF17A2B8</color>
+    <color name="joko_keyboard_done_key_bg_pressed">#FF17A2B8</color>
+
+    <color name="joko_keyboard_none_key_bg_normal">#ffefefef</color>
+    <color name="joko_keyboard_none_key_bg_pressed">#ffefefef</color>
+	
+	<color name="joko_keyboard_round_gradient_button_start_color">#FF0055B3</color>
+	<color name="joko_keyboard_round_gradient_button_end_color">#FF1CB5CE</color>
+	<color name="joko_keyboard_bg_color">#FFEDEEF2</color>
+
+</resources>
