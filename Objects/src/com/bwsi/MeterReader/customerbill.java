@@ -449,17 +449,17 @@ public de.amberhome.objects.appcompat.ACButtonWrapper _btnclose = null;
 public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2service = null;
 public b4a.example.dateutils _dateutils = null;
 public com.bwsi.MeterReader.main _main = null;
-public com.bwsi.MeterReader.login _login = null;
-public com.bwsi.MeterReader.mainscreen _mainscreen = null;
-public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.datasyncing _datasyncing = null;
-public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
 public com.bwsi.MeterReader.camera _camera = null;
 public com.bwsi.MeterReader.cmrvr _cmrvr = null;
 public com.bwsi.MeterReader.customerlist _customerlist = null;
 public com.bwsi.MeterReader.customfunctions _customfunctions = null;
+public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
 public com.bwsi.MeterReader.dbutils _dbutils = null;
 public com.bwsi.MeterReader.globalvar _globalvar = null;
+public com.bwsi.MeterReader.login _login = null;
+public com.bwsi.MeterReader.mainscreen _mainscreen = null;
+public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.modvariables _modvariables = null;
 public com.bwsi.MeterReader.myscale _myscale = null;
 public com.bwsi.MeterReader.newcam _newcam = null;
@@ -486,7 +486,7 @@ mostCurrent._myscale._setrate /*String*/ (mostCurrent.activityBA,0.5);
  //BA.debugLineNum = 168;BA.debugLine="Activity.LoadLayout(\"BillDetails\")";
 mostCurrent._activity.LoadLayout("BillDetails",mostCurrent.activityBA);
  //BA.debugLineNum = 170;BA.debugLine="Log(GlobalVar.BillID)";
-anywheresoftware.b4a.keywords.Common.LogImpl("740566788",BA.NumberToString(mostCurrent._globalvar._billid /*double*/ ),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("418481156",BA.NumberToString(mostCurrent._globalvar._billid /*double*/ ),0);
  //BA.debugLineNum = 171;BA.debugLine="GetBillDetais(GlobalVar.BillID)";
 _getbilldetais(mostCurrent._globalvar._billid /*double*/ );
  //BA.debugLineNum = 172;BA.debugLine="DisplayRecords";
@@ -564,7 +564,7 @@ public static String  _activity_permissionresult(String _permission,boolean _res
  //BA.debugLineNum = 218;BA.debugLine="If Permission = Permissions.PERMISSION_CAMERA The";
 if ((_permission).equals(_permissions.PERMISSION_CAMERA)) { 
  //BA.debugLineNum = 219;BA.debugLine="LogColor(\"YOU CAN USE THE CAMERA\",Colors.Red)";
-anywheresoftware.b4a.keywords.Common.LogImpl("740828930","YOU CAN USE THE CAMERA",anywheresoftware.b4a.keywords.Common.Colors.Red);
+anywheresoftware.b4a.keywords.Common.LogImpl("418743298","YOU CAN USE THE CAMERA",anywheresoftware.b4a.keywords.Common.Colors.Red);
  //BA.debugLineNum = 220;BA.debugLine="snack.Initialize(\"\",Activity, $\"Camera is ready";
 mostCurrent._snack.Initialize(mostCurrent.activityBA,"",(android.view.View)(mostCurrent._activity.getObject()),("Camera is ready to use..."),mostCurrent._snack.DURATION_SHORT);
  //BA.debugLineNum = 221;BA.debugLine="SetSnackBarBackground(snack, GlobalVar.PriColor)";
@@ -575,7 +575,7 @@ _setsnackbartextcolor(mostCurrent._snack,anywheresoftware.b4a.keywords.Common.Co
 mostCurrent._snack.Show();
  };
  //BA.debugLineNum = 225;BA.debugLine="Log(\"Permissions OK\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("740828936","Permissions OK",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("418743304","Permissions OK",0);
  //BA.debugLineNum = 227;BA.debugLine="End Sub";
 return "";
 }
@@ -614,7 +614,7 @@ _sretval = _sspace;
  } 
        catch (Exception e11) {
 			processBA.setLastException(e11); //BA.debugLineNum = 414;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("741222156",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("419136524",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 416;BA.debugLine="Return sRetVal";
 if (true) return _sretval;
@@ -647,7 +647,7 @@ _sretval = _sspace;
  } 
        catch (Exception e11) {
 			processBA.setLastException(e11); //BA.debugLineNum = 431;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("741287692",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("419202060",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 433;BA.debugLine="Return sRetVal";
 if (true) return _sretval;
@@ -956,7 +956,7 @@ mostCurrent._stotaldueamtaftersc = BA.NumberToString(_totaldueamtaftersc);
  } 
        catch (Exception e55) {
 			processBA.setLastException(e55); //BA.debugLineNum = 646;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("741746492",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("419660860",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 648;BA.debugLine="rsBillDetails.Close";
 _rsbilldetails.Close();
@@ -1177,7 +1177,7 @@ _blnretval = anywheresoftware.b4a.keywords.Common.True;
  //BA.debugLineNum = 579;BA.debugLine="rsValidData.Close";
 _rsvaliddata.Close();
  //BA.debugLineNum = 580;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("741680912",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("419595280",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 582;BA.debugLine="rsValidData.Close";
 _rsvaliddata.Close();
@@ -1199,7 +1199,7 @@ _msg = "";
  //BA.debugLineNum = 552;BA.debugLine="msg = BytesToString(Buffer, 0, Buffer.Length, \"UT";
 _msg = anywheresoftware.b4a.keywords.Common.BytesToString(_buffer,(int) (0),_buffer.length,"UTF8");
  //BA.debugLineNum = 554;BA.debugLine="Log(msg)";
-anywheresoftware.b4a.keywords.Common.LogImpl("741549828",_msg,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("419464196",_msg,0);
  //BA.debugLineNum = 555;BA.debugLine="End Sub";
 return "";
 }
@@ -1364,7 +1364,7 @@ _setsnackbartextcolor(mostCurrent._snack,anywheresoftware.b4a.keywords.Common.Co
  //BA.debugLineNum = 387;BA.debugLine="snack.Show";
 mostCurrent._snack.Show();
  //BA.debugLineNum = 388;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("741091218",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("419005586",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 391;BA.debugLine="End Sub";
 return "";
@@ -1402,7 +1402,7 @@ _csmsg = new anywheresoftware.b4a.objects.CSBuilder();
  //BA.debugLineNum = 494;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
  //BA.debugLineNum = 495;BA.debugLine="Log(\"Connected: \" & Success)";
-anywheresoftware.b4a.keywords.Common.LogImpl("741418756","Connected: "+BA.ObjectToString(_success),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("419333124","Connected: "+BA.ObjectToString(_success),0);
  //BA.debugLineNum = 497;BA.debugLine="If Success = False Then";
 if (true) break;
 
@@ -1462,7 +1462,7 @@ parent._logo.Initialize(anywheresoftware.b4a.keywords.Common.File.getDirAssets()
  //BA.debugLineNum = 511;BA.debugLine="Logobmp = CreateScaledBitmap(Logo, Logo.Width, L";
 parent._logobmp = _createscaledbitmap(parent._logo,parent._logo.getWidth(),parent._logo.getHeight());
  //BA.debugLineNum = 512;BA.debugLine="Log(DeviceName)";
-anywheresoftware.b4a.keywords.Common.LogImpl("741418773",parent._devicename,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("419333141",parent._devicename,0);
  //BA.debugLineNum = 514;BA.debugLine="If GlobalVar.SF.Upper(DeviceName) = \"WOOSIM\" The";
 if (true) break;
 
@@ -1550,7 +1550,7 @@ this.state = 22;
  //BA.debugLineNum = 534;BA.debugLine="TMPrinter.WriteLine(PrintBuffer)";
 parent._tmprinter.WriteLine(parent._printbuffer);
  //BA.debugLineNum = 535;BA.debugLine="Log(PrintBuffer)";
-anywheresoftware.b4a.keywords.Common.LogImpl("741418796",parent._printbuffer,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("419333164",parent._printbuffer,0);
  //BA.debugLineNum = 536;BA.debugLine="TMPrinter.Flush";
 parent._tmprinter.Flush();
  //BA.debugLineNum = 537;BA.debugLine="DispInfoMsg($\"Bill Statement successfully printe";
@@ -1716,7 +1716,7 @@ _devicename = BA.ObjectToString(_paireddevices.GetKeyAt((int) (0)));
  //BA.debugLineNum = 456;BA.debugLine="DeviceMac=PairedDevices.GetValueAt(0)";
 _devicemac = BA.ObjectToString(_paireddevices.GetValueAt((int) (0)));
  //BA.debugLineNum = 457;BA.debugLine="Log(DeviceName & \" -> \" & DeviceMac)";
-anywheresoftware.b4a.keywords.Common.LogImpl("741353237",_devicename+" -> "+_devicemac,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("419267605",_devicename+" -> "+_devicemac,0);
  //BA.debugLineNum = 460;BA.debugLine="Serial1.ConnectInsecure(BTAdmin, DeviceMac,1)";
 _serial1.ConnectInsecure(processBA,_btadmin,_devicemac,(int) (1));
  //BA.debugLineNum = 461;BA.debugLine="ProgressDialogHide";
@@ -1746,7 +1746,7 @@ _devicename = BA.ObjectToString(_paireddevices.GetKeyAt(_i));
  //BA.debugLineNum = 474;BA.debugLine="DeviceMac=PairedDevices.GetValueAt(i)";
 _devicemac = BA.ObjectToString(_paireddevices.GetValueAt(_i));
  //BA.debugLineNum = 475;BA.debugLine="Log(DeviceName & \" -> \" & DeviceMac)";
-anywheresoftware.b4a.keywords.Common.LogImpl("741353255",_devicename+" -> "+_devicemac,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("419267623",_devicename+" -> "+_devicemac,0);
  //BA.debugLineNum = 477;BA.debugLine="Serial1.ConnectInsecure(BTAdmin, DeviceMac,1)";
 _serial1.ConnectInsecure(processBA,_btadmin,_devicemac,(int) (1));
  //BA.debugLineNum = 478;BA.debugLine="ProgressDialogHide";

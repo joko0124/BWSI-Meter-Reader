@@ -102,4 +102,4 @@ ModuleClosedNodes8=
 ModuleClosedNodes9=
 NavigationStack=MeterReading,PrintBillData,3781,6,DataSyncing,SaveCustomerAccounts,849,4,DataSyncing,ShowCancelUploading,1682,0,DataSyncing,UploadData,1654,0,DataSyncing,ConvertReadingJSON,1420,0,DataSyncing,GetReaderName,1413,0,MeterReading,Process_Globals,36,0,DataSyncing,ShowDownloadPanel,209,0,DataSyncing,btnOk_Click,284,0,DataSyncing,btnDownload_Click,262,0
 SelectedBuild=0
-VisibleModules=13
+VisibleModules=

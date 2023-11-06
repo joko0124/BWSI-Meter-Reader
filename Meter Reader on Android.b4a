@@ -357,9 +357,9 @@ Version=10
 	#CanInstallToExternalStorage: False
 	
 '	#Extends: C:\Program Files (x86)\Anywhere Software\Basic4android\Additional Libraries\android.support.v7.app.appcompat
-	#AdditionalRes: C:\Meter Reader on Android\resource
-	#AdditionalRes: C:\Meter Reader on Android\md-app\res
-	#AdditionalRes: C:\Meter Reader on Android\md-lib\res
+	#AdditionalRes: C:\BWSI-Meter-Reader\resource
+	#AdditionalRes: C:\BWSI-Meter-Reader\md-app\res
+	#AdditionalRes: C:\BWSI-Meter-Reader\md-lib\res
 	#AdditionalRes: ..\resAX_CustomAlertViewDialog
 #End Region
 	#Extends: android.support.v4.widget.DrawerLayout

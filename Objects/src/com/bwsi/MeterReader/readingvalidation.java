@@ -364,18 +364,18 @@ public anywheresoftware.b4a.objects.B4XViewWrapper _unprintedicon = null;
 public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2service = null;
 public b4a.example.dateutils _dateutils = null;
 public com.bwsi.MeterReader.main _main = null;
-public com.bwsi.MeterReader.login _login = null;
-public com.bwsi.MeterReader.mainscreen _mainscreen = null;
-public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.datasyncing _datasyncing = null;
-public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
 public com.bwsi.MeterReader.camera _camera = null;
 public com.bwsi.MeterReader.cmrvr _cmrvr = null;
 public com.bwsi.MeterReader.customerbill _customerbill = null;
 public com.bwsi.MeterReader.customerlist _customerlist = null;
 public com.bwsi.MeterReader.customfunctions _customfunctions = null;
+public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
 public com.bwsi.MeterReader.dbutils _dbutils = null;
 public com.bwsi.MeterReader.globalvar _globalvar = null;
+public com.bwsi.MeterReader.login _login = null;
+public com.bwsi.MeterReader.mainscreen _mainscreen = null;
+public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.modvariables _modvariables = null;
 public com.bwsi.MeterReader.myscale _myscale = null;
 public com.bwsi.MeterReader.newcam _newcam = null;
@@ -666,7 +666,7 @@ mostCurrent._cboreader.Clear();
 try { //BA.debugLineNum = 120;BA.debugLine="Starter.strCriteria = \"SELECT Readings.ReadBy, U";
 mostCurrent._starter._strcriteria /*String*/  = "SELECT Readings.ReadBy, Users.EmpName AS ReaderName "+"FROM tblReadings AS Readings "+"INNER JOIN tblUsers AS Users ON Readings.ReadBy = Users.UserID "+"GROUP BY Readings.ReadBy, Users.EmpName "+"ORDER BY Users.UserID";
  //BA.debugLineNum = 126;BA.debugLine="LogColor(Starter.strCriteria, Colors.Cyan)";
-anywheresoftware.b4a.keywords.Common.LogImpl("754853643",mostCurrent._starter._strcriteria /*String*/ ,anywheresoftware.b4a.keywords.Common.Colors.Cyan);
+anywheresoftware.b4a.keywords.Common.LogImpl("454853643",mostCurrent._starter._strcriteria /*String*/ ,anywheresoftware.b4a.keywords.Common.Colors.Cyan);
  //BA.debugLineNum = 127;BA.debugLine="rsReaders = Starter.DBCon.ExecQuery(Starter.strC";
 mostCurrent._rsreaders = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(mostCurrent._starter._dbcon /*anywheresoftware.b4a.sql.SQL*/ .ExecQuery(mostCurrent._starter._strcriteria /*String*/ )));
  //BA.debugLineNum = 129;BA.debugLine="If rsReaders. RowCount > 0 Then";
@@ -688,7 +688,7 @@ mostCurrent._cboreader.Add(BA.ObjectToCharSequence(mostCurrent._rsreaders.GetStr
  } 
        catch (Exception e15) {
 			processBA.setLastException(e15); //BA.debugLineNum = 137;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("754853654",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("454853654",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 139;BA.debugLine="End Sub";
 return "";
@@ -702,7 +702,7 @@ _rscursor = new anywheresoftware.b4a.sql.SQL.CursorWrapper();
 try { //BA.debugLineNum = 494;BA.debugLine="Starter.strCriteria = \"SELECT SUM(CASE WHEN WasM";
 mostCurrent._starter._strcriteria /*String*/  = "SELECT SUM(CASE WHEN WasMissCoded = 1 THEN 1 ELSE 0 END) as Miscoded, "+"SUM(CASE WHEN ImplosiveType = 'zero' Then 1 ELSE 0 END) As ZeroCons, "+"SUM(CASE WHEN ImplosiveType = 'implosive-inc' Then 1 ELSE 0 END) As HighBill, "+"SUM(CASE WHEN ImplosiveType = 'implosive-dec' Then 1 ELSE 0 END) As LowBill, "+"SUM(CASE WHEN BillType = 'AB' Then 1 ELSE 0 END) As AverageBill, "+"SUM(CASE WHEN (PrintStatus = 0 AND WasRead = 1) Then 1 ELSE 0 END) As Unprinted "+"FROM tblReadings "+"WHERE BranchID = "+BA.NumberToString(_ibranchid)+" "+"AND BillYear = "+BA.NumberToString(_ibillyear)+" "+"AND BillMonth = "+BA.NumberToString(_ibillmonth)+" "+"AND ReadBy = "+BA.NumberToString(_iuserid);
  //BA.debugLineNum = 506;BA.debugLine="LogColor(Starter.strCriteria, Colors.Yellow)";
-anywheresoftware.b4a.keywords.Common.LogImpl("756164368",mostCurrent._starter._strcriteria /*String*/ ,anywheresoftware.b4a.keywords.Common.Colors.Yellow);
+anywheresoftware.b4a.keywords.Common.LogImpl("456164368",mostCurrent._starter._strcriteria /*String*/ ,anywheresoftware.b4a.keywords.Common.Colors.Yellow);
  //BA.debugLineNum = 507;BA.debugLine="rsCursor = Starter.DBCon.ExecQuery(Starter.strCr";
 _rscursor = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(mostCurrent._starter._dbcon /*anywheresoftware.b4a.sql.SQL*/ .ExecQuery(mostCurrent._starter._strcriteria /*String*/ )));
  //BA.debugLineNum = 508;BA.debugLine="If rsCursor.RowCount > 0 Then";
@@ -730,7 +730,7 @@ if (true) return "";
  } 
        catch (Exception e19) {
 			processBA.setLastException(e19); //BA.debugLineNum = 522;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("756164384",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("456164384",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 524;BA.debugLine="rsCursor.Close";
 _rscursor.Close();
@@ -861,7 +861,7 @@ _bretval = anywheresoftware.b4a.keywords.Common.False;
  //BA.debugLineNum = 208;BA.debugLine="Starter.strCriteria = \"SELECT * FROM tblReadings";
 mostCurrent._starter._strcriteria /*String*/  = "SELECT * FROM tblReadings "+"WHERE ReadBy = "+BA.NumberToString(_readerid)+" "+"AND BranchID = "+BA.NumberToString(mostCurrent._globalvar._branchid /*int*/ )+" "+"AND BillYear = "+BA.NumberToString(mostCurrent._globalvar._billyear /*double*/ )+" "+"AND BillMonth = "+BA.NumberToString(mostCurrent._globalvar._billmonth /*int*/ )+" "+"AND BillType = 'AB' "+"AND WasRead = 1 "+"AND PrintStatus = 1";
  //BA.debugLineNum = 216;BA.debugLine="LogColor(Starter.strCriteria, Colors.Cyan)";
-anywheresoftware.b4a.keywords.Common.LogImpl("755050254",mostCurrent._starter._strcriteria /*String*/ ,anywheresoftware.b4a.keywords.Common.Colors.Cyan);
+anywheresoftware.b4a.keywords.Common.LogImpl("455050254",mostCurrent._starter._strcriteria /*String*/ ,anywheresoftware.b4a.keywords.Common.Colors.Cyan);
  //BA.debugLineNum = 218;BA.debugLine="rsValidation = Starter.DBCon.ExecQuery(Starter.s";
 _rsvalidation = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(mostCurrent._starter._dbcon /*anywheresoftware.b4a.sql.SQL*/ .ExecQuery(mostCurrent._starter._strcriteria /*String*/ )));
  //BA.debugLineNum = 220;BA.debugLine="If rsValidation.RowCount > 0 Then";
@@ -875,7 +875,7 @@ _bretval = anywheresoftware.b4a.keywords.Common.False;
  } 
        catch (Exception e14) {
 			processBA.setLastException(e14); //BA.debugLineNum = 226;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("755050264",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("455050264",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  //BA.debugLineNum = 227;BA.debugLine="bRetVal = False";
 _bretval = anywheresoftware.b4a.keywords.Common.False;
  };
@@ -900,7 +900,7 @@ _bretval = anywheresoftware.b4a.keywords.Common.False;
  //BA.debugLineNum = 146;BA.debugLine="Starter.strCriteria = \"SELECT * FROM tblReadings";
 mostCurrent._starter._strcriteria /*String*/  = "SELECT * FROM tblReadings "+"WHERE ReadBy = "+BA.NumberToString(_readerid)+" "+"AND BranchID = "+BA.NumberToString(mostCurrent._globalvar._branchid /*int*/ )+" "+"AND BillYear = "+BA.NumberToString(mostCurrent._globalvar._billyear /*double*/ )+" "+"AND BillMonth = "+BA.NumberToString(mostCurrent._globalvar._billmonth /*int*/ )+" "+"AND WasRead = 1 "+"AND WasMissCoded = 1";
  //BA.debugLineNum = 153;BA.debugLine="LogColor(Starter.strCriteria, Colors.Cyan)";
-anywheresoftware.b4a.keywords.Common.LogImpl("754919181",mostCurrent._starter._strcriteria /*String*/ ,anywheresoftware.b4a.keywords.Common.Colors.Cyan);
+anywheresoftware.b4a.keywords.Common.LogImpl("454919181",mostCurrent._starter._strcriteria /*String*/ ,anywheresoftware.b4a.keywords.Common.Colors.Cyan);
  //BA.debugLineNum = 155;BA.debugLine="rsValidation = Starter.DBCon.ExecQuery(Starter.s";
 _rsvalidation = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(mostCurrent._starter._dbcon /*anywheresoftware.b4a.sql.SQL*/ .ExecQuery(mostCurrent._starter._strcriteria /*String*/ )));
  //BA.debugLineNum = 157;BA.debugLine="If rsValidation.RowCount > 0 Then";
@@ -914,7 +914,7 @@ _bretval = anywheresoftware.b4a.keywords.Common.False;
  } 
        catch (Exception e14) {
 			processBA.setLastException(e14); //BA.debugLineNum = 163;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("754919191",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("454919191",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  //BA.debugLineNum = 164;BA.debugLine="bRetVal = False";
 _bretval = anywheresoftware.b4a.keywords.Common.False;
  };
@@ -939,7 +939,7 @@ _bretval = anywheresoftware.b4a.keywords.Common.False;
  //BA.debugLineNum = 176;BA.debugLine="Starter.strCriteria = \"SELECT * FROM tblReadings";
 mostCurrent._starter._strcriteria /*String*/  = "SELECT * FROM tblReadings "+"WHERE ImplosiveType = '"+_svalidationtype+"' "+"AND ReadBy = "+BA.NumberToString(_readerid)+" "+"AND BranchID = "+BA.NumberToString(mostCurrent._globalvar._branchid /*int*/ )+" "+"AND BillYear = "+BA.NumberToString(mostCurrent._globalvar._billyear /*double*/ )+" "+"AND BillMonth = "+BA.NumberToString(mostCurrent._globalvar._billmonth /*int*/ )+" "+"AND BillType = 'RB' "+"AND WasRead = 1 "+"AND PrintStatus = 1";
  //BA.debugLineNum = 185;BA.debugLine="LogColor(Starter.strCriteria, Colors.Cyan)";
-anywheresoftware.b4a.keywords.Common.LogImpl("754984719",mostCurrent._starter._strcriteria /*String*/ ,anywheresoftware.b4a.keywords.Common.Colors.Cyan);
+anywheresoftware.b4a.keywords.Common.LogImpl("454984719",mostCurrent._starter._strcriteria /*String*/ ,anywheresoftware.b4a.keywords.Common.Colors.Cyan);
  //BA.debugLineNum = 187;BA.debugLine="rsValidation = Starter.DBCon.ExecQuery(Starter.s";
 _rsvalidation = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(mostCurrent._starter._dbcon /*anywheresoftware.b4a.sql.SQL*/ .ExecQuery(mostCurrent._starter._strcriteria /*String*/ )));
  //BA.debugLineNum = 189;BA.debugLine="If rsValidation.RowCount > 0 Then";
@@ -953,7 +953,7 @@ _bretval = anywheresoftware.b4a.keywords.Common.False;
  } 
        catch (Exception e14) {
 			processBA.setLastException(e14); //BA.debugLineNum = 195;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("754984729",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("454984729",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  //BA.debugLineNum = 196;BA.debugLine="bRetVal = False";
 _bretval = anywheresoftware.b4a.keywords.Common.False;
  };
@@ -978,7 +978,7 @@ _bretval = anywheresoftware.b4a.keywords.Common.False;
  //BA.debugLineNum = 239;BA.debugLine="Starter.strCriteria = \"SELECT * FROM tblReadings";
 mostCurrent._starter._strcriteria /*String*/  = "SELECT * FROM tblReadings "+"WHERE ReadBy = "+BA.NumberToString(_readerid)+" "+"AND BranchID = "+BA.NumberToString(mostCurrent._globalvar._branchid /*int*/ )+" "+"AND BillYear = "+BA.NumberToString(mostCurrent._globalvar._billyear /*double*/ )+" "+"AND BillMonth = "+BA.NumberToString(mostCurrent._globalvar._billmonth /*int*/ )+" "+"AND WasRead = 1 "+"AND PrintStatus = 0";
  //BA.debugLineNum = 246;BA.debugLine="LogColor(Starter.strCriteria, Colors.Cyan)";
-anywheresoftware.b4a.keywords.Common.LogImpl("755115789",mostCurrent._starter._strcriteria /*String*/ ,anywheresoftware.b4a.keywords.Common.Colors.Cyan);
+anywheresoftware.b4a.keywords.Common.LogImpl("455115789",mostCurrent._starter._strcriteria /*String*/ ,anywheresoftware.b4a.keywords.Common.Colors.Cyan);
  //BA.debugLineNum = 248;BA.debugLine="rsValidation = Starter.DBCon.ExecQuery(Starter.s";
 _rsvalidation = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(mostCurrent._starter._dbcon /*anywheresoftware.b4a.sql.SQL*/ .ExecQuery(mostCurrent._starter._strcriteria /*String*/ )));
  //BA.debugLineNum = 250;BA.debugLine="If rsValidation.RowCount > 0 Then";
@@ -992,7 +992,7 @@ _bretval = anywheresoftware.b4a.keywords.Common.False;
  } 
        catch (Exception e14) {
 			processBA.setLastException(e14); //BA.debugLineNum = 256;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("755115799",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("455115799",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  //BA.debugLineNum = 257;BA.debugLine="bRetVal = False";
 _bretval = anywheresoftware.b4a.keywords.Common.False;
  };

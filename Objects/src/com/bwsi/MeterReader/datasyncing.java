@@ -394,17 +394,17 @@ public com.johan.Vibrate.Vibrate _vibration = null;
 public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2service = null;
 public b4a.example.dateutils _dateutils = null;
 public com.bwsi.MeterReader.main _main = null;
-public com.bwsi.MeterReader.login _login = null;
-public com.bwsi.MeterReader.mainscreen _mainscreen = null;
-public com.bwsi.MeterReader.meterreading _meterreading = null;
-public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
 public com.bwsi.MeterReader.camera _camera = null;
 public com.bwsi.MeterReader.cmrvr _cmrvr = null;
 public com.bwsi.MeterReader.customerbill _customerbill = null;
 public com.bwsi.MeterReader.customerlist _customerlist = null;
 public com.bwsi.MeterReader.customfunctions _customfunctions = null;
+public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
 public com.bwsi.MeterReader.dbutils _dbutils = null;
 public com.bwsi.MeterReader.globalvar _globalvar = null;
+public com.bwsi.MeterReader.login _login = null;
+public com.bwsi.MeterReader.mainscreen _mainscreen = null;
+public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.modvariables _modvariables = null;
 public com.bwsi.MeterReader.myscale _myscale = null;
 public com.bwsi.MeterReader.newcam _newcam = null;
@@ -547,7 +547,7 @@ case 7:
 //C
 this.state = 14;
  //BA.debugLineNum = 158;BA.debugLine="Log(\"SDK = \" & SdkVersion & \" : Requesting WRITE";
-anywheresoftware.b4a.keywords.Common.LogImpl("719857478","SDK = "+BA.NumberToString(_sdkversion)+" : Requesting WRITE_EXTERNAL_STORAGE permission",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("4720966","SDK = "+BA.NumberToString(_sdkversion)+" : Requesting WRITE_EXTERNAL_STORAGE permission",0);
  //BA.debugLineNum = 159;BA.debugLine="Dim rp As RuntimePermissions";
 _rp = new anywheresoftware.b4a.objects.RuntimePermissions();
  //BA.debugLineNum = 160;BA.debugLine="rp.CheckAndRequest(rp.PERMISSION_WRITE_EXTERNAL_";
@@ -563,16 +563,16 @@ _permission = (String) result[0];
 _result = (Boolean) result[1];
 ;
  //BA.debugLineNum = 162;BA.debugLine="Log($\"PERMISSION_WRITE_EXTERNAL_STORAGE = ${Resu";
-anywheresoftware.b4a.keywords.Common.LogImpl("719857482",("PERMISSION_WRITE_EXTERNAL_STORAGE = "+anywheresoftware.b4a.keywords.Common.SmartStringFormatter("",(Object)(_result))+""),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("4720970",("PERMISSION_WRITE_EXTERNAL_STORAGE = "+anywheresoftware.b4a.keywords.Common.SmartStringFormatter("",(Object)(_result))+""),0);
  if (true) break;
 
 case 9:
 //C
 this.state = 10;
  //BA.debugLineNum = 164;BA.debugLine="Log(\"SDK = \" & SdkVersion & \" : Requesting MANAG";
-anywheresoftware.b4a.keywords.Common.LogImpl("719857484","SDK = "+BA.NumberToString(_sdkversion)+" : Requesting MANAGE_EXTERNAL_STORAGE permission",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("4720972","SDK = "+BA.NumberToString(_sdkversion)+" : Requesting MANAGE_EXTERNAL_STORAGE permission",0);
  //BA.debugLineNum = 165;BA.debugLine="Log(\"On Entry MANAGE_EXTERNAL_STORAGE = \" & AP.H";
-anywheresoftware.b4a.keywords.Common.LogImpl("719857485","On Entry MANAGE_EXTERNAL_STORAGE = "+BA.ObjectToString(parent._ap._haspermission /*boolean*/ ()),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("4720973","On Entry MANAGE_EXTERNAL_STORAGE = "+BA.ObjectToString(parent._ap._haspermission /*boolean*/ ()),0);
  //BA.debugLineNum = 166;BA.debugLine="If Not(AP.HasPermission) Then";
 if (true) break;
 
@@ -598,7 +598,7 @@ this.state = 13;
 _res = (Integer) result[0];
 ;
  //BA.debugLineNum = 169;BA.debugLine="Log(\"Getting permission\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("719857489","Getting permission",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("4720977","Getting permission",0);
  //BA.debugLineNum = 170;BA.debugLine="AP.GetPermission";
 parent._ap._getpermission /*String*/ ();
  //BA.debugLineNum = 171;BA.debugLine="Wait For AP_StorageAvailable";
@@ -656,7 +656,7 @@ return "";
 public static String  _activity_permissionresult(String _permission,boolean _result) throws Exception{
  //BA.debugLineNum = 198;BA.debugLine="Sub Activity_PermissionResult (Permission As Strin";
  //BA.debugLineNum = 199;BA.debugLine="Log (Permission)";
-anywheresoftware.b4a.keywords.Common.LogImpl("720119553",_permission,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("4983041",_permission,0);
  //BA.debugLineNum = 200;BA.debugLine="End Sub";
 return "";
 }
@@ -746,8 +746,8 @@ anywheresoftware.b4a.keywords.Common.DateTime.setDateFormat("yyyy-MM-dd");
  //BA.debugLineNum = 273;BA.debugLine="strRdgDate = DateTime.Date(dDate)";
 mostCurrent._strrdgdate = anywheresoftware.b4a.keywords.Common.DateTime.Date(_ddate);
  //BA.debugLineNum = 274;BA.debugLine="Log(strRdgDate)";
-anywheresoftware.b4a.keywords.Common.LogImpl("720709383",mostCurrent._strrdgdate,0);
- //BA.debugLineNum = 276;BA.debugLine="If strRdgDate=\"\" Then";
+anywheresoftware.b4a.keywords.Common.LogImpl("41572871",mostCurrent._strrdgdate,0);
+ //BA.debugLineNum = 276;BA.debugLine="If strRdgDate = \"\" Then";
 if ((mostCurrent._strrdgdate).equals("")) { 
  //BA.debugLineNum = 277;BA.debugLine="xui.MsgboxAsync(\"Please specify the reading dat";
 _xui.MsgboxAsync(processBA,BA.ObjectToCharSequence("Please specify the reading date!"),BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.Application.getLabelName()));
@@ -764,9 +764,9 @@ if (true) return "";
  //BA.debugLineNum = 286;BA.debugLine="ReaderID = DBaseFunctions.GetIDbyCode(\"ReaderID\"";
 _readerid = (int) (mostCurrent._dbasefunctions._getidbycode /*double*/ (mostCurrent.activityBA,"ReaderID","tblReaders","ReaderName",mostCurrent._cboreader.getSelectedItem()));
  //BA.debugLineNum = 288;BA.debugLine="Log(cboReader.SelectedItem)";
-anywheresoftware.b4a.keywords.Common.LogImpl("720709397",mostCurrent._cboreader.getSelectedItem(),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("41572885",mostCurrent._cboreader.getSelectedItem(),0);
  //BA.debugLineNum = 289;BA.debugLine="Log (ReaderID)";
-anywheresoftware.b4a.keywords.Common.LogImpl("720709398",BA.NumberToString(_readerid),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("41572886",BA.NumberToString(_readerid),0);
  //BA.debugLineNum = 291;BA.debugLine="ConfirmDL($\"DOWNLOAD READING DATA\"$,$\"REMINDERS:";
 _confirmdl(("DOWNLOAD READING DATA"),("REMINDERS: PASSWORD REQUIRED!")+anywheresoftware.b4a.keywords.Common.CRLF+("Continuing this process will DELETE ALL existing data on this device and will download new reading data.")+anywheresoftware.b4a.keywords.Common.CRLF+anywheresoftware.b4a.keywords.Common.CRLF+("Do you want to REMOVE all current data and DOWNLOAD new records?"));
  } 
@@ -774,7 +774,7 @@ _confirmdl(("DOWNLOAD READING DATA"),("REMINDERS: PASSWORD REQUIRED!")+anywheres
 			processBA.setLastException(e20); //BA.debugLineNum = 293;BA.debugLine="xui.MsgboxAsync(LastException.Message, Applicati";
 _xui.MsgboxAsync(processBA,BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()),BA.ObjectToCharSequence(anywheresoftware.b4a.keywords.Common.Application.getLabelName()));
  //BA.debugLineNum = 294;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("720709403",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("41572891",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 296;BA.debugLine="End Sub";
 return "";
@@ -1099,7 +1099,7 @@ _detaillist.Initialize();
  //BA.debugLineNum = 1472;BA.debugLine="DisconnectionDate = Starter.DBCon.ExecQuerySingl";
 _disconnectiondate = mostCurrent._starter._dbcon /*anywheresoftware.b4a.sql.SQL*/ .ExecQuerySingleResult("SELECT DisconnectionDate FROM tblReadings WHERE BookID = "+BA.NumberToString(_ibookid)+" GROUP BY BookID");
  //BA.debugLineNum = 1473;BA.debugLine="LogColor(DisconnectionDate, Colors.Yellow)";
-anywheresoftware.b4a.keywords.Common.LogImpl("723986230",_disconnectiondate,anywheresoftware.b4a.keywords.Common.Colors.Yellow);
+anywheresoftware.b4a.keywords.Common.LogImpl("44849718",_disconnectiondate,anywheresoftware.b4a.keywords.Common.Colors.Yellow);
  //BA.debugLineNum = 1475;BA.debugLine="Starter.strCriteria=\"SELECT * FROM tblBookAssign";
 mostCurrent._starter._strcriteria /*String*/  = "SELECT * FROM tblBookAssignments "+"WHERE BillYear = "+BA.NumberToString(mostCurrent._globalvar._billyear /*double*/ )+" "+"And BillMonth = "+BA.NumberToString(mostCurrent._globalvar._billmonth /*int*/ )+" "+"AND BranchID = "+BA.NumberToString(_ibranchid)+" "+"AND UserID = "+BA.NumberToString(_intreaderid)+" "+"AND BookID = "+BA.NumberToString(_ibookid);
  //BA.debugLineNum = 1482;BA.debugLine="rsHeader = Starter.DBCon.ExecQuery(Starter.strCr";
@@ -1147,7 +1147,7 @@ mostCurrent._starter._strcriteria /*String*/  = "SELECT * FROM tblReadings WHERE
  //BA.debugLineNum = 1516;BA.debugLine="rsDetails=Starter.DBCon.ExecQuery(Starter.strCr";
 mostCurrent._rsdetails = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(mostCurrent._starter._dbcon /*anywheresoftware.b4a.sql.SQL*/ .ExecQuery(mostCurrent._starter._strcriteria /*String*/ )));
  //BA.debugLineNum = 1517;BA.debugLine="Log(Starter.strCriteria)";
-anywheresoftware.b4a.keywords.Common.LogImpl("723986274",mostCurrent._starter._strcriteria /*String*/ ,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("44849762",mostCurrent._starter._strcriteria /*String*/ ,0);
  //BA.debugLineNum = 1519;BA.debugLine="UploadCtr = rsDetails.RowCount";
 _uploadctr = mostCurrent._rsdetails.getRowCount();
  //BA.debugLineNum = 1521;BA.debugLine="If rsDetails.RowCount > 0 Then";
@@ -1302,18 +1302,18 @@ _detaillist.Add((Object)(_mp3.getObject()));
  }
 };
  //BA.debugLineNum = 1616;BA.debugLine="Log(rsDetails.RowCount)";
-anywheresoftware.b4a.keywords.Common.LogImpl("723986373",BA.NumberToString(mostCurrent._rsdetails.getRowCount()),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("44849861",BA.NumberToString(mostCurrent._rsdetails.getRowCount()),0);
  };
  //BA.debugLineNum = 1619;BA.debugLine="TitleList.Add(MP1)";
 _titlelist.Add((Object)(_mp1.getObject()));
  //BA.debugLineNum = 1620;BA.debugLine="JSONGen.Initialize2(TitleList)";
 _jsongen.Initialize2(_titlelist);
  //BA.debugLineNum = 1622;BA.debugLine="Log (JSONGen.ToString)";
-anywheresoftware.b4a.keywords.Common.LogImpl("723986379",_jsongen.ToString(),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("44849867",_jsongen.ToString(),0);
  //BA.debugLineNum = 1624;BA.debugLine="strJson=JSONGen.ToString";
 _strjson = _jsongen.ToString();
  //BA.debugLineNum = 1625;BA.debugLine="Log (strJson)";
-anywheresoftware.b4a.keywords.Common.LogImpl("723986382",_strjson,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("44849870",_strjson,0);
  }else {
  //BA.debugLineNum = 1628;BA.debugLine="strJson = \"\"";
 _strjson = "";
@@ -1323,14 +1323,14 @@ _strjson = "";
 			processBA.setLastException(e153); //BA.debugLineNum = 1632;BA.debugLine="strJson = \"\"";
 _strjson = "";
  //BA.debugLineNum = 1633;BA.debugLine="Log(LastException.Message)";
-anywheresoftware.b4a.keywords.Common.LogImpl("723986390",anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage(),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("44849878",anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage(),0);
  //BA.debugLineNum = 1634;BA.debugLine="ToastMessageShow($\"Unable to upload readings due";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence(("Unable to upload readings due to failed json conversion.")),anywheresoftware.b4a.keywords.Common.False);
  //BA.debugLineNum = 1635;BA.debugLine="Return strJson";
 if (true) return _strjson;
  };
  //BA.debugLineNum = 1638;BA.debugLine="Log (strJson)";
-anywheresoftware.b4a.keywords.Common.LogImpl("723986395",_strjson,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("44849883",_strjson,0);
  //BA.debugLineNum = 1639;BA.debugLine="Return strJson";
 if (true) return _strjson;
  //BA.debugLineNum = 1640;BA.debugLine="End Sub";
@@ -1418,7 +1418,7 @@ anywheresoftware.b4a.keywords.Common.DateTime.setDateFormat("MM/dd/yyyy");
  //BA.debugLineNum = 1154;BA.debugLine="sPresRdgDate = DateTime.Date(dDate)";
 _spresrdgdate = anywheresoftware.b4a.keywords.Common.DateTime.Date(_ddate);
  //BA.debugLineNum = 1157;BA.debugLine="Log(sPresRdgDate)";
-anywheresoftware.b4a.keywords.Common.LogImpl("723134222",_spresrdgdate,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("43997710",_spresrdgdate,0);
  //BA.debugLineNum = 1159;BA.debugLine="Starter.strCriteria=\"DELETE FROM tblReadings \" &";
 mostCurrent._starter._strcriteria /*String*/  = "DELETE FROM tblReadings "+"WHERE BillYear = "+BA.NumberToString(mostCurrent._globalvar._billyear /*double*/ )+" "+"AND BillMonth = "+BA.NumberToString(mostCurrent._globalvar._billmonth /*int*/ )+" "+"AND BranchID = "+BA.NumberToString(mostCurrent._globalvar._branchid /*int*/ )+" "+"AND PresRdgDate = '"+_spresrdgdate+"' "+"AND ReadBy = "+BA.NumberToString(_readerid);
  //BA.debugLineNum = 1165;BA.debugLine="Starter.DBCon.ExecNonQuery(Starter.strCriteria)";
@@ -1573,7 +1573,7 @@ _j._download2(_urlname,new String[]{"BranchID",BA.NumberToString(_ibranchid),"Bi
  //BA.debugLineNum = 491;BA.debugLine="sURL = URLName & \"?BranchID=\" & iBranchID & \"&Bil";
 parent.mostCurrent._surl = _urlname+"?BranchID="+BA.NumberToString(_ibranchid)+"&BillYear="+BA.NumberToString(_ibillyear)+"&BillMonth="+BA.NumberToString(_ibillmonth)+"&ReaderID="+BA.NumberToString(_ireaderid)+"&rdgDate="+_sreadingdate;
  //BA.debugLineNum = 492;BA.debugLine="LogColor(sURL, Colors.Red)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721299210",parent.mostCurrent._surl,anywheresoftware.b4a.keywords.Common.Colors.Red);
+anywheresoftware.b4a.keywords.Common.LogImpl("42162698",parent.mostCurrent._surl,anywheresoftware.b4a.keywords.Common.Colors.Red);
  //BA.debugLineNum = 493;BA.debugLine="ProgressDialogShow2($\"Downloading Book Assignment";
 anywheresoftware.b4a.keywords.Common.ProgressDialogShow2(mostCurrent.activityBA,BA.ObjectToCharSequence(("Downloading Book Assignments...")),anywheresoftware.b4a.keywords.Common.False);
  //BA.debugLineNum = 494;BA.debugLine="Wait For (j) JobDone(j As HttpJob)";
@@ -1603,9 +1603,9 @@ this.state = 4;
  //BA.debugLineNum = 496;BA.debugLine="RetVal = j.GetString";
 _retval = _j._getstring();
  //BA.debugLineNum = 497;BA.debugLine="Log(URLName)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721299215",_urlname,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42162703",_urlname,0);
  //BA.debugLineNum = 498;BA.debugLine="Log(RetVal)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721299216",_retval,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42162704",_retval,0);
  //BA.debugLineNum = 499;BA.debugLine="If RetVal = \"[]\" Then";
 if (true) break;
 
@@ -1655,7 +1655,7 @@ parent.mostCurrent._snack.SetAction("Retry");
  //BA.debugLineNum = 513;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 514;BA.debugLine="Log(j.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721299232",_j._errormessage,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42162720",_j._errormessage,0);
  //BA.debugLineNum = 515;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
  if (true) break;
@@ -1718,7 +1718,7 @@ _urlname = parent.mostCurrent._globalvar._serveraddress /*String*/ +parent.mostC
  //BA.debugLineNum = 638;BA.debugLine="j.Download2(URLName, Array As String(\"BranchID\",i";
 _j._download2(_urlname,new String[]{"BranchID",BA.NumberToString(_ibranchid),"CutOff",_sreadingdate});
  //BA.debugLineNum = 639;BA.debugLine="Log(URLName & \"?\" & \"BranchID=\" & iBranchID & \"rd";
-anywheresoftware.b4a.keywords.Common.LogImpl("721561352",_urlname+"?"+"BranchID="+BA.NumberToString(_ibranchid)+"rdgDate="+_sreadingdate,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42424840",_urlname+"?"+"BranchID="+BA.NumberToString(_ibranchid)+"rdgDate="+_sreadingdate,0);
  //BA.debugLineNum = 641;BA.debugLine="ProgressDialogShow2($\"Downloading Data...\"$, Fals";
 anywheresoftware.b4a.keywords.Common.ProgressDialogShow2(mostCurrent.activityBA,BA.ObjectToCharSequence(("Downloading Data...")),anywheresoftware.b4a.keywords.Common.False);
  //BA.debugLineNum = 642;BA.debugLine="Wait For (j) JobDone(j As HttpJob)";
@@ -1748,9 +1748,9 @@ this.state = 4;
  //BA.debugLineNum = 644;BA.debugLine="RetVal = j.GetString";
 _retval = _j._getstring();
  //BA.debugLineNum = 645;BA.debugLine="Log(URLName)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721561358",_urlname,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42424846",_urlname,0);
  //BA.debugLineNum = 646;BA.debugLine="Log(RetVal)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721561359",_retval,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42424847",_retval,0);
  //BA.debugLineNum = 647;BA.debugLine="If RetVal = \"[]\" Then";
 if (true) break;
 
@@ -1800,7 +1800,7 @@ parent.mostCurrent._snack.SetAction("Retry");
  //BA.debugLineNum = 661;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 662;BA.debugLine="Log(j.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721561375",_j._errormessage,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42424863",_j._errormessage,0);
  //BA.debugLineNum = 663;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
  if (true) break;
@@ -1857,7 +1857,7 @@ _j._initialize(processBA,"",datasyncing.getObject());
  //BA.debugLineNum = 409;BA.debugLine="URLName = GlobalVar.ServerAddress & GlobalVar.Con";
 _urlname = parent.mostCurrent._globalvar._serveraddress /*String*/ +parent.mostCurrent._globalvar._controllerprefix /*String*/ +"bookData";
  //BA.debugLineNum = 410;BA.debugLine="Log (URLName & $\"BranchID = \"$ & iBranchID)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721168136",_urlname+("BranchID = ")+BA.NumberToString(_ibranchid),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42031624",_urlname+("BranchID = ")+BA.NumberToString(_ibranchid),0);
  //BA.debugLineNum = 411;BA.debugLine="j.Download2(URLName, Array As String(\"BranchID\",";
 _j._download2(_urlname,new String[]{"BranchID",BA.NumberToString(_ibranchid)});
  //BA.debugLineNum = 413;BA.debugLine="ProgressDialogShow2($\"Downloading Book/Zone Data.";
@@ -1889,7 +1889,7 @@ this.state = 4;
  //BA.debugLineNum = 416;BA.debugLine="RetVal = j.GetString";
 _retval = _j._getstring();
  //BA.debugLineNum = 417;BA.debugLine="Log(RetVal)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721168143",_retval,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42031631",_retval,0);
  //BA.debugLineNum = 418;BA.debugLine="If RetVal = \"[]\" Then";
 if (true) break;
 
@@ -1939,7 +1939,7 @@ parent.mostCurrent._snack.SetAction("Retry");
  //BA.debugLineNum = 432;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 433;BA.debugLine="Log(j.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721168159",_j._errormessage,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42031647",_j._errormessage,0);
  //BA.debugLineNum = 434;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
  if (true) break;
@@ -2002,7 +2002,7 @@ _urlname = parent.mostCurrent._globalvar._serveraddress /*String*/ +parent.mostC
  //BA.debugLineNum = 528;BA.debugLine="j.Download2(URLName, Array As String(\"branchID\",";
 _j._download2(_urlname,new String[]{"branchID",BA.NumberToString(_ibranchid),"userID",BA.NumberToString(_ireaderid),"rdgDate",_sreadingdate});
  //BA.debugLineNum = 529;BA.debugLine="Log(URLName & \"?\" & \"BranchID=\" & iBranchID &  \"&";
-anywheresoftware.b4a.keywords.Common.LogImpl("721364744",_urlname+"?"+"BranchID="+BA.NumberToString(_ibranchid)+"&ReaderID="+BA.NumberToString(_ireaderid)+"&rdgDate="+_sreadingdate,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42228232",_urlname+"?"+"BranchID="+BA.NumberToString(_ibranchid)+"&ReaderID="+BA.NumberToString(_ireaderid)+"&rdgDate="+_sreadingdate,0);
  //BA.debugLineNum = 531;BA.debugLine="ProgressDialogShow2($\"Downloading Customer Accoun";
 anywheresoftware.b4a.keywords.Common.ProgressDialogShow2(mostCurrent.activityBA,BA.ObjectToCharSequence(("Downloading Customer Accounts and Data...")),anywheresoftware.b4a.keywords.Common.False);
  //BA.debugLineNum = 532;BA.debugLine="Wait For (j) JobDone(j As HttpJob)";
@@ -2032,9 +2032,9 @@ this.state = 4;
  //BA.debugLineNum = 534;BA.debugLine="RetVal = j.GetString";
 _retval = _j._getstring();
  //BA.debugLineNum = 535;BA.debugLine="Log(URLName)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721364750",_urlname,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42228238",_urlname,0);
  //BA.debugLineNum = 536;BA.debugLine="Log(RetVal)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721364751",_retval,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42228239",_retval,0);
  //BA.debugLineNum = 537;BA.debugLine="If RetVal = \"[]\" Then";
 if (true) break;
 
@@ -2084,7 +2084,7 @@ parent.mostCurrent._snack.SetAction("Retry");
  //BA.debugLineNum = 551;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 552;BA.debugLine="Log(j.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721364767",_j._errormessage,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42228255",_j._errormessage,0);
  //BA.debugLineNum = 553;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
  if (true) break;
@@ -2139,7 +2139,7 @@ _retval = "";
  //BA.debugLineNum = 445;BA.debugLine="Dim j As HttpJob";
 _j = new anywheresoftware.b4a.samples.httputils2.httpjob();
  //BA.debugLineNum = 447;BA.debugLine="Log($\"ReaderID = \"$ & iReaderID)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721233670",("ReaderID = ")+BA.NumberToString(_ireaderid),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42097158",("ReaderID = ")+BA.NumberToString(_ireaderid),0);
  //BA.debugLineNum = 448;BA.debugLine="j.Initialize(\"\",Me)";
 _j._initialize(processBA,"",datasyncing.getObject());
  //BA.debugLineNum = 449;BA.debugLine="URLName = GlobalVar.ServerAddress & GlobalVar.Con";
@@ -2147,7 +2147,7 @@ _urlname = parent.mostCurrent._globalvar._serveraddress /*String*/ +parent.mostC
  //BA.debugLineNum = 450;BA.debugLine="j.Download2(URLName, Array As String(\"UserID\", iR";
 _j._download2(_urlname,new String[]{"UserID",BA.NumberToString(_ireaderid),"BranchID",BA.NumberToString(_ibranchid)});
  //BA.debugLineNum = 451;BA.debugLine="Log(URLName & \"?\" & \"&UserID=\" &  iReaderID & \"&B";
-anywheresoftware.b4a.keywords.Common.LogImpl("721233674",_urlname+"?"+"&UserID="+BA.NumberToString(_ireaderid)+"&BranchID="+BA.NumberToString(_ibranchid),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42097162",_urlname+"?"+"&UserID="+BA.NumberToString(_ireaderid)+"&BranchID="+BA.NumberToString(_ibranchid),0);
  //BA.debugLineNum = 453;BA.debugLine="ProgressDialogShow2($\"Downloading Reader's Data..";
 anywheresoftware.b4a.keywords.Common.ProgressDialogShow2(mostCurrent.activityBA,BA.ObjectToCharSequence(("Downloading Reader's Data...")),anywheresoftware.b4a.keywords.Common.False);
  //BA.debugLineNum = 454;BA.debugLine="Wait For (j) JobDone(j As HttpJob)";
@@ -2177,9 +2177,9 @@ this.state = 4;
  //BA.debugLineNum = 456;BA.debugLine="RetVal = j.GetString";
 _retval = _j._getstring();
  //BA.debugLineNum = 457;BA.debugLine="Log(URLName)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721233680",_urlname,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42097168",_urlname,0);
  //BA.debugLineNum = 458;BA.debugLine="Log(RetVal)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721233681",_retval,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42097169",_retval,0);
  //BA.debugLineNum = 460;BA.debugLine="If RetVal = \"[]\" Then";
 if (true) break;
 
@@ -2229,7 +2229,7 @@ parent.mostCurrent._snack.SetAction("Retry");
  //BA.debugLineNum = 474;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 475;BA.debugLine="Log(j.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721233698",_j._errormessage,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42097186",_j._errormessage,0);
  //BA.debugLineNum = 476;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
  if (true) break;
@@ -2333,9 +2333,9 @@ this.state = 4;
  //BA.debugLineNum = 606;BA.debugLine="RetVal = j.GetString";
 _retval = _j._getstring();
  //BA.debugLineNum = 607;BA.debugLine="Log(URLName)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721495821",_urlname,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42359309",_urlname,0);
  //BA.debugLineNum = 608;BA.debugLine="Log(RetVal)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721495822",_retval,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42359310",_retval,0);
  //BA.debugLineNum = 609;BA.debugLine="If RetVal = \"[]\" Then";
 if (true) break;
 
@@ -2385,7 +2385,7 @@ parent.mostCurrent._snack.SetAction("Retry");
  //BA.debugLineNum = 623;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 624;BA.debugLine="Log(j.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721495838",_j._errormessage,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42359326",_j._errormessage,0);
  //BA.debugLineNum = 625;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
  if (true) break;
@@ -2472,9 +2472,9 @@ this.state = 4;
  //BA.debugLineNum = 569;BA.debugLine="RetVal = j.GetString";
 _retval = _j._getstring();
  //BA.debugLineNum = 570;BA.debugLine="Log(URLName)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721430283",_urlname,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42293771",_urlname,0);
  //BA.debugLineNum = 571;BA.debugLine="Log(RetVal)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721430284",_retval,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42293772",_retval,0);
  //BA.debugLineNum = 572;BA.debugLine="If RetVal = \"[]\" Then";
 if (true) break;
 
@@ -2524,7 +2524,7 @@ parent.mostCurrent._snack.SetAction("Retry");
  //BA.debugLineNum = 586;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 587;BA.debugLine="Log(j.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721430300",_j._errormessage,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42293788",_j._errormessage,0);
  //BA.debugLineNum = 588;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
  if (true) break;
@@ -2585,7 +2585,7 @@ _urlname = parent.mostCurrent._globalvar._serveraddress /*String*/ +parent.mostC
  //BA.debugLineNum = 676;BA.debugLine="j.Download2(URLName, Array As String(\"BranchID\",i";
 _j._download2(_urlname,new String[]{"BranchID",BA.NumberToString(_ibranchid),"RdgDate",_sreadingdate});
  //BA.debugLineNum = 677;BA.debugLine="Log(URLName & \"?\" & \"BranchID=\" & iBranchID & \"Rd";
-anywheresoftware.b4a.keywords.Common.LogImpl("721626888",_urlname+"?"+"BranchID="+BA.NumberToString(_ibranchid)+"RdgDate="+_sreadingdate,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42490376",_urlname+"?"+"BranchID="+BA.NumberToString(_ibranchid)+"RdgDate="+_sreadingdate,0);
  //BA.debugLineNum = 679;BA.debugLine="ProgressDialogShow2($\"Downloading Data...\"$, Fals";
 anywheresoftware.b4a.keywords.Common.ProgressDialogShow2(mostCurrent.activityBA,BA.ObjectToCharSequence(("Downloading Data...")),anywheresoftware.b4a.keywords.Common.False);
  //BA.debugLineNum = 680;BA.debugLine="Wait For (j) JobDone(j As HttpJob)";
@@ -2615,9 +2615,9 @@ this.state = 4;
  //BA.debugLineNum = 682;BA.debugLine="RetVal = j.GetString";
 _retval = _j._getstring();
  //BA.debugLineNum = 683;BA.debugLine="Log(URLName)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721626894",_urlname,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42490382",_urlname,0);
  //BA.debugLineNum = 684;BA.debugLine="Log(RetVal)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721626895",_retval,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42490383",_retval,0);
  //BA.debugLineNum = 685;BA.debugLine="If RetVal = \"[]\" Then";
 if (true) break;
 
@@ -2667,7 +2667,7 @@ parent.mostCurrent._snack.SetAction("Retry");
  //BA.debugLineNum = 699;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 700;BA.debugLine="Log(j.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721626911",_j._errormessage,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42490399",_j._errormessage,0);
  //BA.debugLineNum = 701;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
  if (true) break;
@@ -2736,7 +2736,7 @@ _sretval = mostCurrent._starter._dbcon /*anywheresoftware.b4a.sql.SQL*/ .ExecQue
 			processBA.setLastException(e5); //BA.debugLineNum = 1413;BA.debugLine="sRetVal = \"\"";
 _sretval = "";
  //BA.debugLineNum = 1414;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("723920646",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("44784134",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 1416;BA.debugLine="Return sRetVal";
 if (true) return _sretval;
@@ -2978,7 +2978,7 @@ mostCurrent._cboreader.Add(BA.ObjectToCharSequence(_titlecase(mostCurrent._rsrea
 			processBA.setLastException(e12); //BA.debugLineNum = 238;BA.debugLine="ToastMessageShow(\"Unable to Load Meter Readers d";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Unable to Load Meter Readers due to "+anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()),anywheresoftware.b4a.keywords.Common.False);
  //BA.debugLineNum = 239;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("720381710",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("41245198",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 241;BA.debugLine="End Sub";
 return "";
@@ -3011,7 +3011,7 @@ mostCurrent._cboreaderupload.Add(BA.ObjectToCharSequence(_titlecase(mostCurrent.
  } 
        catch (Exception e12) {
 			processBA.setLastException(e12); //BA.debugLineNum = 1862;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("724772623",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("45636111",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 1864;BA.debugLine="End Sub";
 return "";
@@ -3272,7 +3272,7 @@ this.state = 13;
  //BA.debugLineNum = 371;BA.debugLine="BackUpPath = File.Combine(File.DirRootExternal";
 parent.mostCurrent._backuppath = anywheresoftware.b4a.keywords.Common.File.Combine(anywheresoftware.b4a.keywords.Common.File.getDirRootExternal(),"documents/MasterDB");
  //BA.debugLineNum = 372;BA.debugLine="LogColor(BackUpPath, Colors.Yellow)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721102604",parent.mostCurrent._backuppath,anywheresoftware.b4a.keywords.Common.Colors.Yellow);
+anywheresoftware.b4a.keywords.Common.LogImpl("41966092",parent.mostCurrent._backuppath,anywheresoftware.b4a.keywords.Common.Colors.Yellow);
  //BA.debugLineNum = 374;BA.debugLine="BackUpName = GlobalVar.UserName & \"\" & GlobalV";
 parent.mostCurrent._backupname = parent.mostCurrent._globalvar._username /*String*/ +""+parent.mostCurrent._globalvar._billperiod /*String*/ +" "+_sdatetime+(" Backup");
  //BA.debugLineNum = 375;BA.debugLine="Starter.rp.GetAllSafeDirsExternal(BackUpPath)";
@@ -3608,7 +3608,7 @@ this.state = 14;
  //BA.debugLineNum = 1323;BA.debugLine="Res = InputList(BookList,\"Select a Book To Uplo";
 _res = anywheresoftware.b4a.keywords.Common.InputList(_booklist,BA.ObjectToCharSequence("Select a Book To Upload"),(int) (-1),mostCurrent.activityBA);
  //BA.debugLineNum = 1324;BA.debugLine="Log(Res)";
-anywheresoftware.b4a.keywords.Common.LogImpl("723855132",BA.NumberToString(_res),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("44718620",BA.NumberToString(_res),0);
  //BA.debugLineNum = 1326;BA.debugLine="If Res <> DialogResponse.CANCEL Then";
 if (true) break;
 
@@ -3629,7 +3629,7 @@ anywheresoftware.b4a.keywords.Common.ProgressDialogShow2(mostCurrent.activityBA,
  //BA.debugLineNum = 1328;BA.debugLine="intUploadedBookID = DBaseFunctions.GetIDbyCode";
 parent._intuploadedbookid = (int) (parent.mostCurrent._dbasefunctions._getidbycode /*double*/ (mostCurrent.activityBA,"BookID","tblBooks","BookCode",BA.ObjectToString(_booklist.Get(_res))));
  //BA.debugLineNum = 1329;BA.debugLine="Log (intUploadedBookID)";
-anywheresoftware.b4a.keywords.Common.LogImpl("723855137",BA.NumberToString(parent._intuploadedbookid),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("44718625",BA.NumberToString(parent._intuploadedbookid),0);
  if (true) break;
 
 case 18:
@@ -3751,7 +3751,7 @@ this.state = 35;
  //BA.debugLineNum = 1368;BA.debugLine="BackUpPath = File.Combine(File.DirRootExternal";
 parent.mostCurrent._backuppath = anywheresoftware.b4a.keywords.Common.File.Combine(anywheresoftware.b4a.keywords.Common.File.getDirRootExternal(),"documents/MasterDB/");
  //BA.debugLineNum = 1369;BA.debugLine="LogColor(BackUpPath, Colors.Yellow)";
-anywheresoftware.b4a.keywords.Common.LogImpl("723855177",parent.mostCurrent._backuppath,anywheresoftware.b4a.keywords.Common.Colors.Yellow);
+anywheresoftware.b4a.keywords.Common.LogImpl("44718665",parent.mostCurrent._backuppath,anywheresoftware.b4a.keywords.Common.Colors.Yellow);
  //BA.debugLineNum = 1371;BA.debugLine="BackUpName = GetReaderName(intReaderID) & \" \"";
 parent.mostCurrent._backupname = _getreadername(parent._intreaderid)+" "+_sdatetime+" backup.db";
  //BA.debugLineNum = 1372;BA.debugLine="Try";
@@ -3821,7 +3821,7 @@ case 45:
 this.state = 46;
 this.catchState = 0;
  //BA.debugLineNum = 1386;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("723855194",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("44718682",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  if (true) break;
 if (true) break;
 
@@ -3843,7 +3843,7 @@ _idbase.Initialize(_idbase.ACTION_VIEW,"file://"+anywheresoftware.b4a.keywords.C
  //BA.debugLineNum = 1392;BA.debugLine="iDBase.SetType( \"resource/folder\" )";
 _idbase.SetType("resource/folder");
  //BA.debugLineNum = 1394;BA.debugLine="Log(strReadingData)";
-anywheresoftware.b4a.keywords.Common.LogImpl("723855202",parent._strreadingdata,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("44718690",parent._strreadingdata,0);
  //BA.debugLineNum = 1395;BA.debugLine="ProgressDialogShow2(\"Reading Data Uploading...\"";
 anywheresoftware.b4a.keywords.Common.ProgressDialogShow2(mostCurrent.activityBA,BA.ObjectToCharSequence("Reading Data Uploading..."+anywheresoftware.b4a.keywords.Common.CRLF+"Please Wait."),anywheresoftware.b4a.keywords.Common.False);
  //BA.debugLineNum = 1397;BA.debugLine="UploadData(strReadingData)";
@@ -4067,7 +4067,7 @@ _setsnackbartextcolor(parent.mostCurrent._snack,anywheresoftware.b4a.keywords.Co
  //BA.debugLineNum = 834;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 835;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721823516",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42687004",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  if (true) break;
 
 case 13:
@@ -4091,7 +4091,7 @@ _setsnackbartextcolor(parent.mostCurrent._snack,anywheresoftware.b4a.keywords.Co
  //BA.debugLineNum = 842;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 843;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721823524",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42687012",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  if (true) break;
 if (true) break;
 
@@ -4266,7 +4266,7 @@ _setsnackbartextcolor(parent.mostCurrent._snack,anywheresoftware.b4a.keywords.Co
  //BA.debugLineNum = 737;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 738;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721692445",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42555933",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  if (true) break;
 
 case 13:
@@ -4290,7 +4290,7 @@ _setsnackbartextcolor(parent.mostCurrent._snack,anywheresoftware.b4a.keywords.Co
  //BA.debugLineNum = 745;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 746;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721692453",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42555941",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  if (true) break;
 if (true) break;
 
@@ -4491,7 +4491,7 @@ _setsnackbartextcolor(parent.mostCurrent._snack,anywheresoftware.b4a.keywords.Co
  //BA.debugLineNum = 1004;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 1005;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("722085663",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42949151",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  if (true) break;
 
 case 19:
@@ -4515,7 +4515,7 @@ _setsnackbartextcolor(parent.mostCurrent._snack,anywheresoftware.b4a.keywords.Co
  //BA.debugLineNum = 1012;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 1013;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("722085671",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42949159",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  if (true) break;
 if (true) break;
 
@@ -4739,7 +4739,7 @@ _setsnackbartextcolor(parent.mostCurrent._snack,anywheresoftware.b4a.keywords.Co
  //BA.debugLineNum = 883;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 884;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721889061",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42752549",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  if (true) break;
 
 case 23:
@@ -4763,7 +4763,7 @@ _setsnackbartextcolor(parent.mostCurrent._snack,anywheresoftware.b4a.keywords.Co
  //BA.debugLineNum = 891;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 892;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721889069",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42752557",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  if (true) break;
 if (true) break;
 
@@ -4800,7 +4800,7 @@ mostCurrent._starter._dbcon /*anywheresoftware.b4a.sql.SQL*/ .TransactionSuccess
  } 
        catch (Exception e7) {
 			processBA.setLastException(e7); //BA.debugLineNum = 1931;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("725100295",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("45963783",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 1933;BA.debugLine="Starter.DBCon.EndTransaction";
 mostCurrent._starter._dbcon /*anywheresoftware.b4a.sql.SQL*/ .EndTransaction();
@@ -4957,7 +4957,7 @@ _setsnackbartextcolor(parent.mostCurrent._snack,anywheresoftware.b4a.keywords.Co
  //BA.debugLineNum = 961;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 962;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("722020123",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42883611",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  if (true) break;
 
 case 13:
@@ -4981,7 +4981,7 @@ _setsnackbartextcolor(parent.mostCurrent._snack,anywheresoftware.b4a.keywords.Co
  //BA.debugLineNum = 969;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 970;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("722020131",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42883619",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  if (true) break;
 if (true) break;
 
@@ -5154,7 +5154,7 @@ _setsnackbartextcolor(parent.mostCurrent._snack,anywheresoftware.b4a.keywords.Co
  //BA.debugLineNum = 922;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 923;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721954587",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42818075",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  if (true) break;
 
 case 13:
@@ -5178,7 +5178,7 @@ _setsnackbartextcolor(parent.mostCurrent._snack,anywheresoftware.b4a.keywords.Co
  //BA.debugLineNum = 930;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 931;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721954595",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42818083",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  if (true) break;
 if (true) break;
 
@@ -5351,7 +5351,7 @@ _setsnackbartextcolor(parent.mostCurrent._snack,anywheresoftware.b4a.keywords.Co
  //BA.debugLineNum = 794;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 795;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721757979",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42621467",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  if (true) break;
 
 case 13:
@@ -5375,7 +5375,7 @@ _setsnackbartextcolor(parent.mostCurrent._snack,anywheresoftware.b4a.keywords.Co
  //BA.debugLineNum = 802;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 803;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("721757987",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("42621475",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  if (true) break;
 if (true) break;
 
@@ -5546,7 +5546,7 @@ _setsnackbartextcolor(parent.mostCurrent._snack,anywheresoftware.b4a.keywords.Co
  //BA.debugLineNum = 1042;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 1043;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("722151194",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("43014682",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  if (true) break;
 
 case 13:
@@ -5570,7 +5570,7 @@ _setsnackbartextcolor(parent.mostCurrent._snack,anywheresoftware.b4a.keywords.Co
  //BA.debugLineNum = 1050;BA.debugLine="snack.Show";
 parent.mostCurrent._snack.Show();
  //BA.debugLineNum = 1051;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("722151202",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("43014690",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  if (true) break;
 if (true) break;
 
@@ -5959,7 +5959,7 @@ anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("S
  } 
        catch (Exception e7) {
 			processBA.setLastException(e7); //BA.debugLineNum = 1740;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("724248327",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("45111815",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 1742;BA.debugLine="End Sub";
 return "";
@@ -5978,7 +5978,7 @@ anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("S
  } 
        catch (Exception e7) {
 			processBA.setLastException(e7); //BA.debugLineNum = 1751;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("724313863",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("45177351",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 1753;BA.debugLine="End Sub";
 return "";
@@ -6008,7 +6008,7 @@ _blnretval = anywheresoftware.b4a.keywords.Common.True;
 			processBA.setLastException(e11); //BA.debugLineNum = 1778;BA.debugLine="blnRetVal = False";
 _blnretval = anywheresoftware.b4a.keywords.Common.False;
  //BA.debugLineNum = 1779;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("724379416",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("45242904",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 1782;BA.debugLine="Return blnRetVal";
 if (true) return _blnretval;
@@ -6056,7 +6056,7 @@ _j._getrequest().SetHeader("User-Agent","Mozilla/5.0 (Windows NT 6.3; WOW64) App
  //BA.debugLineNum = 1651;BA.debugLine="j.GetRequest.SetContentType(\"plain/text\")";
 _j._getrequest().SetContentType("plain/text");
  //BA.debugLineNum = 1652;BA.debugLine="Log(sData)";
-anywheresoftware.b4a.keywords.Common.LogImpl("724051722",_sdata,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("44915210",_sdata,0);
  //BA.debugLineNum = 1654;BA.debugLine="Wait For (j) JobDone(j As HttpJob)";
 anywheresoftware.b4a.keywords.Common.WaitFor("jobdone", processBA, this, (Object)(_j));
 this.state = 15;
@@ -6086,7 +6086,7 @@ _retval = _j._getstring();
  //BA.debugLineNum = 1657;BA.debugLine="jParser.Initialize(retVal)";
 _jparser.Initialize(_retval);
  //BA.debugLineNum = 1658;BA.debugLine="Log(retVal)";
-anywheresoftware.b4a.keywords.Common.LogImpl("724051728",_retval,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("44915216",_retval,0);
  //BA.debugLineNum = 1659;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
  //BA.debugLineNum = 1660;BA.debugLine="j.Release";
@@ -6141,17 +6141,17 @@ this.state = 14;
  //BA.debugLineNum = 1669;BA.debugLine="ProgressDialogHide";
 anywheresoftware.b4a.keywords.Common.ProgressDialogHide();
  //BA.debugLineNum = 1670;BA.debugLine="Log(j.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("724051740",_j._errormessage,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("44915228",_j._errormessage,0);
  //BA.debugLineNum = 1671;BA.debugLine="jParser.Initialize(retVal)";
 _jparser.Initialize(_retval);
  //BA.debugLineNum = 1672;BA.debugLine="Log(retVal)";
-anywheresoftware.b4a.keywords.Common.LogImpl("724051742",_retval,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("44915230",_retval,0);
  //BA.debugLineNum = 1674;BA.debugLine="ToastMessageShow(\"Unable to Upload Reading Data";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Unable to Upload Reading Data due to "+_j._errormessage),anywheresoftware.b4a.keywords.Common.True);
  //BA.debugLineNum = 1675;BA.debugLine="j.Release";
 _j._release();
  //BA.debugLineNum = 1676;BA.debugLine="Log(j.ErrorMessage)";
-anywheresoftware.b4a.keywords.Common.LogImpl("724051746",_j._errormessage,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("44915234",_j._errormessage,0);
  //BA.debugLineNum = 1677;BA.debugLine="Return";
 if (true) return ;
  if (true) break;

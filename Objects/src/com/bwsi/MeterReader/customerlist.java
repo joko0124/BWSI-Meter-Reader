@@ -368,17 +368,17 @@ public anywheresoftware.b4a.objects.PanelWrapper _pnlsearchby = null;
 public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2service = null;
 public b4a.example.dateutils _dateutils = null;
 public com.bwsi.MeterReader.main _main = null;
-public com.bwsi.MeterReader.login _login = null;
-public com.bwsi.MeterReader.mainscreen _mainscreen = null;
-public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.datasyncing _datasyncing = null;
-public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
 public com.bwsi.MeterReader.camera _camera = null;
 public com.bwsi.MeterReader.cmrvr _cmrvr = null;
 public com.bwsi.MeterReader.customerbill _customerbill = null;
 public com.bwsi.MeterReader.customfunctions _customfunctions = null;
+public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
 public com.bwsi.MeterReader.dbutils _dbutils = null;
 public com.bwsi.MeterReader.globalvar _globalvar = null;
+public com.bwsi.MeterReader.login _login = null;
+public com.bwsi.MeterReader.mainscreen _mainscreen = null;
+public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.modvariables _modvariables = null;
 public com.bwsi.MeterReader.myscale _myscale = null;
 public com.bwsi.MeterReader.newcam _newcam = null;
@@ -486,7 +486,7 @@ _index = mostCurrent._clv1._getitemfromview /*int*/ ((anywheresoftware.b4a.objec
  //BA.debugLineNum = 209;BA.debugLine="GlobalVar.BillID = CLV1.GetValue(index)";
 mostCurrent._globalvar._billid /*double*/  = (double)(BA.ObjectToNumber(mostCurrent._clv1._getvalue /*Object*/ (_index)));
  //BA.debugLineNum = 210;BA.debugLine="Log(GlobalVar.BillID)";
-anywheresoftware.b4a.keywords.Common.LogImpl("743188227",BA.NumberToString(mostCurrent._globalvar._billid /*double*/ ),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("421102595",BA.NumberToString(mostCurrent._globalvar._billid /*double*/ ),0);
  //BA.debugLineNum = 211;BA.debugLine="StartActivity(CustomerBill)";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)(mostCurrent._customerbill.getObject()));
  //BA.debugLineNum = 212;BA.debugLine="End Sub";
@@ -579,14 +579,14 @@ mostCurrent._clv1._add /*String*/ ((anywheresoftware.b4a.objects.B4XViewWrapper)
 };
  }else {
  //BA.debugLineNum = 161;BA.debugLine="Log(rsAccts.RowCount)";
-anywheresoftware.b4a.keywords.Common.LogImpl("742991637",BA.NumberToString(mostCurrent._rsaccts.getRowCount()),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("420906005",BA.NumberToString(mostCurrent._rsaccts.getRowCount()),0);
  };
  } 
        catch (Exception e15) {
 			processBA.setLastException(e15); //BA.debugLineNum = 164;BA.debugLine="rsAccts.Close";
 mostCurrent._rsaccts.Close();
  //BA.debugLineNum = 165;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("742991641",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("420906009",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 167;BA.debugLine="rsAccts.Close";
 mostCurrent._rsaccts.Close();
@@ -779,7 +779,7 @@ final int limit31 = (int) (mostCurrent._rscustomers.getRowCount()-1);
 _i = (int) (0) ;
 for (;_i <= limit31 ;_i = _i + step31 ) {
  //BA.debugLineNum = 292;BA.debugLine="Log(rsCustomers.RowCount)";
-anywheresoftware.b4a.keywords.Common.LogImpl("743581477",BA.NumberToString(mostCurrent._rscustomers.getRowCount()),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("421495845",BA.NumberToString(mostCurrent._rscustomers.getRowCount()),0);
  //BA.debugLineNum = 293;BA.debugLine="rsCustomers.Position = i";
 mostCurrent._rscustomers.setPosition(_i);
  //BA.debugLineNum = 294;BA.debugLine="Dim IT As Item";
@@ -814,7 +814,7 @@ mostCurrent._rscustomers = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywhere
  } 
        catch (Exception e5) {
 			processBA.setLastException(e5); //BA.debugLineNum = 227;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("743253773",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("421168141",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 229;BA.debugLine="End Sub";
 return "";
