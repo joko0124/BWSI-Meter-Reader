@@ -356,19 +356,19 @@ public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2serv
 public b4a.example.dateutils _dateutils = null;
 public com.bwsi.MeterReader.main _main = null;
 public com.bwsi.MeterReader.datasyncing _datasyncing = null;
+public com.bwsi.MeterReader.login _login = null;
+public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
+public com.bwsi.MeterReader.customfunctions _customfunctions = null;
+public com.bwsi.MeterReader.mainscreen _mainscreen = null;
+public com.bwsi.MeterReader.myscale _myscale = null;
+public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.camera _camera = null;
 public com.bwsi.MeterReader.cmrvr _cmrvr = null;
 public com.bwsi.MeterReader.customerbill _customerbill = null;
 public com.bwsi.MeterReader.customerlist _customerlist = null;
-public com.bwsi.MeterReader.customfunctions _customfunctions = null;
-public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
 public com.bwsi.MeterReader.dbutils _dbutils = null;
 public com.bwsi.MeterReader.globalvar _globalvar = null;
-public com.bwsi.MeterReader.login _login = null;
-public com.bwsi.MeterReader.mainscreen _mainscreen = null;
-public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.modvariables _modvariables = null;
-public com.bwsi.MeterReader.myscale _myscale = null;
 public com.bwsi.MeterReader.newcam _newcam = null;
 public com.bwsi.MeterReader.readingbooks _readingbooks = null;
 public com.bwsi.MeterReader.readingsettings _readingsettings = null;
@@ -742,7 +742,7 @@ _blnret = anywheresoftware.b4a.keywords.Common.True;
  } 
        catch (Exception e9) {
 			processBA.setLastException(e9); //BA.debugLineNum = 134;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("460817418",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("161538314",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  //BA.debugLineNum = 135;BA.debugLine="blnRet = False";
 _blnret = anywheresoftware.b4a.keywords.Common.False;
  };

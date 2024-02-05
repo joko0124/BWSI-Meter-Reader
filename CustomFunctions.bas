@@ -7,6 +7,7 @@ Version=7.8
 Sub Process_Globals
 	Private xui As XUI
 	Private KVS As KeyValueStore
+	Private SU As StringUtils
 End Sub
 
 Public Sub ConfirmYN(sMsg As String, sTitle As String, sPositive As String, sCancel As String, sNegative As String) As Boolean
@@ -197,3 +198,129 @@ Public Sub IsThereUserData As Boolean
 	Log($"User Data "$ & bRetVal)
 	Return bRetVal
 End Sub
+
+#Region Snack Bar
+Public Sub SetSnackBarTextColor(pSnack As DSSnackbar, pColor As Int, sActionBar As String)
+	Dim p As Panel
+	Dim labelList As List
+	labelList.Initialize
+	p = pSnack.View
+
+	For Each v As View In p.GetAllViewsRecursive
+		If v Is Label Then
+			labelList.Add(v)
+		End If
+	Next
+
+	' Get the Label views in the layout
+	Dim labelViews As List
+	labelViews = labelList
+
+
+	' Test each Label
+	LogColor(labelViews.Size,Colors.Yellow)
+	
+	For Each lbl As Label In labelViews
+		If sActionBar = "" Then
+			Log(lbl.Tag)
+			LogColor(lbl.Text, Colors.Cyan)
+			lbl.TextColor = pColor
+			lbl.TextSize = 18
+			' Do something specific for Label 1
+		Else
+			Log(lbl.Tag)
+			LogColor(lbl.Text, Colors.Cyan)
+			
+			If lbl.Text = sActionBar Then
+				Log("Action Button")
+				lbl.TextColor = Colors.Gray
+				lbl.Typeface = Typeface.DEFAULT_BOLD
+				lbl.TextSize = 20
+			Else
+				lbl.TextColor = pColor
+				lbl.TextSize = 18
+				' Do something specific for Label 1
+			End If
+		End If
+		
+		
+	Next
+End Sub
+
+Public Sub SetSnackBarBackground(pSnack As DSSnackbar, pColor As Int)
+	Dim v As View
+	v = pSnack.View
+	v.Color = pColor
+End Sub
+
+#End Region
+
+#Region Connection
+
+Public Sub IsThereInternetConnection As Boolean
+	Dim bRetVal As Boolean
+	
+	bRetVal = False
+	
+	Try
+		bRetVal = Ping("8.8.8.8","Report",1,4)
+	Catch
+		Log(LastException)
+	End Try
+	Return bRetVal
+End Sub
+
+Public Sub IsConnectedToServer(sURL As String) As Boolean
+	Dim bRetVal As Boolean
+	
+	'split the URL
+	Dim parts As Int
+	
+	parts = sURL.IndexOf("//") + 2
+	
+	'Check if the split was successful
+	If parts > 1 Then
+		Dim protocol As String
+		Dim remainder As String
+		
+		protocol = sURL.SubString2(0, parts)
+		remainder = sURL.SubString(parts)
+        
+		LogColor("Protocol: " & protocol, Colors.Cyan)
+		LogColor("Remainder: " & remainder, Colors.Magenta)
+	Else
+		Log("Invalid URL format")
+	End If
+	
+	bRetVal = False
+	
+	Try
+		bRetVal = Ping(remainder,"Report",1,4)
+	Catch
+		Log(LastException)
+	End Try
+	Return bRetVal
+End Sub
+
+Private Sub Ping(Url As String, ResultsType As String, Attempts As Int, Timeout As Int) As Boolean
+
+	Dim sb As StringBuilder
+	Dim p As Phone
+	Dim Option As String
+    
+	sb.Initialize
+
+	If ResultsType = "Report" Then    Option = " -v "
+	If ResultsType = "Summary" Or ResultsType = "Status" Then Option = " -q "
+
+	p.Shell("ping -c " & Attempts & " -W " & Timeout & Option & Url, Null, sb, Null)
+
+	If sb.Length = 0 Or sb.ToString.Contains("Unreachable") Then
+		Return False
+	End If
+    
+	Return True
+
+End Sub
+
+#End Region

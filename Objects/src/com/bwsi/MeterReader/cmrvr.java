@@ -353,18 +353,18 @@ public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2serv
 public b4a.example.dateutils _dateutils = null;
 public com.bwsi.MeterReader.main _main = null;
 public com.bwsi.MeterReader.datasyncing _datasyncing = null;
+public com.bwsi.MeterReader.login _login = null;
+public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
+public com.bwsi.MeterReader.customfunctions _customfunctions = null;
+public com.bwsi.MeterReader.mainscreen _mainscreen = null;
+public com.bwsi.MeterReader.myscale _myscale = null;
+public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.camera _camera = null;
 public com.bwsi.MeterReader.customerbill _customerbill = null;
 public com.bwsi.MeterReader.customerlist _customerlist = null;
-public com.bwsi.MeterReader.customfunctions _customfunctions = null;
-public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
 public com.bwsi.MeterReader.dbutils _dbutils = null;
 public com.bwsi.MeterReader.globalvar _globalvar = null;
-public com.bwsi.MeterReader.login _login = null;
-public com.bwsi.MeterReader.mainscreen _mainscreen = null;
-public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.modvariables _modvariables = null;
-public com.bwsi.MeterReader.myscale _myscale = null;
 public com.bwsi.MeterReader.newcam _newcam = null;
 public com.bwsi.MeterReader.readingbooks _readingbooks = null;
 public com.bwsi.MeterReader.readingsettings _readingsettings = null;
@@ -734,7 +734,7 @@ mostCurrent._starter._strcriteria /*String*/  = "SELECT * FROM tblReadings "+"WH
  //BA.debugLineNum = 260;BA.debugLine="rsUnusual = Starter.DBCon.ExecQuery(Starter.strC";
 _rsunusual = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(mostCurrent._starter._dbcon /*anywheresoftware.b4a.sql.SQL*/ .ExecQuery(mostCurrent._starter._strcriteria /*String*/ )));
  //BA.debugLineNum = 261;BA.debugLine="Log(rsUnusual.RowCount)";
-anywheresoftware.b4a.keywords.Common.LogImpl("417760303",BA.NumberToString(_rsunusual.getRowCount()),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("143188271",BA.NumberToString(_rsunusual.getRowCount()),0);
  //BA.debugLineNum = 264;BA.debugLine="If rsUnusual.RowCount > 0 Then";
 if (_rsunusual.getRowCount()>0) { 
  //BA.debugLineNum = 265;BA.debugLine="blnRetVal = True";
@@ -748,7 +748,7 @@ _blnretval = anywheresoftware.b4a.keywords.Common.False;
 			processBA.setLastException(e24); //BA.debugLineNum = 270;BA.debugLine="rsUnusual.Close";
 _rsunusual.Close();
  //BA.debugLineNum = 271;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("417760313",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("143188281",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 273;BA.debugLine="rsUnusual.Close";
 _rsunusual.Close();
@@ -770,7 +770,7 @@ public static String  _selectedreader_buttonpressed(de.amberhome.materialdialogs
 switch (BA.switchObjectToInt(_saction,_mdialog.ACTION_POSITIVE,_mdialog.ACTION_NEGATIVE)) {
 case 0: {
  //BA.debugLineNum = 367;BA.debugLine="LogColor(GlobalVar.iReaderID, Colors.Blue)";
-anywheresoftware.b4a.keywords.Common.LogImpl("418087940",BA.NumberToString(mostCurrent._globalvar._ireaderid /*int*/ ),anywheresoftware.b4a.keywords.Common.Colors.Blue);
+anywheresoftware.b4a.keywords.Common.LogImpl("143515908",BA.NumberToString(mostCurrent._globalvar._ireaderid /*int*/ ),anywheresoftware.b4a.keywords.Common.Colors.Blue);
  //BA.debugLineNum = 368;BA.debugLine="If IsThereUnusual(iUnusualRpt, GlobalVar.iReade";
 if (_isthereunusual(_iunusualrpt,mostCurrent._globalvar._ireaderid /*int*/ )==anywheresoftware.b4a.keywords.Common.False) { 
  //BA.debugLineNum = 369;BA.debugLine="DispErrorMsg(iUnusualRpt)";
@@ -791,7 +791,7 @@ return "";
 public static String  _selectedreader_ondismiss(de.amberhome.materialdialogs.MaterialDialogWrapper _dialog) throws Exception{
  //BA.debugLineNum = 355;BA.debugLine="Private Sub SelectedReader_OnDismiss (Dialog As Ma";
  //BA.debugLineNum = 356;BA.debugLine="Log(\"Dialog dismissed\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("417956865","Dialog dismissed",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("143384833","Dialog dismissed",0);
  //BA.debugLineNum = 357;BA.debugLine="End Sub";
 return "";
 }
@@ -886,7 +886,7 @@ _pcount = 0;
 try { //BA.debugLineNum = 309;BA.debugLine="Starter.strCriteria = \"SELECT tblReadings.ReadBy";
 mostCurrent._starter._strcriteria /*String*/  = "SELECT tblReadings.ReadBy, tblUsers.EmpName AS ReaderName "+"FROM tblReadings "+"INNER JOIN tblUsers ON tblReadings.ReadBy = tblUsers.UserID "+"GROUP BY tblReadings.ReadBy, tblUsers.EmpName "+"ORDER BY tblUsers.UserID";
  //BA.debugLineNum = 315;BA.debugLine="LogColor(Starter.strCriteria, Colors.Blue)";
-anywheresoftware.b4a.keywords.Common.LogImpl("417891342",mostCurrent._starter._strcriteria /*String*/ ,anywheresoftware.b4a.keywords.Common.Colors.Blue);
+anywheresoftware.b4a.keywords.Common.LogImpl("143319310",mostCurrent._starter._strcriteria /*String*/ ,anywheresoftware.b4a.keywords.Common.Colors.Blue);
  //BA.debugLineNum = 317;BA.debugLine="rsReaders =  Starter.DBCon.ExecQuery (Starter.st";
 _rsreaders = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(mostCurrent._starter._dbcon /*anywheresoftware.b4a.sql.SQL*/ .ExecQuery(mostCurrent._starter._strcriteria /*String*/ )));
  //BA.debugLineNum = 318;BA.debugLine="If rsReaders.RowCount > 0 Then";

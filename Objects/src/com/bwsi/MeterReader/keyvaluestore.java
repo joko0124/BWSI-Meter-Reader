@@ -30,19 +30,19 @@ public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2serv
 public b4a.example.dateutils _dateutils = null;
 public com.bwsi.MeterReader.main _main = null;
 public com.bwsi.MeterReader.datasyncing _datasyncing = null;
+public com.bwsi.MeterReader.login _login = null;
+public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
+public com.bwsi.MeterReader.customfunctions _customfunctions = null;
+public com.bwsi.MeterReader.mainscreen _mainscreen = null;
+public com.bwsi.MeterReader.myscale _myscale = null;
+public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.camera _camera = null;
 public com.bwsi.MeterReader.cmrvr _cmrvr = null;
 public com.bwsi.MeterReader.customerbill _customerbill = null;
 public com.bwsi.MeterReader.customerlist _customerlist = null;
-public com.bwsi.MeterReader.customfunctions _customfunctions = null;
-public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
 public com.bwsi.MeterReader.dbutils _dbutils = null;
 public com.bwsi.MeterReader.globalvar _globalvar = null;
-public com.bwsi.MeterReader.login _login = null;
-public com.bwsi.MeterReader.mainscreen _mainscreen = null;
-public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.modvariables _modvariables = null;
-public com.bwsi.MeterReader.myscale _myscale = null;
 public com.bwsi.MeterReader.newcam _newcam = null;
 public com.bwsi.MeterReader.readingbooks _readingbooks = null;
 public com.bwsi.MeterReader.readingsettings _readingsettings = null;
@@ -339,7 +339,7 @@ case 23:
 //C
 this.state = 24;
  //BA.debugLineNum = 59;BA.debugLine="Log(LastException)";
-parent.__c.LogImpl("981002519",BA.ObjectToString(parent.__c.LastException(parent.getActivityBA())),0);
+parent.__c.LogImpl("981723415",BA.ObjectToString(parent.__c.LastException(parent.getActivityBA())),0);
  if (true) break;
 
 case 24:
@@ -518,7 +518,7 @@ case 8:
 //C
 this.state = 9;
  //BA.debugLineNum = 75;BA.debugLine="Log(\"Failed to serialize object: \" & Map.Get(ke";
-parent.__c.LogImpl("981068040","Failed to serialize object: "+BA.ObjectToString(_map.Get((Object)(_key))),0);
+parent.__c.LogImpl("981788936","Failed to serialize object: "+BA.ObjectToString(_map.Get((Object)(_key))),0);
  if (true) break;
 
 case 9:

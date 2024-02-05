@@ -869,8 +869,12 @@ Private Sub SaveCustomerAccounts(sReturnVal As String)
 			Else If GlobalVar.SF.Len(MP.Get("SeqNo")) = 1 Then
 				sSeqNo = "000" & MP.Get("SeqNo")
 			End If
-			Starter.strCriteria="INSERT INTO tblReadings VALUES (" & Null & ", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)"
-			Starter.DBCon.AddNonQueryToBatch(Starter.strCriteria ,Array(MP.Get("BillNo"), MP.Get("BillYear"), MP.Get("BillMonth"), MP.Get("BranchID"), MP.Get("BookID"), MP.Get("BookCode"), MP.Get("AcctID"), MP.Get("AcctNo"), MP.Get("OldAcctNo"), MP.Get("AcctName"), MP.Get("AcctAddress"), MP.Get("AcctClass"), MP.Get("AcctSubClass"), MP.Get("AcctStatus"), MP.Get("MeterID"), MP.Get("MeterNo"), MP.Get("MaxReading"), sSeqNo, MP.Get("IsSenior"), MP.Get("SeniorOnBefore"), MP.Get("SeniorAfter"), MP.Get("SeniorMaxCum"), MP.Get("GDeposit"), MP.Get("PrevRdgDate"), MP.Get("PrevRdg"), MP.Get("PrevCum"), MP.Get("BillPeriod1st"), MP.Get("PrevCum1st"), MP.Get("BillPeriod2nd"), MP.Get("PrevCum2nd"), MP.Get("BillPeriod3rd"), MP.Get("PrevCum3rd"), MP.Get("FinalRdg"), MP.Get("DisconDate"), MP.Get("PresRdgDate"), $""$, $""$, $""$, MP.Get("DateFrom"), MP.Get("DateTo"), MP.Get("WithDueDate"), MP.Get("DueDate"), MP.Get("DisconnectionDate"), MP.Get("AveCum"), MP.Get("BillType"), MP.Get("AddCum"), $"0"$, $"0.00"$, $"0.00"$, $"0.00"$, MP.Get("AddToBill"), MP.Get("AtbRef"), MP.Get("MeterCharges"), MP.Get("FranchiseTaxPct"), $"0.00"$, MP.Get("HasSeptageFee"), MP.Get("MinSeptageCum"), MP.Get("MaxSeptageCum"), MP.Get("SeptageRate"), MP.Get("SeptageArrears"), $"0.00"$, $"0.00"$, $"0.00"$, MP.Get("Arrears"), $"0.00"$, $"0.00"$, $"0.00"$, $"0.00"$, MP.Get("AdvPayment"), MP.Get("PenaltyPct"), $"0.00"$, $"0.00"$, $"0.00"$, $""$, $"0"$, $"0"$, $"0"$, $"0"$, $"0"$, $"0"$, $""$, $"0"$, $""$, $"0"$, $"0"$, $"0"$, $""$, $""$, MP.Get("RdgSequence"), $"0"$, $""$, $""$, ReaderID, $"0"$))
+			Starter.strCriteria="INSERT INTO tblReadings VALUES (" & Null & ", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+			If GlobalVar.BranchID = 28 Or GlobalVar.BranchID = 29 Or GlobalVar.BranchID = 30 Then
+				Starter.DBCon.AddNonQueryToBatch(Starter.strCriteria ,Array(MP.Get("BillNo"), MP.Get("BillYear"), MP.Get("BillMonth"), MP.Get("BranchID"), MP.Get("BookID"), MP.Get("BookCode"), MP.Get("AcctID"), MP.Get("AcctNo"), MP.Get("OldAcctNo"), MP.Get("AcctName"), MP.Get("AcctAddress"), MP.Get("AcctClass"), MP.Get("AcctSubClass"), MP.Get("AcctStatus"), MP.Get("MeterID"), MP.Get("MeterNo"), MP.Get("MaxReading"), sSeqNo, MP.Get("IsSenior"), MP.Get("SeniorOnBefore"), MP.Get("SeniorAfter"), MP.Get("SeniorMaxCum"), MP.Get("GDeposit"), MP.Get("PrevRdgDate"), MP.Get("PrevRdg"), MP.Get("PrevCum"), MP.Get("BillPeriod1st"), MP.Get("PrevCum1st"), MP.Get("BillPeriod2nd"), MP.Get("PrevCum2nd"), MP.Get("BillPeriod3rd"), MP.Get("PrevCum3rd"), MP.Get("FinalRdg"), MP.Get("DisconDate"), MP.Get("PresRdgDate"), $""$, $""$, $""$, MP.Get("DateFrom"), MP.Get("DateTo"), MP.Get("WithDueDate"), MP.Get("DueDate"), MP.Get("DisconnectionDate"), MP.Get("AveCum"), MP.Get("BillType"), MP.Get("AddCum"), $"0"$, $"0.00"$, $"0.00"$, $"0.00"$, MP.Get("AddToBill"), MP.Get("AtbRef"), MP.Get("MeterCharges"), MP.Get("FranchiseTaxPct"), $"0.00"$, MP.Get("HasSeptageFee"), MP.Get("MinSeptageCum"), MP.Get("MaxSeptageCum"), MP.Get("SeptageRate"), MP.Get("SeptageArrears"), $"0.00"$, $"0.00"$, $"0.00"$, MP.Get("Arrears"), $"0.00"$, $"0.00"$, $"0.00"$, $"0.00"$, MP.Get("AdvPayment"), MP.Get("PenaltyPct"), $"0.00"$, $"0.00"$, $"0.00"$, $""$, $"0"$, $"0"$, $"0"$, $"0"$, $"0"$, $"0"$, $""$, $"0"$, $""$, $"0"$, $"0"$, $"0"$, $""$, $""$, MP.Get("RdgSequence"), $"0"$, $""$, $""$, ReaderID, $"0"$, $""$))
+			Else
+				Starter.DBCon.AddNonQueryToBatch(Starter.strCriteria ,Array(MP.Get("BillNo"), MP.Get("BillYear"), MP.Get("BillMonth"), MP.Get("BranchID"), MP.Get("BookID"), MP.Get("BookCode"), MP.Get("AcctID"), MP.Get("AcctNo"), MP.Get("OldAcctNo"), MP.Get("AcctName"), MP.Get("AcctAddress"), MP.Get("AcctClass"), MP.Get("AcctSubClass"), MP.Get("AcctStatus"), MP.Get("MeterID"), MP.Get("MeterNo"), MP.Get("MaxReading"), sSeqNo, MP.Get("IsSenior"), MP.Get("SeniorOnBefore"), MP.Get("SeniorAfter"), MP.Get("SeniorMaxCum"), MP.Get("GDeposit"), MP.Get("PrevRdgDate"), MP.Get("PrevRdg"), MP.Get("PrevCum"), MP.Get("BillPeriod1st"), MP.Get("PrevCum1st"), MP.Get("BillPeriod2nd"), MP.Get("PrevCum2nd"), MP.Get("BillPeriod3rd"), MP.Get("PrevCum3rd"), MP.Get("FinalRdg"), MP.Get("DisconDate"), MP.Get("PresRdgDate"), $""$, $""$, $""$, MP.Get("DateFrom"), MP.Get("DateTo"), MP.Get("WithDueDate"), MP.Get("DueDate"), MP.Get("DisconnectionDate"), MP.Get("AveCum"), MP.Get("BillType"), MP.Get("AddCum"), $"0"$, $"0.00"$, $"0.00"$, $"0.00"$, MP.Get("AddToBill"), MP.Get("AtbRef"), MP.Get("MeterCharges"), MP.Get("FranchiseTaxPct"), $"0.00"$, MP.Get("HasSeptageFee"), MP.Get("MinSeptageCum"), MP.Get("MaxSeptageCum"), MP.Get("SeptageRate"), $"0.00"$, $"0.00"$, $"0.00"$, $"0.00"$, MP.Get("Arrears"), $"0.00"$, $"0.00"$, $"0.00"$, $"0.00"$, MP.Get("AdvPayment"), MP.Get("PenaltyPct"), $"0.00"$, $"0.00"$, $"0.00"$, $""$, $"0"$, $"0"$, $"0"$, $"0"$, $"0"$, $"0"$, $""$, $"0"$, $""$, $"0"$, $"0"$, $"0"$, $""$, $""$, MP.Get("RdgSequence"), $"0"$, $""$, $""$, ReaderID, $"0"$))
+			End If
 		Next
 		Dim SenderFilter As Object = Starter.DBCon.ExecNonQueryBatch("SQL")
 		Wait For (SenderFilter) SQL_NonQueryComplete (Success As Boolean)
@@ -997,8 +1001,12 @@ Private Sub SaveBookPCA(sReturnVal As String)
 			SetSnackBarTextColor(snack, GlobalVar.PriColor)
 			snack.Show
 			If GlobalVar.WithSeptageFee = 1 Then
-				DeleteSeptageRates
-				DownloadSeptageRates(GlobalVar.BranchID, strRdgDate)
+				If GlobalVar.BranchID = 14 Or GlobalVar.BranchID = 62 Or GlobalVar.BranchID = 28 Or GlobalVar.BranchID = 29 Or GlobalVar.BranchID = 30 Then '
+					DeleteSeptageRates
+					DownloadSeptageRates(GlobalVar.BranchID, strRdgDate)
+				Else
+					ShowDLComplete($"Download Complete"$,$"Reading Data for the specified Reader were successfully downloaded."$)
+				End If
 			Else
 				ShowDLComplete($"Download Complete"$,$"Reading Data for the specified Reader were successfully downloaded."$)
 			End If
@@ -2184,6 +2192,7 @@ Private Sub ShowUpLComplete(sTitle As String, sMsg As String)
 	AlertDialog.SetDialogBackground(myCD)
 	AlertDialog.Build.Show
 End Sub
+
 
 Private Sub OnUploadComplete_OnPositiveClicked (View As View, Dialog As Object)
 	Dim AlertDialog As AX_CustomAlertDialog

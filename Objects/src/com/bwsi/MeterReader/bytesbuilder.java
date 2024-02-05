@@ -31,19 +31,19 @@ public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2serv
 public b4a.example.dateutils _dateutils = null;
 public com.bwsi.MeterReader.main _main = null;
 public com.bwsi.MeterReader.datasyncing _datasyncing = null;
+public com.bwsi.MeterReader.login _login = null;
+public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
+public com.bwsi.MeterReader.customfunctions _customfunctions = null;
+public com.bwsi.MeterReader.mainscreen _mainscreen = null;
+public com.bwsi.MeterReader.myscale _myscale = null;
+public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.camera _camera = null;
 public com.bwsi.MeterReader.cmrvr _cmrvr = null;
 public com.bwsi.MeterReader.customerbill _customerbill = null;
 public com.bwsi.MeterReader.customerlist _customerlist = null;
-public com.bwsi.MeterReader.customfunctions _customfunctions = null;
-public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
 public com.bwsi.MeterReader.dbutils _dbutils = null;
 public com.bwsi.MeterReader.globalvar _globalvar = null;
-public com.bwsi.MeterReader.login _login = null;
-public com.bwsi.MeterReader.mainscreen _mainscreen = null;
-public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.modvariables _modvariables = null;
-public com.bwsi.MeterReader.myscale _myscale = null;
 public com.bwsi.MeterReader.newcam _newcam = null;
 public com.bwsi.MeterReader.readingbooks _readingbooks = null;
 public com.bwsi.MeterReader.readingsettings _readingsettings = null;
@@ -177,7 +177,7 @@ byte[] _afterindex = null;
 if (_index>=_mlength) { 
  //BA.debugLineNum = 40;BA.debugLine="If Index > mLength Then Log(\"Index too large\")";
 if (_index>_mlength) { 
-__c.LogImpl("410616834","Index too large",0);};
+__c.LogImpl("136044802","Index too large",0);};
  //BA.debugLineNum = 41;BA.debugLine="Append(Data)";
 _append(_data);
  }else {
@@ -219,7 +219,7 @@ public String  _set(int _index,byte[] _data) throws Exception{
 if (_index>=_mlength) { 
  //BA.debugLineNum = 53;BA.debugLine="If Index > mLength Then Log(\"Index too large\")";
 if (_index>_mlength) { 
-__c.LogImpl("410682370","Index too large",0);};
+__c.LogImpl("136110338","Index too large",0);};
  //BA.debugLineNum = 54;BA.debugLine="Append(Data)";
 _append(_data);
  }else {

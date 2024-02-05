@@ -4,7 +4,6 @@ ModulesStructureVersion=1
 Type=Activity
 Version=10
 @EndOfDesignText@
-
 #Region  Activity Attributes 
 	#FullScreen: True
 	#IncludeTitle: False
@@ -17,7 +16,6 @@ Sub Process_Globals
 	Private SF As StringFunctions
 	
 	Public Permissions As RuntimePermissions
-'	Private InpTyp As SLInpTypeConst
 End Sub
 
 Sub Globals
@@ -78,9 +76,9 @@ Sub Globals
 	Private blnUserClosed As Boolean
 	
 	Dim Alert As AX_CustomAlertDialog
-
+	Dim imeKeyBoard As IME
 End Sub
-
+#Region Activity Modules
 Sub Activity_Create(FirstTime As Boolean)
 	'Do not forget to load the layout file created with the visual designer. For example:
 	MyScale.SetRate(0.5)
@@ -184,6 +182,8 @@ Sub Activity_PermissionResult (Permission As String, Result As Boolean)
 	End If
 	Log (Permission)
 End Sub
+#End Region
+
 
 Sub chkShowPass_CheckedChange(Checked As Boolean)
 	If Checked = True Then
@@ -203,6 +203,13 @@ Sub btnLogin_Click
 		Return
 	End If
 	
+	If SF.Len(SF.Trim(txtPassword.Text)) <= 0 Then
+		vibration.vibrateOnce(1000)
+		UserWarningMsg($"E R R O R"$, $"Oooops! Password not specified."$)
+		txtPassword.RequestFocusAndShowKeyboard
+		Return
+	End If
+
 	If DBaseFunctions.IsUserNameExists(txtUserName.Text, GlobalVar.BranchID) = True Then
 		If SF.Len(SF.Trim(txtPassword.Text)) <= 0 Then
 			vibration.vibrateOnce(1000)
@@ -262,12 +269,26 @@ Sub btnLogin_Click
 				ProgressDialogHide
 				vibration.vibrateOnce(1000)
 				snack.Initialize("SetServer", Activity,"Server IP not configured...",snack.DURATION_LONG)
-				SetSnackBarBackground(snack,Colors.Red)
-				SetSnackBarTextColor(snack,Colors.White)
+				CustomFunctions.SetSnackBarBackground(snack,Colors.Red)
+				CustomFunctions.SetSnackBarTextColor(snack,Colors.White, "")
 				snack.SetAction("Configure")
 				snack.Show
 				Return
 			End If
+			Log($"Is connected to server: "$ & CustomFunctions.IsConnectedToServer(GlobalVar.ServerAddress))
+			
+			If CustomFunctions.IsConnectedToServer(GlobalVar.ServerAddress) = True Then
+				ToastMessageShow($"Connected to Server"$, True)
+			Else
+				vibration.vibrateOnce(1000)
+				snack.Initialize("SetServer", Activity,"Server IP not configured...", snack.DURATION_LONG)
+				CustomFunctions.SetSnackBarBackground(snack,Colors.Red)
+				CustomFunctions.SetSnackBarTextColor(snack,Colors.White, "SetServer")
+				snack.SetAction("Configure")
+				snack.Show
+				Return
+			End If
+
 			
 			ProgressDialogShow2($"Checking Database Server Connection."$ & CRLF & $"Please Wait..."$, False)
 			
@@ -297,8 +318,8 @@ Private Sub GetUserAccount(iBranchID As Int, sUserName As String, sUserPassword 
 		
 		If RetVal = "[]" Then
 			snack.Initialize("", Activity, $""Either User Name or Password is Incorrect!"$, snack.DURATION_LONG)
-			SetSnackBarBackground(snack, Colors.Red)
-			SetSnackBarTextColor(snack, Colors.White)
+			CustomFunctions.SetSnackBarBackground(snack, Colors.Red)
+			CustomFunctions.SetSnackBarTextColor(snack, Colors.White, "")
 			snack.Show
 			j.Release
 			txtUserName.RequestFocusAndShowKeyboard
@@ -311,8 +332,8 @@ Private Sub GetUserAccount(iBranchID As Int, sUserName As String, sUserPassword 
 		j.Release
 		vibration.vibrateOnce(2000)
 		snack.Initialize("",Activity,$"Unable to Fetch User Information due to "$ & j.ErrorMessage, snack.DURATION_SHORT)
-		SetSnackBarBackground(snack, Colors.Red)
-		SetSnackBarTextColor(snack, Colors.White)
+		CustomFunctions.SetSnackBarBackground(snack, Colors.Red)
+		CustomFunctions.SetSnackBarTextColor(snack, Colors.White, "")
 		snack.Show
 		LogColor(j.ErrorMessage, Colors.Red)
 	End If
@@ -339,8 +360,8 @@ Private Sub SaveUserInfo(sReturnVal As String)
 
 			If Success Then
 				snack.Initialize("", Activity, $"User Information has been successfully downloaded."$, snack.DURATION_SHORT)
-				SetSnackBarBackground(snack,Colors.White)
-				SetSnackBarTextColor(snack, GlobalVar.PriColor)
+				CustomFunctions.SetSnackBarBackground(snack,Colors.White)
+				CustomFunctions.SetSnackBarTextColor(snack, GlobalVar.PriColor, "")
 				snack.Show
 
 				DBaseFunctions.GetUserInfo(txtUserName.Text, txtPassword.Text)
@@ -348,8 +369,8 @@ Private Sub SaveUserInfo(sReturnVal As String)
 				
 				If DBaseFunctions.GetBillSettings(GlobalVar.BranchID) = False Then
 					snack.Initialize("", Activity, $"Billing Settings not initializes"$ & CRLF & $"Please contact your Android Developer for assistance."$, snack.DURATION_SHORT)
-					SetSnackBarBackground(snack,Colors.White)
-					SetSnackBarTextColor(snack, GlobalVar.PriColor)
+					CustomFunctions.SetSnackBarBackground(snack,Colors.White)
+					CustomFunctions.SetSnackBarTextColor(snack, GlobalVar.PriColor, "")
 					snack.Show
 					Return
 				End If
@@ -368,8 +389,8 @@ Private Sub SaveUserInfo(sReturnVal As String)
 	Catch
 		vibration.vibrateOnce(2000)
 		snack.Initialize("", Activity, $"Unable to save User Information due to "$ & LastException.Message, snack.DURATION_SHORT)
-		SetSnackBarBackground(snack, Colors.Red)
-		SetSnackBarTextColor(snack, Colors.White)
+		CustomFunctions.SetSnackBarBackground(snack, Colors.Red)
+		CustomFunctions.SetSnackBarTextColor(snack, Colors.White, "")
 		snack.Show
 		Log(LastException)
 	End Try
@@ -389,8 +410,10 @@ End Sub
 
 Sub btnSettings_Click
 	intSettingsFlag = 1
-	ShowIPSettings
+'	ShowIPSettings
+	ShowNewIPSettings
 End Sub
+
 Private Sub ShowIPSettings()
 	Dim csContent As CSBuilder
 	GlobalVar.ServerAddress = DBaseFunctions.GetServerIP
@@ -426,10 +449,11 @@ Sub IPSettings_ButtonPressed (Dialog As MaterialDialog, Action As String)
 	Select Case Action
 		Case Dialog.ACTION_POSITIVE
 			ShowAdminPassword
+		
 		Case Dialog.ACTION_NEGATIVE
 			snack.Initialize("RetryButton", Activity, "Setting Server's IP Address Cancelled!", snack.DURATION_LONG)
-			SetSnackBarBackground(snack,Colors.Red)
-			SetSnackBarTextColor(snack,Colors.White)
+			CustomFunctions.SetSnackBarBackground(snack,Colors.Red)
+			CustomFunctions.SetSnackBarTextColor(snack,Colors.White, True)
 			snack.Show
 			Return
 	End Select
@@ -473,8 +497,8 @@ Sub AdminPassword_ButtonPressed (Dialog As MaterialDialog, Action As String)
 						vibration.vibrateOnce(2000)
 						snack.Initialize("RetryButton", Activity, "Password is Incorrect!", snack.DURATION_LONG)
 						snack.SetAction("RETRY")
-						SetSnackBarBackground(snack,Colors.White)
-						SetSnackBarTextColor(snack,Colors.Red)
+						CustomFunctions.SetSnackBarBackground(snack,Colors.White)
+						CustomFunctions.SetSnackBarTextColor(snack,Colors.Red, "RETRY")
 						snack.Show
 						Return
 					End If
@@ -484,8 +508,8 @@ Sub AdminPassword_ButtonPressed (Dialog As MaterialDialog, Action As String)
 						vibration.vibrateOnce(2000)
 						snack.Initialize("RetryButton", Activity, "Password is Incorrect!", snack.DURATION_LONG)
 						snack.SetAction("RETRY")
-						SetSnackBarBackground(snack,Colors.White)
-						SetSnackBarTextColor(snack,Colors.Red)
+						CustomFunctions.SetSnackBarBackground(snack,Colors.White)
+						CustomFunctions.SetSnackBarTextColor(snack,Colors.Red, "RETRY")
 						snack.Show
 						Return
 					End If
@@ -500,14 +524,14 @@ Sub AdminPassword_ButtonPressed (Dialog As MaterialDialog, Action As String)
 			Select intSettingsFlag
 				Case 1
 					snack.Initialize("RetryButton", Activity, "Setting Server's IP Address Cancelled!", snack.DURATION_LONG)
-					SetSnackBarBackground(snack,Colors.Red)
-					SetSnackBarTextColor(snack,Colors.White)
+					CustomFunctions.SetSnackBarBackground(snack,Colors.Red)
+					CustomFunctions.SetSnackBarTextColor(snack,Colors.White, "")
 					snack.Show
 					Return
 				Case 2
 					snack.Initialize("RetryButton", Activity, "Setting Branch was Cancelled!", snack.DURATION_LONG)
-					SetSnackBarBackground(snack,Colors.Red)
-					SetSnackBarTextColor(snack,Colors.White)
+					CustomFunctions.SetSnackBarBackground(snack,Colors.Red)
+					CustomFunctions.SetSnackBarTextColor(snack,Colors.White, "")
 					snack.Show
 					Return
 				Case Else
@@ -517,7 +541,8 @@ Sub AdminPassword_ButtonPressed (Dialog As MaterialDialog, Action As String)
 End Sub
 
 Private Sub RetryButton_Click()
-	ShowAdminPassword
+'	ShowAdminPassword
+	ShowNewAdminPassword
 End Sub
 
 Private Sub UserNameBlank_Click()
@@ -530,25 +555,6 @@ Private Sub UserPasswordBlank_Click()
 End Sub
 Private Sub SetServer_Click()
 	ShowIPSettings
-End Sub
-
-Sub SetSnackBarBackground(pSnack As DSSnackbar, pColor As Int)
-	Dim v As View
-	v = pSnack.View
-	v.Color = pColor
-End Sub
-
-Sub SetSnackBarTextColor(pSnack As DSSnackbar, pColor As Int)
-	Dim p As Panel
-	p = pSnack.View
-	For Each v As View In p.GetAllViewsRecursive
-		If v Is Label Then
-			Dim textv As Label
-			textv = v
-			textv.TextColor = pColor
-			Exit
-		End If
-	Next
 End Sub
 
 Sub EncryptText(text As String, password As String) As Byte()
@@ -630,8 +636,8 @@ Private Sub UpdateServerIP(sNewIP As String)
 		Starter.DBCon.ExecNonQuery("UPDATE android_metadata SET server_ip = '" & sNewIP & "'")
 		Starter.DBCon.TransactionSuccessful
 		snack.Initialize("",Activity,"Server's IP was succesfully Updated.", snack.DURATION_LONG)
-		SetSnackBarBackground(snack, Colors.White)
-		SetSnackBarTextColor(snack,GlobalVar.PriColor)
+		CustomFunctions.SetSnackBarBackground(snack, Colors.White)
+		CustomFunctions.SetSnackBarTextColor(snack,GlobalVar.PriColor, "")
 		snack.Show
 		GlobalVar.ServerAddress = DBaseFunctions.GetServerIP
 		GlobalVar.BranchID = DBaseFunctions.GetBranchID
@@ -684,12 +690,13 @@ Sub btnBranch_Click
 	If pnlSearchBranches.Visible = True Then Return
 	intSettingsFlag = 2
 	DisableControls
+	
 	SV.Initialize(Me,"SV")
 	SV.AddToParent(pnlSearchBranch,10,30,pnlSearchBranch.Width,pnlSearchBranch.Height)
 	SV.ClearAll
+	
 	lblSelectedBranch.Text = $"Current Branch:"$ & CRLF & DBaseFunctions.GetBranchName(GlobalVar.BranchID)
 	pnlSearchBranches.Visible=True
-
 	SearchBranches
 End Sub
 
@@ -716,8 +723,8 @@ Private Sub UpdateBranchID(iBranchID As String)
 		Starter.DBCon.ExecNonQuery("UPDATE tblSysParam SET BranchID = " & iBranchID)
 		Starter.DBCon.TransactionSuccessful
 		snack.Initialize("",Activity,"Branch Settings has been successfully saved.", snack.DURATION_LONG)
-		SetSnackBarBackground(snack, Colors.White)
-		SetSnackBarTextColor(snack,GlobalVar.PriColor)
+		CustomFunctions.SetSnackBarBackground(snack, Colors.White)
+		CustomFunctions.SetSnackBarTextColor(snack,GlobalVar.PriColor, "")
 		snack.Show
 	Catch
 		Log(LastException)
@@ -820,7 +827,8 @@ Sub SV_ItemClick(Value As String)
 	SV.ClearAll
 	SearchClosed
 	SelectedBranchName = DBaseFunctions.GetBranchName(Value)
-	ConfirmSelectedBranch(SelectedBranchName)
+'	ConfirmSelectedBranch(SelectedBranchName)
+	ConfirmBranchSelection($"Set "$ & SelectedBranchName & $" as your current branch?"$)
 End Sub
 
 Sub SearchClosed
@@ -828,7 +836,7 @@ Sub SearchClosed
 	SV.ClearSearchBox
 	SV.ClearAll
 '	SV.RemoveView
-	pnlSearchBranches.Visible=False
+	pnlSearchBranches.Visible = False
 	EnableControls
 End Sub
 
@@ -837,9 +845,9 @@ End Sub
 Sub btnCancel_Click
 	SearchClosed
 	EnableControls
-	snack.Initialize("", Activity, "Setting Branch was Cancelled!", snack.DURATION_LONG)
-	SetSnackBarBackground(snack,Colors.Red)
-	SetSnackBarTextColor(snack,Colors.White)
+	snack.Initialize("", Activity, "Setting of Branch cancelled!", snack.DURATION_LONG)
+	CustomFunctions.SetSnackBarBackground(snack,Colors.Red)
+	CustomFunctions.SetSnackBarTextColor(snack,Colors.White, "")
 	snack.Show
 End Sub
 
@@ -895,8 +903,8 @@ Sub SelectedBranch_ButtonPressed (mDialog As MaterialDialog, sAction As String)
 			ShowAdminPassword
 		Case mDialog.ACTION_NEGATIVE
 			snack.Initialize("", Activity,$"Setting Branch cancelled."$,snack.DURATION_SHORT)
-			SetSnackBarBackground(snack, Colors.Red)
-			SetSnackBarTextColor(snack, Colors.White)
+			CustomFunctions.SetSnackBarBackground(snack, Colors.Red)
+			CustomFunctions.SetSnackBarTextColor(snack, Colors.White, "")
 			snack.Show
 	End Select
 End Sub
@@ -916,21 +924,6 @@ End Sub
 Private Sub OpenEliteSystem
 	Dim p As PhoneIntents
 	StartActivity(p.OpenBrowser(GlobalVar.ServerAddress))
-End Sub
-
-Private Sub UpdateSeptage(iReadID As Int, iAcctID As Int)
-	Starter.DBCon.BeginTransaction
-	Try
-		Starter.strCriteria = "UPDATE tblBranch " & _
-							  "SET PrintStatus = ? " & _
-							  "WHERE ReadID = " & iReadID & " " & _
-							  "AND AcctID = " & iAcctID
-		Starter.DBCon.ExecNonQuery2(Starter.strCriteria, Array As String(1))
-		Starter.DBCon.TransactionSuccessful
-	Catch
-		Log(LastException.Message)
-	End Try
-	Starter.DBCon.EndTransaction
 End Sub
 
 Sub pnlSearchBranches_Touch (Action As Int, X As Float, Y As Float)
@@ -1031,8 +1024,8 @@ Private Sub AllowWiFi_OnNegativeClicked (View As View, Dialog As Object)
 
 	vibration.vibrateOnce(2000)
 	snack.Initialize("", Activity,$"Unable to log due to NO INTERNET CONNECTION."$,snack.DURATION_LONG)
-	SetSnackBarBackground(snack,Colors.Red)
-	SetSnackBarTextColor(snack,Colors.White)
+	CustomFunctions.SetSnackBarBackground(snack,Colors.Red)
+	CustomFunctions.SetSnackBarTextColor(snack,Colors.White, "")
 	snack.Show
 	ProgressDialogHide
 
@@ -1051,8 +1044,8 @@ Private Sub AllowWiFi_OnPositiveClicked (View As View, Dialog As Object)
 End Sub
 
 Private Sub WiFiFontSizeBinder_OnBindView (View As View, ViewType As Int)
-	Dim alert As AX_CustomAlertDialog
-	alert.Initialize
+	Dim Alert As AX_CustomAlertDialog
+	Alert.Initialize
 	If ViewType = Alert.VIEW_TITLE Then ' Title
 		Dim lbl As Label = View
 '		lbl.TextSize = 30
@@ -1145,6 +1138,249 @@ Sub TitleCase (s As String) As String
 		s = s.SubString2(0, i) & s.SubString2(i, i + 1).ToUpperCase & s.SubString(i + 1)
 	Loop
 	Return s
+End Sub
+
+Private Sub ShowNewIPSettings
+	Dim Alert As AX_CustomAlertDialog
+	
+	Dim LineHint As List : LineHint.Initialize
+	LineHint.Add("SERVER IP")
+	Dim LineText As List : LineText.Initialize
+	LineText.Add(GlobalVar.ServerAddress)
+	
+	Alert.Initialize.Create _
+			.SetDialogStyleName("MyDialogDisableStatus") _	'Manifest style name
+			.SetStyle(Alert.STYLE_INPUT) _
+			.SetTitle("SERVER IP ADDRESS") _
+			.SetMessage("Please enter your Elite IP Address here, as shown on your web browser URL.") _
+			.SetLineInputHint(LineHint) _
+			.SetLineInputText(LineText) _
+			.SetPositiveText("Save Settings") _
+			.SetPositiveTypeface(GlobalVar.FontBold) _
+			.SetPositiveColor(GlobalVar.PriColor) _
+			.SetNegativeText("Cancel") _
+			.SetNegativeTypeface(GlobalVar.Font) _
+			.SetNegativeColor(Colors.Red) _
+			.SetTitleTypeface(GlobalVar.Font) _
+			.SetMessageTypeface(GlobalVar.Font) _
+			.SetOnPositiveClicked("IPSettings") _	'listeners
+			.SetOnNegativeClicked("IPSettings") _	'listeners
+			.SetOnInputClicked("IPSettings") _	'listeners
+			.SetOnViewBinder("IPSettings") _
+			.SetCancelable(False) _
+			.SetDialogBackground(myCD) 'listeners
+			
+	Alert.Build.Show
+End Sub
+Private Sub IPSettings_OnNegativeClicked (View As View, Dialog As Object)
+	vibration.vibrateCancel
+	Alert.Initialize.Dismiss(Dialog)
+	snack.Initialize("", Activity, "Setting of Server IP cancelled!", snack.DURATION_LONG)
+	CustomFunctions.SetSnackBarBackground(snack,Colors.Red)
+	CustomFunctions.SetSnackBarTextColor(snack,Colors.White, "")
+	snack.Show
+End Sub
+
+Private Sub IPSettings_OnInputClicked (View As View, Dialog As Object, InputSList As List)
+'	Dim Inputs As String = "Inputs : "&CRLF
+'	For i = 0 To InputSList.Size - 1
+'		Inputs = Inputs & InputSList.Get(i) & CRLF
+'	Next
+	NewIP = InputSList.Get(0)
+	
+	ToastMessageShow(NewIP.Trim,False)
+	Dim Alert As AX_CustomAlertDialog
+	Alert.Initialize.Dismiss(Dialog)
+	Sleep(100)
+	ShowNewAdminPassword
+End Sub
+
+
+Private Sub IPSettings_OnBindView (View As View, ViewType As Int)
+	Dim Alert As AX_CustomAlertDialog
+	Alert.Initialize
+	If ViewType = Alert.VIEW_TITLE Then ' Title
+		Dim lbl As Label = View
+		
+		Dim CS As CSBuilder
+		CS.Initialize.Typeface(Typeface.DEFAULT_BOLD).Typeface(Typeface.MATERIALICONS).Size(30).Color(Colors.Red).Append(Chr(0xE1E2) & " ")
+		CS.Typeface(GlobalVar.Font).Size(20).Append(lbl.Text).Pop
+
+		lbl.Text = CS.PopAll
+	End If
+	
+	If ViewType = Alert.VIEW_MESSAGE Then
+		Dim lbl As Label = View
+		lbl.TextSize = 14
+		lbl.TextColor = Colors.Gray
+	Else If ViewType = Alert.VIEW_LINE_INPUT Then
+		Dim txt As EditText = View
+		txt.TextSize = 15
+		txt.TextColor = Colors.Black
+		txt.Typeface = GlobalVar.Font
+	End If
+End Sub
+
+Private Sub ShowNewAdminPassword
+	Dim Alert As AX_CustomAlertDialog
+	
+	Dim LineHint As List : LineHint.Initialize
+	LineHint.Add("ADMINISTRATIVE PASSWORD")
+	
+	Dim LineText As List : LineText.Initialize
+	LineText.Add("")
+	
+	Alert.Initialize.Create _
+			.SetDialogStyleName("MyDialogDisableStatus") _	'Manifest style name
+			.SetStyle(Alert.STYLE_INPUT) _
+			.SetTitle("ADMIN PASSWORD") _
+			.SetMessage("Please enter the Administrative Password to Continue...") _
+			.SetLineInputHint(LineHint) _
+			.SetLineInputText(LineText) _
+			.SetPositiveText("OK") _
+			.SetPositiveTypeface(GlobalVar.FontBold) _
+			.SetPositiveColor(GlobalVar.PriColor) _
+			.SetNegativeText("CANCEL") _
+			.SetNegativeTypeface(GlobalVar.Font) _
+			.SetNegativeColor(Colors.Red) _
+			.SetTitleTypeface(GlobalVar.Font) _
+			.SetMessageTypeface(GlobalVar.Font) _
+			.SetOnPositiveClicked("AdminPassword") _	'listeners
+			.SetOnNegativeClicked("AdminPassword") _	'listeners
+			.SetOnInputClicked("AdminPassword") _	'listeners
+			.SetOnViewBinder("AdminPassword") _
+			.SetCancelable(False) _
+			.SetDialogBackground(myCD) 'listeners
+			
+	Alert.Build.Show
+End Sub
+
+Private Sub AdminPassword_OnNegativeClicked (View As View, Dialog As Object)
+	vibration.vibrateCancel
+	Alert.Initialize.Dismiss(Dialog)
+	snack.Initialize("", Activity, "Authentication cancelled!", snack.DURATION_LONG)
+	CustomFunctions.SetSnackBarBackground(snack,Colors.Red)
+	CustomFunctions.SetSnackBarTextColor(snack,Colors.White, "")
+	snack.Show
+End Sub
+
+Private Sub AdminPassword_OnInputClicked (View As View, Dialog As Object, InputSList As List)
+	Dim Alert As AX_CustomAlertDialog
+
+	Alert.Initialize.Dismiss(Dialog)
+	
+	If InputSList.Get(0) <> GlobalVar.AdminPassword Then
+		imeKeyBoard.HideKeyboard
+		vibration.vibrateOnce(2000)
+		snack.Initialize("RetryButton", Activity, "Password is Incorrect!", snack.DURATION_LONG)
+		snack.SetAction("RETRY")
+		CustomFunctions.SetSnackBarBackground(snack,Colors.White)
+		CustomFunctions.SetSnackBarTextColor(snack,Colors.Red, "RETRY")
+		snack.Show
+		Return
+	End If
+	
+	Select intSettingsFlag
+		Case 1
+			UpdateServerIP(NewIP)
+			
+		Case 2
+			GlobalVar.BranchID = SelectedBranchID
+			UpdateBranchID(GlobalVar.BranchID)
+			GlobalVar.CompanyID = DBaseFunctions.GetCompanyID(GlobalVar.BranchID)
+			GetBGImage(GlobalVar.CompanyID)
+		Case Else
+			Return
+	End Select
+
+End Sub
+
+Private Sub AdminPassword_OnBindView (View As View, ViewType As Int)
+	Dim Alert As AX_CustomAlertDialog
+	Alert.Initialize
+	If ViewType = Alert.VIEW_TITLE Then ' Title
+		Dim lbl As Label = View
+		
+		Dim CS As CSBuilder
+		CS.Initialize.Typeface(Typeface.DEFAULT_BOLD).Typeface(Typeface.MATERIALICONS).Size(30).Color(Colors.Red).Append(Chr(0xE32A) & " ")
+		CS.Typeface(GlobalVar.Font).Size(18).Append(lbl.Text).Pop
+
+		lbl.Text = CS.PopAll
+	else If ViewType = Alert.VIEW_MESSAGE Then
+		Dim lbl As Label = View
+		lbl.TextSize = 14
+		lbl.TextColor = Colors.Gray
+	Else If ViewType = Alert.VIEW_LINE_INPUT Then
+		Dim txt As EditText = View
+		InpTyp.Initialize
+		InpTyp.SetInputType(txt,Array As Int(InpTyp.TYPE_CLASS_TEXT, InpTyp.TYPE_TEXT_FLAG_AUTO_CORRECT, InpTyp.TYPE_TEXT_VARIATION_PASSWORD))
+		txt.TextSize = 17
+		txt.TextColor = Colors.Black
+'		txt.Typeface = GlobalVar.Font
+		txt.ForceDoneButton = False
+		txt.SingleLine = True
+		txt.PasswordMode = True
+	End If
+End Sub
+
+Private Sub ConfirmBranchSelection(sMsg As String)
+	Alert.Initialize.Create _
+			.SetDialogStyleName("MyDialogDisableStatus") _	'Manifest style name
+			.SetStyle(Alert.STYLE_DIALOGUE) _
+			.SetCancelable(False) _
+			.SetTitle($"Confirm Selection"$) _
+			.SetTitleTypeface(GlobalVar.Font) _
+			.SetMessage(sMsg) _
+			.SetPositiveText("Confirm") _
+			.SetPositiveColor(Colors.Blue) _
+			.SetPositiveTypeface(GlobalVar.FontBold) _
+			.SetNegativeText("Cancel") _
+			.SetNegativeColor(Colors.Red) _
+			.SetNegativeTypeface(GlobalVar.Font) _
+			.SetMessageTypeface(GlobalVar.Font) _
+			.SetOnPositiveClicked("BranchSelection") _	'listeners
+			.SetOnNegativeClicked("BranchSelection") _
+			.SetOnViewBinder("BranchSelection") 'listeners
+			
+	Alert.SetDialogBackground(myCD)
+	Alert.Build.Show
+End Sub
+
+'Listeners
+Private Sub BranchSelection_OnNegativeClicked (View As View, Dialog As Object)
+	vibration.vibrateCancel
+	Alert.Initialize.Dismiss(Dialog)
+	snack.Initialize("", Activity,$"Setting of Branch cancelled."$,snack.DURATION_SHORT)
+	CustomFunctions.SetSnackBarBackground(snack, Colors.Red)
+	CustomFunctions.SetSnackBarTextColor(snack, Colors.White, "")
+	snack.Show
+End Sub
+
+Private Sub BranchSelection_OnPositiveClicked (View As View, Dialog As Object)
+	vibration.vibrateCancel
+	Dim Alert As AX_CustomAlertDialog
+	Alert.Initialize.Dismiss(Dialog)
+	Sleep(100)
+	ShowNewAdminPassword
+End Sub
+
+Private Sub BranchSelection_OnBindView (View As View, ViewType As Int)
+	Dim Alert As AX_CustomAlertDialog
+	Alert.Initialize
+	If ViewType = Alert.VIEW_TITLE Then ' Title
+		Dim lbl As Label = View
+		
+		Dim CS As CSBuilder
+		CS.Initialize.Typeface(Typeface.DEFAULT_BOLD).Typeface(Typeface.FONTAWESOME).Size(22).Color(Colors.Red).Append(Chr(0xF29C) & " ")
+		CS.Typeface(GlobalVar.Font).Size(22).Append(lbl.Text).Pop
+
+		lbl.Text = CS.PopAll
+	End If
+	If ViewType = Alert.VIEW_MESSAGE Then
+		Dim lbl As Label = View
+		lbl.TextSize = 17
+		lbl.TextColor = Colors.Gray
+	End If
 End Sub
 
 #End Region

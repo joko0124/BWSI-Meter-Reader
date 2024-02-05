@@ -70,19 +70,19 @@ public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2serv
 public b4a.example.dateutils _dateutils = null;
 public com.bwsi.MeterReader.main _main = null;
 public com.bwsi.MeterReader.datasyncing _datasyncing = null;
+public com.bwsi.MeterReader.login _login = null;
+public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
+public com.bwsi.MeterReader.customfunctions _customfunctions = null;
+public com.bwsi.MeterReader.mainscreen _mainscreen = null;
+public com.bwsi.MeterReader.myscale _myscale = null;
+public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.camera _camera = null;
 public com.bwsi.MeterReader.cmrvr _cmrvr = null;
 public com.bwsi.MeterReader.customerbill _customerbill = null;
 public com.bwsi.MeterReader.customerlist _customerlist = null;
-public com.bwsi.MeterReader.customfunctions _customfunctions = null;
-public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
 public com.bwsi.MeterReader.dbutils _dbutils = null;
 public com.bwsi.MeterReader.globalvar _globalvar = null;
-public com.bwsi.MeterReader.login _login = null;
-public com.bwsi.MeterReader.mainscreen _mainscreen = null;
-public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.modvariables _modvariables = null;
-public com.bwsi.MeterReader.myscale _myscale = null;
 public com.bwsi.MeterReader.newcam _newcam = null;
 public com.bwsi.MeterReader.readingbooks _readingbooks = null;
 public com.bwsi.MeterReader.readingsettings _readingsettings = null;
@@ -855,7 +855,7 @@ if (_tabid>=1 && _tabid<=_tabcount) {
 if (true) return BA.ObjectToBoolean(_enabled.Get((int) (_tabid-1)));
  }else {
  //BA.debugLineNum = 715;BA.debugLine="Log(\"Invalid Tab ID\")";
-__c.LogImpl("983165188","Invalid Tab ID",0);
+__c.LogImpl("983886084","Invalid Tab ID",0);
  //BA.debugLineNum = 716;BA.debugLine="Return False";
 if (true) return __c.False;
  };
@@ -911,7 +911,7 @@ _t.GetView((int) (3)).RemoveViewFromParent();
  };
  }else {
  //BA.debugLineNum = 690;BA.debugLine="Log(\"Invalid Tab ID\")";
-__c.LogImpl("982968584","Invalid Tab ID",0);
+__c.LogImpl("983689480","Invalid Tab ID",0);
  };
  //BA.debugLineNum = 692;BA.debugLine="End Sub";
 return "";
@@ -967,7 +967,7 @@ _badge.Set((int) (_tabid-1),(Object)(__c.createMap(new Object[] {(Object)("count
  };
  }else {
  //BA.debugLineNum = 677;BA.debugLine="Log(\"Invalid Tab ID\")";
-__c.LogImpl("982903062","Invalid Tab ID",0);
+__c.LogImpl("983623958","Invalid Tab ID",0);
  };
  //BA.debugLineNum = 679;BA.debugLine="End Sub";
 return "";
@@ -1229,7 +1229,7 @@ if (_tabid>=1 && _tabid<=_tabcount) {
 _triggertabclickevent((anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper(), (java.lang.Object)(_tabs.Get((int) (_tabid-1)))),_triggerevent);
  }else {
  //BA.debugLineNum = 616;BA.debugLine="Log(\"Invalid Tab ID\")";
-__c.LogImpl("982575364","Invalid Tab ID",0);
+__c.LogImpl("983296260","Invalid Tab ID",0);
  };
  //BA.debugLineNum = 618;BA.debugLine="End Sub";
 return "";
@@ -1248,7 +1248,7 @@ _t.setEnabled(_enable);
 _enabled.Set((int) (_tabid-1),(Object)(_enable));
  }else {
  //BA.debugLineNum = 706;BA.debugLine="Log(\"Invalid Tab ID\")";
-__c.LogImpl("983099654","Invalid Tab ID",0);
+__c.LogImpl("983820550","Invalid Tab ID",0);
  };
  //BA.debugLineNum = 708;BA.debugLine="End Sub";
 return "";
@@ -1267,9 +1267,9 @@ if (_count==3 || _count==5) {
  //BA.debugLineNum = 639;BA.debugLine="If CurrentTab > count Then";
 if (_currenttab>_count) { 
  //BA.debugLineNum = 640;BA.debugLine="Log(\"Current Tab ID: \"&CurrentTab)";
-__c.LogImpl("982837507","Current Tab ID: "+BA.NumberToString(_currenttab),0);
+__c.LogImpl("983558403","Current Tab ID: "+BA.NumberToString(_currenttab),0);
  //BA.debugLineNum = 641;BA.debugLine="Log(\"Cannot change tab count.\")";
-__c.LogImpl("982837508","Cannot change tab count.",0);
+__c.LogImpl("983558404","Cannot change tab count.",0);
  }else {
  //BA.debugLineNum = 643;BA.debugLine="TabCount = count";
 _tabcount = _count;
@@ -1278,7 +1278,7 @@ _drawview();
  };
  }else {
  //BA.debugLineNum = 647;BA.debugLine="Log(\"Count must be either 5 or 3.\")";
-__c.LogImpl("982837514","Count must be either 5 or 3.",0);
+__c.LogImpl("983558410","Count must be either 5 or 3.",0);
  };
  //BA.debugLineNum = 649;BA.debugLine="End Sub";
 return "";
@@ -1344,7 +1344,7 @@ _lbl.setText(BA.ObjectToCharSequence(_text));
 _setcircleicon();
  }else {
  //BA.debugLineNum = 540;BA.debugLine="Log(\"Invalid Tab ID\")";
-__c.LogImpl("982378809","Invalid Tab ID",0);
+__c.LogImpl("983099705","Invalid Tab ID",0);
  };
  //BA.debugLineNum = 542;BA.debugLine="End Sub";
 return "";
@@ -1411,7 +1411,7 @@ _lbl.setText(BA.ObjectToCharSequence(_text));
 _setcircleicon();
  }else {
  //BA.debugLineNum = 602;BA.debugLine="Log(\"Invalid Tab ID\")";
-__c.LogImpl("982444342","Invalid Tab ID",0);
+__c.LogImpl("983165238","Invalid Tab ID",0);
  };
  //BA.debugLineNum = 604;BA.debugLine="End Sub";
 return "";

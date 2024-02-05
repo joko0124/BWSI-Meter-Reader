@@ -360,19 +360,19 @@ public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2serv
 public b4a.example.dateutils _dateutils = null;
 public com.bwsi.MeterReader.main _main = null;
 public com.bwsi.MeterReader.datasyncing _datasyncing = null;
+public com.bwsi.MeterReader.login _login = null;
+public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
+public com.bwsi.MeterReader.customfunctions _customfunctions = null;
+public com.bwsi.MeterReader.mainscreen _mainscreen = null;
+public com.bwsi.MeterReader.myscale _myscale = null;
+public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.camera _camera = null;
 public com.bwsi.MeterReader.cmrvr _cmrvr = null;
 public com.bwsi.MeterReader.customerbill _customerbill = null;
 public com.bwsi.MeterReader.customerlist _customerlist = null;
-public com.bwsi.MeterReader.customfunctions _customfunctions = null;
-public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
 public com.bwsi.MeterReader.dbutils _dbutils = null;
 public com.bwsi.MeterReader.globalvar _globalvar = null;
-public com.bwsi.MeterReader.login _login = null;
-public com.bwsi.MeterReader.mainscreen _mainscreen = null;
-public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.modvariables _modvariables = null;
-public com.bwsi.MeterReader.myscale _myscale = null;
 public com.bwsi.MeterReader.newcam _newcam = null;
 public com.bwsi.MeterReader.readingsettings _readingsettings = null;
 public com.bwsi.MeterReader.readingvalidation _readingvalidation = null;
@@ -481,7 +481,7 @@ _index = mostCurrent._clvassignment._getitemfromview /*int*/ ((anywheresoftware.
  //BA.debugLineNum = 224;BA.debugLine="GlobalVar.BookID = clvAssignment.GetValue(index)";
 mostCurrent._globalvar._bookid /*int*/  = (int)(BA.ObjectToNumber(mostCurrent._clvassignment._getvalue /*Object*/ (_index)));
  //BA.debugLineNum = 225;BA.debugLine="Log(GlobalVar.BookID)";
-anywheresoftware.b4a.keywords.Common.LogImpl("453149700",BA.NumberToString(mostCurrent._globalvar._bookid /*int*/ ),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("153870596",BA.NumberToString(mostCurrent._globalvar._bookid /*int*/ ),0);
  //BA.debugLineNum = 227;BA.debugLine="If DBaseFunctions.IsBookWithPCA(GlobalVar.BookID)";
 if (mostCurrent._dbasefunctions._isbookwithpca /*boolean*/ (mostCurrent.activityBA,mostCurrent._globalvar._bookid /*int*/ )==anywheresoftware.b4a.keywords.Common.True) { 
  //BA.debugLineNum = 228;BA.debugLine="intPCAAmount = DBaseFunctions.GetPCAmount(Global";
@@ -644,12 +644,12 @@ mostCurrent._clvassignment._add /*String*/ ((anywheresoftware.b4a.objects.B4XVie
 };
  }else {
  //BA.debugLineNum = 146;BA.debugLine="Log(rsAssignedBooks.RowCount)";
-anywheresoftware.b4a.keywords.Common.LogImpl("453018652",BA.NumberToString(mostCurrent._rsassignedbooks.getRowCount()),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("153739548",BA.NumberToString(mostCurrent._rsassignedbooks.getRowCount()),0);
  };
  } 
        catch (Exception e14) {
 			processBA.setLastException(e14); //BA.debugLineNum = 149;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("453018655",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("153739551",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 151;BA.debugLine="End Sub";
 return "";

@@ -304,6 +304,7 @@ Library40=splashfade
 Library41=wobblemenu
 Library42=xcustomlistview
 Library43=sd_liquidprogress
+Library44=network
 Library5=stringfunctions
 Library6=appcompat
 Library7=httputils2
@@ -344,7 +345,7 @@ Module7=classCustomListView
 Module8=clsPrint
 Module9=CMRVR
 NumberOfFiles=133
-NumberOfLibraries=43
+NumberOfLibraries=44
 NumberOfModules=33
 Version=10
 @EndOfDesignText@

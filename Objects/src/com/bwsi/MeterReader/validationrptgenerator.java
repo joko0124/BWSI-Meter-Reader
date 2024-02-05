@@ -372,19 +372,19 @@ public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2serv
 public b4a.example.dateutils _dateutils = null;
 public com.bwsi.MeterReader.main _main = null;
 public com.bwsi.MeterReader.datasyncing _datasyncing = null;
+public com.bwsi.MeterReader.login _login = null;
+public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
+public com.bwsi.MeterReader.customfunctions _customfunctions = null;
+public com.bwsi.MeterReader.mainscreen _mainscreen = null;
+public com.bwsi.MeterReader.myscale _myscale = null;
+public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.camera _camera = null;
 public com.bwsi.MeterReader.cmrvr _cmrvr = null;
 public com.bwsi.MeterReader.customerbill _customerbill = null;
 public com.bwsi.MeterReader.customerlist _customerlist = null;
-public com.bwsi.MeterReader.customfunctions _customfunctions = null;
-public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
 public com.bwsi.MeterReader.dbutils _dbutils = null;
 public com.bwsi.MeterReader.globalvar _globalvar = null;
-public com.bwsi.MeterReader.login _login = null;
-public com.bwsi.MeterReader.mainscreen _mainscreen = null;
-public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.modvariables _modvariables = null;
-public com.bwsi.MeterReader.myscale _myscale = null;
 public com.bwsi.MeterReader.newcam _newcam = null;
 public com.bwsi.MeterReader.readingbooks _readingbooks = null;
 public com.bwsi.MeterReader.readingsettings _readingsettings = null;
@@ -673,7 +673,7 @@ mostCurrent._starter._strcriteria /*String*/  = "SELECT ReadID, AcctNo, AcctName
  //BA.debugLineNum = 227;BA.debugLine="rsMissCoded = Starter.DBCon.ExecQuery(Starter.st";
 mostCurrent._rsmisscoded = (anywheresoftware.b4a.sql.SQL.CursorWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.CursorWrapper(), (android.database.Cursor)(mostCurrent._starter._dbcon /*anywheresoftware.b4a.sql.SQL*/ .ExecQuery(mostCurrent._starter._strcriteria /*String*/ )));
  //BA.debugLineNum = 228;BA.debugLine="Log(rsMissCoded.RowCount)";
-anywheresoftware.b4a.keywords.Common.LogImpl("461734963",BA.NumberToString(mostCurrent._rsmisscoded.getRowCount()),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("162455859",BA.NumberToString(mostCurrent._rsmisscoded.getRowCount()),0);
  //BA.debugLineNum = 229;BA.debugLine="CLV1.Clear";
 mostCurrent._clv1._clear /*String*/ ();
  //BA.debugLineNum = 230;BA.debugLine="If pnlCustomers.IsInitialized = False Then pnlCu";
@@ -710,14 +710,14 @@ mostCurrent._clv1._add /*String*/ ((anywheresoftware.b4a.objects.B4XViewWrapper)
 };
  }else {
  //BA.debugLineNum = 246;BA.debugLine="Log(rsMissCoded.RowCount)";
-anywheresoftware.b4a.keywords.Common.LogImpl("461734981",BA.NumberToString(mostCurrent._rsmisscoded.getRowCount()),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("162455877",BA.NumberToString(mostCurrent._rsmisscoded.getRowCount()),0);
  };
  } 
        catch (Exception e37) {
 			processBA.setLastException(e37); //BA.debugLineNum = 249;BA.debugLine="rsMissCoded.Close";
 mostCurrent._rsmisscoded.Close();
  //BA.debugLineNum = 250;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("461734985",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("162455881",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 252;BA.debugLine="rsMissCoded.Close";
 mostCurrent._rsmisscoded.Close();

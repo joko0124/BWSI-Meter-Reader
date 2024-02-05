@@ -392,18 +392,18 @@ public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2serv
 public b4a.example.dateutils _dateutils = null;
 public com.bwsi.MeterReader.main _main = null;
 public com.bwsi.MeterReader.datasyncing _datasyncing = null;
+public com.bwsi.MeterReader.login _login = null;
+public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
+public com.bwsi.MeterReader.customfunctions _customfunctions = null;
+public com.bwsi.MeterReader.myscale _myscale = null;
+public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.camera _camera = null;
 public com.bwsi.MeterReader.cmrvr _cmrvr = null;
 public com.bwsi.MeterReader.customerbill _customerbill = null;
 public com.bwsi.MeterReader.customerlist _customerlist = null;
-public com.bwsi.MeterReader.customfunctions _customfunctions = null;
-public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
 public com.bwsi.MeterReader.dbutils _dbutils = null;
 public com.bwsi.MeterReader.globalvar _globalvar = null;
-public com.bwsi.MeterReader.login _login = null;
-public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.modvariables _modvariables = null;
-public com.bwsi.MeterReader.myscale _myscale = null;
 public com.bwsi.MeterReader.newcam _newcam = null;
 public com.bwsi.MeterReader.readingbooks _readingbooks = null;
 public com.bwsi.MeterReader.readingsettings _readingsettings = null;
@@ -499,7 +499,7 @@ mostCurrent._lblbranchname.setText(BA.ObjectToCharSequence(mostCurrent._globalva
  //BA.debugLineNum = 133;BA.debugLine="lblBillPeriod.Text = GlobalVar.BillPeriod";
 mostCurrent._lblbillperiod.setText(BA.ObjectToCharSequence(mostCurrent._globalvar._billperiod /*String*/ ));
  //BA.debugLineNum = 135;BA.debugLine="LogColor($\"Is First Time: \"$ & FirstTime, Colors.";
-anywheresoftware.b4a.keywords.Common.LogImpl("432047134",("Is First Time: ")+BA.ObjectToString(_firsttime),anywheresoftware.b4a.keywords.Common.Colors.Cyan);
+anywheresoftware.b4a.keywords.Common.LogImpl("115794206",("Is First Time: ")+BA.ObjectToString(_firsttime),anywheresoftware.b4a.keywords.Common.Colors.Cyan);
  //BA.debugLineNum = 137;BA.debugLine="If FirstTime = True Then";
 if (_firsttime==anywheresoftware.b4a.keywords.Common.True) { 
  //BA.debugLineNum = 138;BA.debugLine="If GlobalVar.Mod5 = 1 Then";
@@ -654,13 +654,13 @@ _assignrec = (com.bwsi.MeterReader.mainscreen._readingstatus)(mostCurrent._clvbo
  //BA.debugLineNum = 586;BA.debugLine="value = AssignRec.sBookNo";
 _value = (Object)(_assignrec.sBookNo /*String*/ );
  //BA.debugLineNum = 588;BA.debugLine="Log(value)";
-anywheresoftware.b4a.keywords.Common.LogImpl("432833545",BA.ObjectToString(_value),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("116580617",BA.ObjectToString(_value),0);
  //BA.debugLineNum = 591;BA.debugLine="LogColor (Index, Colors.Cyan)";
-anywheresoftware.b4a.keywords.Common.LogImpl("432833548",BA.NumberToString(_index),anywheresoftware.b4a.keywords.Common.Colors.Cyan);
+anywheresoftware.b4a.keywords.Common.LogImpl("116580620",BA.NumberToString(_index),anywheresoftware.b4a.keywords.Common.Colors.Cyan);
  //BA.debugLineNum = 593;BA.debugLine="GlobalVar.BookID = DBaseFunctions.GetIDbyCode(\"Bo";
 mostCurrent._globalvar._bookid /*int*/  = (int) (mostCurrent._dbasefunctions._getidbycode /*double*/ (mostCurrent.activityBA,"BookID","tblBooks","BookCode",BA.ObjectToString(_value)));
  //BA.debugLineNum = 594;BA.debugLine="Log(GlobalVar.BookID)";
-anywheresoftware.b4a.keywords.Common.LogImpl("432833551",BA.NumberToString(mostCurrent._globalvar._bookid /*int*/ ),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("116580623",BA.NumberToString(mostCurrent._globalvar._bookid /*int*/ ),0);
  //BA.debugLineNum = 596;BA.debugLine="If DBaseFunctions.IsBookWithPCA(GlobalVar.BookID)";
 if (mostCurrent._dbasefunctions._isbookwithpca /*boolean*/ (mostCurrent.activityBA,mostCurrent._globalvar._bookid /*int*/ )==anywheresoftware.b4a.keywords.Common.True) { 
  //BA.debugLineNum = 597;BA.debugLine="intPCAAmount = DBaseFunctions.GetPCAmount(Global";
@@ -712,7 +712,7 @@ public static String  _clv1_itemclick(int _index,Object _value) throws Exception
  //BA.debugLineNum = 701;BA.debugLine="GlobalVar.BookID = Value";
 mostCurrent._globalvar._bookid /*int*/  = (int)(BA.ObjectToNumber(_value));
  //BA.debugLineNum = 702;BA.debugLine="Log(Value)";
-anywheresoftware.b4a.keywords.Common.LogImpl("433226754",BA.ObjectToString(_value),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("116973826",BA.ObjectToString(_value),0);
  //BA.debugLineNum = 703;BA.debugLine="End Sub";
 return "";
 }
@@ -742,7 +742,7 @@ if (_pnl.getNumberOfViews()==0) {
  //BA.debugLineNum = 487;BA.debugLine="Dim BookRec As ReadingStatus = clvBookAssignme";
 _bookrec = (com.bwsi.MeterReader.mainscreen._readingstatus)(mostCurrent._clvbookassignment._getvalue(_i));
  //BA.debugLineNum = 488;BA.debugLine="LogColor($\"value: \"$ & clvBookAssignment.GetVa";
-anywheresoftware.b4a.keywords.Common.LogImpl("432768009",("value: ")+BA.ObjectToString(mostCurrent._clvbookassignment._getvalue(_i)),anywheresoftware.b4a.keywords.Common.Colors.Yellow);
+anywheresoftware.b4a.keywords.Common.LogImpl("116515081",("value: ")+BA.ObjectToString(mostCurrent._clvbookassignment._getvalue(_i)),anywheresoftware.b4a.keywords.Common.Colors.Yellow);
  //BA.debugLineNum = 489;BA.debugLine="Pnl.LoadLayout(\"BookAssign\")";
 _pnl.LoadLayout("BookAssign",mostCurrent.activityBA);
  //BA.debugLineNum = 490;BA.debugLine="lblBookNo.Text = $\"BOOK \"$ & BookRec.sBookNo";
@@ -1134,7 +1134,7 @@ this.catchState = 15;
  //BA.debugLineNum = 423;BA.debugLine="Starter.strCriteria = \"SELECT tblReadings.BookID";
 parent.mostCurrent._starter._strcriteria /*String*/  = "SELECT tblReadings.BookID AS BookID, tblReadings.BookNo AS BookNo, tblBooks.BookDesc AS BookDesc, "+"Count(tblReadings.AcctID) As NoAccts, "+"SUM(CASE WHEN tblReadings.WasRead = 1 Then 1 Else 0 End) As ReadAccts, "+"SUM(CASE WHEN tblReadings.WasRead = 0 Then 1 Else 0 End) As UnreadAccts, "+"SUM(CASE WHEN tblReadings.WasMissCoded = 1 THEN 1 ELSE 0 END) as Miscoded, "+"SUM(CASE WHEN tblReadings.ImplosiveType = 'zero' Then 1 ELSE 0 END) As ZeroCons, "+"SUM(CASE WHEN tblReadings.ImplosiveType = 'implosive-inc' Then 1 ELSE 0 END) As HighBill, "+"SUM(CASE WHEN tblReadings.ImplosiveType = 'implosive-dec' Then 1 ELSE 0 END) As LowBill, "+"SUM(CASE WHEN tblReadings.BillType = 'AB' Then 1 ELSE 0 END) As AverageBill, "+"SUM(CASE WHEN (tblReadings.PrintStatus = 0 AND tblReadings.WasRead = 1) Then 1 ELSE 0 END) As Unprinted "+"FROM tblReadings INNER JOIN tblBooks ON tblReadings.BookID = tblBooks.BookID "+"WHERE tblReadings.BranchID = "+BA.NumberToString(_ibranchid)+" "+"AND tblReadings.BillYear = "+BA.NumberToString(_ibillyear)+" "+"AND tblReadings.BillMonth = "+BA.NumberToString(_ibillmonth)+" "+"AND tblReadings.ReadBy = "+BA.NumberToString(_iuserid)+" "+"GROUP BY tblReadings.BookID "+"ORDER BY tblReadings.BookNo Asc";
  //BA.debugLineNum = 441;BA.debugLine="LogColor(Starter.strCriteria, Colors.Yellow)";
-anywheresoftware.b4a.keywords.Common.LogImpl("432702486",parent.mostCurrent._starter._strcriteria /*String*/ ,anywheresoftware.b4a.keywords.Common.Colors.Yellow);
+anywheresoftware.b4a.keywords.Common.LogImpl("116449558",parent.mostCurrent._starter._strcriteria /*String*/ ,anywheresoftware.b4a.keywords.Common.Colors.Yellow);
  //BA.debugLineNum = 443;BA.debugLine="SenderFilter = Starter.DBCon.ExecQueryAsync(\"SQL";
 _senderfilter = parent.mostCurrent._starter._dbcon /*anywheresoftware.b4a.sql.SQL*/ .ExecQueryAsync(processBA,"SQL",parent.mostCurrent._starter._strcriteria /*String*/ ,(anywheresoftware.b4a.objects.collections.List) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.collections.List(), (java.util.List)(anywheresoftware.b4a.keywords.Common.Null)));
  //BA.debugLineNum = 444;BA.debugLine="Wait For (SenderFilter) SQL_QueryComplete (Succe";
@@ -1226,7 +1226,7 @@ case 12:
 //C
 this.state = 13;
  //BA.debugLineNum = 469;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("432702514",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("116449586",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  if (true) break;
 
 case 13:
@@ -1234,7 +1234,7 @@ case 13:
 this.state = 16;
 ;
  //BA.debugLineNum = 472;BA.debugLine="Log($\"List of Book Assignment Records = ${Number";
-anywheresoftware.b4a.keywords.Common.LogImpl("432702517",("List of Book Assignment Records = "+anywheresoftware.b4a.keywords.Common.SmartStringFormatter("",(Object)(anywheresoftware.b4a.keywords.Common.NumberFormat2((anywheresoftware.b4a.keywords.Common.DateTime.getNow()-_starttime)/(double)1000,(int) (0),(int) (2),(int) (2),anywheresoftware.b4a.keywords.Common.False)))+" seconds to populate "+anywheresoftware.b4a.keywords.Common.SmartStringFormatter("",(Object)(parent.mostCurrent._clvbookassignment._getsize()))+" Book Assignment Records"),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("116449589",("List of Book Assignment Records = "+anywheresoftware.b4a.keywords.Common.SmartStringFormatter("",(Object)(anywheresoftware.b4a.keywords.Common.NumberFormat2((anywheresoftware.b4a.keywords.Common.DateTime.getNow()-_starttime)/(double)1000,(int) (0),(int) (2),(int) (2),anywheresoftware.b4a.keywords.Common.False)))+" seconds to populate "+anywheresoftware.b4a.keywords.Common.SmartStringFormatter("",(Object)(parent.mostCurrent._clvbookassignment._getsize()))+" Book Assignment Records"),0);
  if (true) break;
 
 case 15:
@@ -1242,7 +1242,7 @@ case 15:
 this.state = 16;
 this.catchState = 0;
  //BA.debugLineNum = 474;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("432702519",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("116449591",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  if (true) break;
 if (true) break;
 
@@ -1432,7 +1432,7 @@ public static String  _lvmenus_itemclick(int _position,Object _value) throws Exc
 anywheresoftware.b4a.objects.drawable.ColorDrawable _cdback = null;
  //BA.debugLineNum = 337;BA.debugLine="Sub lvMenus_ItemClick (Position As Int, Value As O";
  //BA.debugLineNum = 338;BA.debugLine="LogColor(Value, Colors.Red)";
-anywheresoftware.b4a.keywords.Common.LogImpl("432505857",BA.ObjectToString(_value),anywheresoftware.b4a.keywords.Common.Colors.Red);
+anywheresoftware.b4a.keywords.Common.LogImpl("116252929",BA.ObjectToString(_value),anywheresoftware.b4a.keywords.Common.Colors.Red);
  //BA.debugLineNum = 339;BA.debugLine="Select Case Value";
 switch (BA.switchObjectToInt(_value,(Object)(1),(Object)(2),(Object)(3),(Object)(4),(Object)(5),(Object)(6),(Object)(7),(Object)(8))) {
 case 0: {

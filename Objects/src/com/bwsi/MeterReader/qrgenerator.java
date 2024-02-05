@@ -42,19 +42,19 @@ public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2serv
 public b4a.example.dateutils _dateutils = null;
 public com.bwsi.MeterReader.main _main = null;
 public com.bwsi.MeterReader.datasyncing _datasyncing = null;
+public com.bwsi.MeterReader.login _login = null;
+public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
+public com.bwsi.MeterReader.customfunctions _customfunctions = null;
+public com.bwsi.MeterReader.mainscreen _mainscreen = null;
+public com.bwsi.MeterReader.myscale _myscale = null;
+public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.camera _camera = null;
 public com.bwsi.MeterReader.cmrvr _cmrvr = null;
 public com.bwsi.MeterReader.customerbill _customerbill = null;
 public com.bwsi.MeterReader.customerlist _customerlist = null;
-public com.bwsi.MeterReader.customfunctions _customfunctions = null;
-public com.bwsi.MeterReader.dbasefunctions _dbasefunctions = null;
 public com.bwsi.MeterReader.dbutils _dbutils = null;
 public com.bwsi.MeterReader.globalvar _globalvar = null;
-public com.bwsi.MeterReader.login _login = null;
-public com.bwsi.MeterReader.mainscreen _mainscreen = null;
-public com.bwsi.MeterReader.meterreading _meterreading = null;
 public com.bwsi.MeterReader.modvariables _modvariables = null;
-public com.bwsi.MeterReader.myscale _myscale = null;
 public com.bwsi.MeterReader.newcam _newcam = null;
 public com.bwsi.MeterReader.readingbooks _readingbooks = null;
 public com.bwsi.MeterReader.readingsettings _readingsettings = null;
@@ -419,7 +419,7 @@ _bytes = _text.getBytes("utf8");
  //BA.debugLineNum = 33;BA.debugLine="If Bytes.Length > 78 Then";
 if (_bytes.length>78) { 
  //BA.debugLineNum = 34;BA.debugLine="Log(\"Too long!\")";
-__c.LogImpl("450855939","Too long!",0);
+__c.LogImpl("151576835","Too long!",0);
  //BA.debugLineNum = 35;BA.debugLine="Return Null";
 if (true) return (anywheresoftware.b4a.objects.B4XViewWrapper.B4XBitmapWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper.B4XBitmapWrapper(), (android.graphics.Bitmap)(__c.Null));
  };
@@ -428,10 +428,10 @@ _v_4h = _bytes.length<=36;
  //BA.debugLineNum = 38;BA.debugLine="If V_4H Then";
 if (_v_4h) { 
  //BA.debugLineNum = 39;BA.debugLine="Log(\"Version 4-H\")";
-__c.LogImpl("450855944","Version 4-H",0);
+__c.LogImpl("151576840","Version 4-H",0);
  }else {
  //BA.debugLineNum = 41;BA.debugLine="Log(\"Version 4-L\")";
-__c.LogImpl("450855946","Version 4-L",0);
+__c.LogImpl("151576842","Version 4-L",0);
  };
  //BA.debugLineNum = 43;BA.debugLine="Dim Matrix(NumberOfModules, NumberOfModules) As B";
 _matrix = new boolean[_numberofmodules][];
@@ -750,7 +750,7 @@ return "";
 public String  _logarray(anywheresoftware.b4a.objects.collections.List _arr) throws Exception{
  //BA.debugLineNum = 423;BA.debugLine="Private Sub LogArray(arr As List) 'ignore";
  //BA.debugLineNum = 424;BA.debugLine="Log(arr)";
-__c.LogImpl("452297729",BA.ObjectToString(_arr),0);
+__c.LogImpl("153018625",BA.ObjectToString(_arr),0);
  //BA.debugLineNum = 425;BA.debugLine="End Sub";
 return "";
 }

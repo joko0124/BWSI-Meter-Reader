@@ -223,6 +223,7 @@ Sub Globals
 	Private NoInput As Int
 	Private TimeRead As String
 	Private DateRead As String
+	Private PrintTime As String
 	Private WasUploaded As Int
 
 	'Variants
@@ -243,7 +244,7 @@ Sub Globals
 	Private SeptageFeeAmt As Double
 	Private SeptageFee As Double
 	Private SeptageArrears As Double
-	Private GTotalSeptage as Double
+	Private GTotalSeptage As Double
 	Private GTotalDue As Double
 	Private GTotalAfterDue As Double
 	Private GTotalDueAmt As Double
@@ -936,7 +937,10 @@ Sub DisplayRecord()
 	MinSeptageCum = rsLoadedBook.GetInt("MinSeptageCum")
 	MaxSeptageCum = rsLoadedBook.GetInt("MaxSeptageCum")
 	SeptageRate = rsLoadedBook.GetDouble("SeptageRate")
-	SeptageArrears = rsLoadedBook.GetDouble("SeptageArrears")
+	
+	If GlobalVar.BranchID = 28 Or GlobalVar.BranchID = 29 Or GlobalVar.BranchID = 30 Then
+		SeptageArrears = rsLoadedBook.GetDouble("SeptageArrears")
+	End If
 
 	AcctClassification = AcctClass & "-" & AcctSubClass
 	strReadRemarks = ""
@@ -1446,6 +1450,9 @@ Private Sub txtPresRdg_HandleAction() As Boolean
 	
 	If HasSeptageFee = 1 Then
 		LogColor ($"Acct Classification: "$ & AcctClassification, Colors.Magenta)
+
+	If GlobalVar.BranchID = 15 Then
+	Else
 		GlobalVar.SeptageRateID = DBaseFunctions.GetSeptageRateID(AcctClassification, GlobalVar.BranchID)
 		LogColor ($"Septage Rate ID: "$ & GlobalVar.SeptageRateID, Colors.Cyan)
 		
@@ -1453,6 +1460,7 @@ Private Sub txtPresRdg_HandleAction() As Boolean
 			WarningMsg($"NO SEPTAGE RATES FOUND!"$, $"Customer account classification has no septage rates found!"$ & CRLF & $"Please ask assistance to the Central Billing & IT Department regarding this."$)
 			Return True
 		End If
+	End If
 	End If
 
 	If CurrentCuM < 0 Or strSF.Val(txtPresRdg.Text) < strSF.Val(PrevRdg) Then 'Negative Reading
@@ -1929,9 +1937,20 @@ End Sub
 
 Sub RetrieveUnread(iBookID As Int, sOrderBy As String) As Boolean
 	Dim blnRet As Boolean
+
 	Try
 		Starter.strCriteria="SELECT * FROM tblReadings " & _
-							"WHERE WasRead = 0 AND BookID=" & iBookID & " AND BillYear= " & GlobalVar.BillYear  & " AND BillMonth=" & GlobalVar.BillMonth & "  ORDER BY " & sOrderBy
+						"WHERE WasRead = 0 " & _
+						"AND BookID = " & iBookID & " " & _
+						"AND BillYear = " & GlobalVar.BillYear & " " & _
+						"AND BillMonth = " & GlobalVar.BillMonth & " " & _
+						"AND ReadBy = " & GlobalVar.UserID & " " & _
+						"AND BranchID = " & GlobalVar.BranchID & " " & _
+						"ORDER BY " & sOrderBy
+
+'		Starter.strCriteria="SELECT * FROM tblReadings " & _
+'							"WHERE WasRead = 0 AND BookID=" & iBookID & " AND BillYear= " & GlobalVar.BillYear  & " AND BillMonth=" & GlobalVar.BillMonth & "  ORDER BY " & sOrderBy
+
 		Log(Starter.strCriteria)
 		rsUnReadAcct=Starter.DBCon.ExecQuery(Starter.strCriteria)
 		If rsUnReadAcct.RowCount>0 Then
@@ -1953,7 +1972,16 @@ Sub RetrieveAll(iBookID As Int, sOrderBy As String) As Boolean
 	Dim blnRet As Boolean
 	Try
 		Starter.strCriteria="SELECT * FROM tblReadings " & _
-							"WHERE BookID=" & iBookID & " AND BillYear= " & GlobalVar.BillYear & " AND BillMonth=" & GlobalVar.BillMonth & "  ORDER BY " & sOrderBy
+						"WHERE BookID = " & iBookID & " " & _
+						"AND BillYear = " & GlobalVar.BillYear & " " & _
+						"AND BillMonth = " & GlobalVar.BillMonth & " " & _
+						"AND ReadBy = " & GlobalVar.UserID & " " & _
+						"AND BranchID = " & GlobalVar.BranchID & " " & _
+						"ORDER BY " & sOrderBy
+
+'		Starter.strCriteria="SELECT * FROM tblReadings " & _
+'							"WHERE BookID=" & iBookID & " AND BillYear= " & GlobalVar.BillYear & " AND BillMonth=" & GlobalVar.BillMonth & "  ORDER BY " & sOrderBy
+
 		Log(Starter.strCriteria)
 		rsAllAcct=Starter.DBCon.ExecQuery(Starter.strCriteria)
 		If rsAllAcct.RowCount>0 Then
@@ -1975,7 +2003,17 @@ Sub RetrieveRead(iBookID As Int, sOrderBy As String) As Boolean
 	Dim blnRet As Boolean
 	Try
 		Starter.strCriteria="SELECT * FROM tblReadings " & _
-							"WHERE WasRead = 1 AND BookID=" & iBookID & " AND BillYear= " & GlobalVar.BillYear & " AND BillMonth=" & GlobalVar.BillMonth & " ORDER BY " & sOrderBy
+						"WHERE WasRead = 1 " & _
+						"AND BookID = " & iBookID & " " & _
+						"AND BillYear = " & GlobalVar.BillYear & " " & _
+						"AND BillMonth = " & GlobalVar.BillMonth & " " & _
+						"AND ReadBy = " & GlobalVar.UserID & " " & _
+						"AND BranchID = " & GlobalVar.BranchID & " " & _
+						"ORDER BY " & sOrderBy
+
+'		Starter.strCriteria="SELECT * FROM tblReadings " & _
+'							"WHERE WasRead = 1 AND BookID=" & iBookID & " AND BillYear= " & GlobalVar.BillYear & " AND BillMonth=" & GlobalVar.BillMonth & " ORDER BY " & sOrderBy
+
 		Log(Starter.strCriteria)
 		rsReadAcct = Starter.DBCon.ExecQuery(Starter.strCriteria)
 		If rsReadAcct.RowCount>0 Then
@@ -2523,8 +2561,11 @@ Private Sub SaveReading(iPrintStatus As Int, iReadID As Int, iAcctID As Int)
 	WasRead = 1
 	PrintStatus = iPrintStatus
 	
-	If PrintStatus = 1 Then
+	If iPrintStatus = 1 Then
 		NoPrinted = NoPrinted + 1
+		lngDateTime = DateTime.Now
+		DateTime.DateFormat = "yyyy-MM-dd hh:mm:ss a"
+		PrintTime = DateTime.Date(lngDateTime)
 	Else
 		NoPrinted = NoPrinted
 	End If
@@ -2602,31 +2643,46 @@ Private Sub SaveReading(iPrintStatus As Int, iReadID As Int, iAcctID As Int)
 	dSeptageRate = 0
 	
 	If HasSeptageFee = 1 Then
-		LogColor ($"Acct Classification: "$ & AcctClassification, Colors.Magenta)
-		GlobalVar.SeptageRateID = DBaseFunctions.GetSeptageRateID(AcctClassification, GlobalVar.BranchID)
-		LogColor ($"Septage Rate ID: "$ & GlobalVar.SeptageRateID, Colors.Cyan)
-		
-		If GlobalVar.SeptageRateID = 0 Then
-			WarningMsg($"NO SEPTAGE RATES FOUND!"$, $"Customer account classification has no septage rates found!"$ & CRLF & $"Please ask assistance to the Central Billing & IT Department regarding this."$)
-			Return
-		Else
-			DBaseFunctions.GetSeptageRateDetails(GlobalVar.BranchID, GlobalVar.SeptageRateID, AcctClassification)
-			If GlobalVar.SeptageRateType = "amount" Then
-				If TotalCum <= GlobalVar.SeptageMinCuM Then
-					SeptageFee = GlobalVar.SeptageRatePerCuM * GlobalVar.SeptageMinCuM
-					
-				Else If TotalCum >= GlobalVar.SeptageMaxCuM Then
-					SeptageFee = GlobalVar.SeptageRatePerCuM * GlobalVar.SeptageMaxCuM
-					
-				Else
-					SeptageFee = GlobalVar.SeptageRatePerCuM * TotalCum
-				End If
+		If GlobalVar.BranchID = 14 Or GlobalVar.BranchID = 62 Or GlobalVar.BranchID = 28 Or GlobalVar.BranchID = 29 Or GlobalVar.BranchID = 30 Then '
+			LogColor ($"Acct Classification: "$ & AcctClassification, Colors.Magenta)
+			GlobalVar.SeptageRateID = DBaseFunctions.GetSeptageRateID(AcctClassification, GlobalVar.BranchID)
+			LogColor ($"Septage Rate ID: "$ & GlobalVar.SeptageRateID, Colors.Cyan)
+			
+			If GlobalVar.SeptageRateID = 0 Then
+				WarningMsg($"NO SEPTAGE RATES FOUND!"$, $"Customer account classification has no septage rates found!"$ & CRLF & $"Please ask assistance to the Central Billing & IT Department regarding this."$)
+				Return
 			Else
-				SeptageFee = (GlobalVar.SeptageRatePerCuM) * CurrentAmt
+				DBaseFunctions.GetSeptageRateDetails(GlobalVar.BranchID, GlobalVar.SeptageRateID, AcctClassification)
+				If GlobalVar.SeptageRateType = "amount" Then
+					If TotalCum <= GlobalVar.SeptageMinCuM Then
+						SeptageFee = GlobalVar.SeptageRatePerCuM * GlobalVar.SeptageMinCuM
+						
+					Else If TotalCum >= GlobalVar.SeptageMaxCuM Then
+						SeptageFee = GlobalVar.SeptageRatePerCuM * GlobalVar.SeptageMaxCuM
+						
+					Else
+						SeptageFee = GlobalVar.SeptageRatePerCuM * TotalCum
+					End If
+				Else
+					SeptageFee = (GlobalVar.SeptageRatePerCuM) * CurrentAmt
+				End If
 			End If
+'			Else If GlobalVar.BranchID = 15 Or GlobalVar.BranchID = 43 Then '
+'				SeptageFee = 0
+			Else
+				If TotalCum <= MinSeptageCum Then
+					SeptageFee = SeptageRate * MinSeptageCum
+				Else If TotalCum >= MaxSeptageCum Then
+					SeptageFee = SeptageRate * MaxSeptageCum
+				Else
+					SeptageFee = SeptageRate * TotalCum
+				End If
 		End If
-		
-		'Old septage code
+	Else
+		SeptageFee = 0
+	End If
+	
+	'Old septage code
 '		If TotalCum <= MinSeptageCum Then
 '			SeptageFee = SeptageRate * MinSeptageCum
 '		Else If TotalCum >= MaxSeptageCum Then
@@ -2636,10 +2692,7 @@ Private Sub SaveReading(iPrintStatus As Int, iReadID As Int, iAcctID As Int)
 '		End If
 
 '		End If
-	Else
-		SeptageFee = 0
-	End If
-	
+
 	LogColor($"Septage Rate: "$ & SeptageRate, Colors.Cyan)
 	SeptageFeeAmt = SeptageFee
 	
@@ -2789,16 +2842,17 @@ Private Sub SaveReading(iPrintStatus As Int, iReadID As Int, iAcctID As Int)
 							  "SET OrigRdg = ?, PresRdg = ?, PresCum = ?, TotalCum = ?, BasicAmt = ?, PCAAmt = ?, SeptageAmt = ?, SeptageFeeAmt = ?, " & _
 							  "CurrentAmt = ?, TotalDueAmt = ?, SeniorOnBeforeAmt = ?, SeniorAfterAmt = ?, TotalDueAmtBeforeSC = ?, PenaltyAmt = ?, TotalDueAmtAfterSC = ?, DiscAmt = ?, FranchiseTaxAmt = ?, " & _
 							  "PrintStatus = ?, NoPrinted = ?, WasMissCoded = ?, MissCodeID = ?, MissCode = ?, WasImplosive = ?, ImplosiveType = ?, ImpID = ?, FFindings = ?, FWarnings = ?, ReadRemarks = ?, " & _
-							  "BillType = ?, WasRead = ?, NewSeqNo = ?, NoInput = ?, TimeRead = ?, DateRead = ? " & _
+							  "BillType = ?, WasRead = ?, NewSeqNo = ?, NoInput = ?, TimeRead = ?, DateRead = ?, PrintTime " & _
 							  "WHERE ReadID = " & iReadID & " " & _
 							  "AND AcctID = " & iAcctID
 		
 			Starter.DBCon.ExecNonQuery2(Starter.strCriteria, Array As String(txtPresRdg.Text, txtPresRdg.Text, lblPresCum.Text, TotalCum, sBasicAmt, sPCAAmt, sSeptageFee, sSeptageFeeAmt, _
 							  sCurrentAmt, sTotalDueAmt, sSeniorOnBeforeAmt, sSeniorAfterAmt, sTotalDueAmtBeforeSC, sPenaltyAmt, sTotalDueAmtAfterSC, sDiscAmt, sFranchiseTaxAmt, _
 							  PrintStatus, NoPrinted, $"0"$, $"0"$, $""$, $"0"$, ImplosiveType, $"0"$, $"Actual Reading"$, sWarning, strReadRemarks, _
-							  $"RB"$, $"1"$, NewSeqNo, NoInput, TimeRead, DateRead))
+							  $"RB"$, $"1"$, NewSeqNo, NoInput, TimeRead, DateRead, PrintTime))
 		End If
 		Starter.DBCon.TransactionSuccessful
+		
 	Catch
 		Log(LastException.Message)
 	End Try
@@ -2968,43 +3022,45 @@ Private Sub SaveAverageBill(iPrintStatus As Int, iReadID As Int, iAcctID As Int)
 	dSeptageRate = 0
 	
 	If HasSeptageFee = 1 Then
+		If GlobalVar.BranchID = 14 Or GlobalVar.BranchID = 62 Or GlobalVar.BranchID = 28 Or GlobalVar.BranchID = 29 Or GlobalVar.BranchID = 30 Then '
 		LogColor ($"Acct Classification: "$ & AcctClassification, Colors.Magenta)
 		GlobalVar.SeptageRateID = DBaseFunctions.GetSeptageRateID(AcctClassification, GlobalVar.BranchID)
-		LogColor ($"Septage Rate ID: "$ & GlobalVar.SeptageRateID, Colors.Cyan)
+			LogColor ($"Septage Rate ID: "$ & GlobalVar.SeptageRateID, Colors.Cyan)
 		
-		If GlobalVar.SeptageRateID = 0 Then
+			If GlobalVar.SeptageRateID = 0 Then
 			WarningMsg($"NO SEPTAGE RATES FOUND!"$, $"Customer account classification has no septage rates found!"$ & CRLF & $"Please ask assistance to the Central Billing & IT Department regarding this."$)
-			Return
-		Else
-			DBaseFunctions.GetSeptageRateDetails(GlobalVar.BranchID, GlobalVar.SeptageRateID, AcctClassification)
-			If GlobalVar.SeptageRateType = "amount" Then
-				If TotalCum <= GlobalVar.SeptageMinCuM Then
-					SeptageFee = GlobalVar.SeptageRatePerCuM * GlobalVar.SeptageMinCuM
-					
-				Else If TotalCum >= GlobalVar.SeptageMaxCuM Then
-					SeptageFee = GlobalVar.SeptageRatePerCuM * GlobalVar.SeptageMaxCuM
-					
-				Else
-					SeptageFee = GlobalVar.SeptageRatePerCuM * TotalCum
-				End If
+		Return
 			Else
-				SeptageFee = (GlobalVar.SeptageRatePerCuM) * CurrentAmt
+			DBaseFunctions.GetSeptageRateDetails(GlobalVar.BranchID, GlobalVar.SeptageRateID, AcctClassification)
+				If GlobalVar.SeptageRateType = "amount" Then
+					If TotalCum <= GlobalVar.SeptageMinCuM Then
+						SeptageFee = GlobalVar.SeptageRatePerCuM * GlobalVar.SeptageMinCuM
+				
+					Else If TotalCum >= GlobalVar.SeptageMaxCuM Then
+						SeptageFee = GlobalVar.SeptageRatePerCuM * GlobalVar.SeptageMaxCuM
+				
+					Else
+				SeptageFee = GlobalVar.SeptageRatePerCuM * TotalCum
+			End If
+				Else
+			SeptageFee = (GlobalVar.SeptageRatePerCuM) * CurrentAmt
+		End If
+			End If
+'		Else If GlobalVar.BranchID = 15 Or GlobalVar.BranchID = 43 Then
+'			SeptageFee = 0
+		Else
+			If TotalCum <= MinSeptageCum Then
+				SeptageFee = SeptageRate * MinSeptageCum
+			Else If TotalCum >= MaxSeptageCum Then
+				SeptageFee = SeptageRate * MaxSeptageCum
+			Else
+				SeptageFee = SeptageRate * TotalCum
 			End If
 		End If
-		
-		'Old septage code
-'		If TotalCum <= MinSeptageCum Then
-'			SeptageFee = SeptageRate * MinSeptageCum
-'		Else If TotalCum >= MaxSeptageCum Then
-'			SeptageFee = SeptageRate * MaxSeptageCum
-'		Else
-'			SeptageFee = SeptageRate * TotalCum
-'		End If
-
-'		End If
 	Else
 		SeptageFee = 0
 	End If
+	
 
 ''	Old septage code
 ''		If TotalCum <= MinSeptageCum Then
@@ -3321,8 +3377,7 @@ Private Sub GetSeniorBefore(iReadID As Int, dTotCum As Double) As Double
 	Dim maxPCAAmount = 0 As Double
 	
 	Try
-		Starter.strCriteria = "SELECT * FROM tblReadings " & _
-							  "WHERE ReadID = " & iReadID
+		Starter.strCriteria = "SELECT * FROM tblReadings WHERE ReadID = " & iReadID
 		
 		rsSCBefore = Starter.DBCon.ExecQuery(Starter.strCriteria)
 		If rsSCBefore.RowCount > 0 Then
@@ -3362,8 +3417,7 @@ Private Sub GetSeniorAfter(iReadID As Int, dTotCum As Double) As Double
 	Dim RetSeniorDiscount As Double
 	Dim maxPCAAmount = 0 As Double
 	Try
-		Starter.strCriteria = "SELECT * FROM tblReadings " & _
-							  "WHERE ReadID = " & iReadID
+		Starter.strCriteria = "SELECT * FROM tblReadings WHERE ReadID = " & iReadID
 		
 		rsSCAfter = Starter.DBCon.ExecQuery(Starter.strCriteria)
 		If rsSCAfter.RowCount > 0 Then
@@ -3850,7 +3904,10 @@ Private Sub PrintBillData(iReadID As Int)
 			FranchiseTaxAmt = Round2(rsData.GetDouble("FranchiseTaxAmt"), 2)
 			SeptageFeeAmt = Round2(rsData.GetDouble("SeptageFeeAmt"), 2)
 			SeptageFee = Round2(rsData.GetDouble("SeptageAmt"), 2)
-			SeptageArrears = Round2(rsData.GetDouble("SeptageArrears"), 2)
+			
+			If GlobalVar.BranchID = 28 Or GlobalVar.BranchID = 29 Or GlobalVar.BranchID = 30 Then
+				SeptageArrears = Round2(rsData.GetDouble("SeptageArrears"), 2)
+			End If
 			
 			ArrearsAmt = Round2(rsData.GetDouble("ArrearsAmt"), 2)
 			AdvPayment = Round2(rsData.GetDouble("AdvPayment"), 2)
@@ -3906,6 +3963,10 @@ Private Sub PrintBillData(iReadID As Int)
 '			End If
 			
 		End If
+	Catch
+		ToastMessageShow($"Unable to Print Bill Statement due to "$ & LastException.Message, True)
+		Log(LastException)
+	End Try
 		
 '		If GlobalVar.BranchID = 1  Then 'GARDEN VILLAS
 '			sBranchName = $"GARDEN VILLAS"$ & CRLF & $"BRANCH"$
@@ -3922,6 +3983,8 @@ Private Sub PrintBillData(iReadID As Int)
 			sBranchName = $"BWSI - CLPI"$ & CRLF & $"BRANCHES INC."$
 		Else If GlobalVar.BranchID = 76 Then 'LAPID'S VILLE
 			sBranchName = $"LAPIDSVILLE"$
+		Else If GlobalVar.BranchID = 56 Then 'Sto Domingo SD3H
+			sBranchName = $"STO. DOMINGO 3H"$ & CRLF & $"WATERWORKS INC."$
 		Else
 			sBranchName = strSF.Upper(strSF.Right(GlobalVar.BranchName, GlobalVar.BranchName.Length - 7))
 		End If
@@ -3930,6 +3993,8 @@ Private Sub PrintBillData(iReadID As Int)
 			sBranchAddress = GlobalVar.BranchAddress & CRLF & Chr(27) & "!" & Chr(1) & "Brgy. Ibaba, Sta. Rosa, Laguna"
 		Else If GlobalVar.BranchID = 5 Then 'Main Branch
 			sBranchAddress = GlobalVar.BranchAddress & CRLF & Chr(27) & "!" & Chr(1) & "Balibago, Angeles City"
+		Else If GlobalVar.BranchID = 8 Then 'Sta. Barbara Branch
+			sBranchAddress = GlobalVar.BranchAddress & CRLF & Chr(27) & "!" & Chr(1) & "Sta. Barbara, Pangasinan"
 		Else If GlobalVar.BranchID = 19 Then 'Porac
 			sBranchAddress = GlobalVar.BranchAddress & CRLF & Chr(27) & "!" & Chr(1) & "Porac, Pampanga"
 		Else If GlobalVar.BranchID = 25 Then 'Balagtas
@@ -3970,6 +4035,8 @@ Private Sub PrintBillData(iReadID As Int)
 			sBranchAddress = GlobalVar.BranchAddress & CRLF & Chr(27) & "!" & Chr(1) & "San Pascual, Batangas"
 		Else If GlobalVar.BranchID = 91 Then 'CDO
 			sBranchAddress = GlobalVar.BranchAddress & CRLF & Chr(27) & "!" & Chr(1) & "Angeles City"
+		Else If GlobalVar.BranchID = 93 Then 'CDO
+			sBranchAddress = GlobalVar.BranchAddress & CRLF & Chr(27) & "!" & Chr(1) & "Pangasinan"
 		Else
 			sBranchAddress = GlobalVar.BranchAddress
 		End If
@@ -4116,9 +4183,9 @@ Private Sub PrintBillData(iReadID As Int)
 '		Add this line to implement Stopping of Septage Fee:
 '		iHasSeptage = 0
 		' /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		If iHasSeptage = 0 Or dSeptageRate <=0 Then
-			iHasSeptage = 0
-		End If
+'		If iHasSeptage = 0 Or dSeptageRate <= 0 Then
+'			iHasSeptage = 0
+'		End If
 		
 		'Remove this when finalized...
 '		If GlobalVar.BranchID = 28 Or GlobalVar.BranchID = 29 Or GlobalVar.BranchID = 30 Then
@@ -4188,12 +4255,12 @@ Private Sub PrintBillData(iReadID As Int)
 					& Chr(27) & "!" & Chr(8) & "DISCONNECTION DATE:" & AddWhiteSpaces(DisconnectionDate) & DisconnectionDate & CRLF & Chr(10) 
 			End If
 
-			PrintBuffer = PrintBuffer & Chr(27) & Chr(97) & Chr(48) _
+	PrintBuffer = PrintBuffer & Chr(27) & Chr(97) & Chr(48) _
 					& Chr(27) & "!" & Chr(33) & Chr(2) _
 					& REVERSE & " NOTE: " &  Chr(10) _
 					& Chr(27) & "!" & Chr(1) & UNREVERSE & "    Disregard Arrears if Payment has been made. Please pay on or before the due date to avoid any inconveniences." & CRLF & Chr(10) _
 					& Chr(27) & "!" & Chr(0) & "Reader: " & GlobalVar.SF.Upper(GlobalVar.EmpName) &  Chr(10) _
-					& Chr(27) & "!" & Chr(0) & "Date & Time: " & sReadDate & " " & sReadTime  & CRLF&  CRLF & Chr(10) _
+					& Chr(27) & "!" & Chr(0) & "Date & Time: " & sReadDate & " " & sReadTime & Chr(10) _
 					& Chr(27) & Chr(97) & Chr(10) & FULLCUT
 
 '////////////////////////////////// Announcement for Septage ////////////////////////////////////////////////
@@ -4215,7 +4282,7 @@ Private Sub PrintBillData(iReadID As Int)
 '					& Chr(27) & "!" & Chr(33) & "Environmental Fee" & Chr(27) & "!" & Chr(1) & " for the" & Chr(10) _
 '					& Chr(27) & "!" & Chr(1) & "implementation of " & Chr(27) & "!" & Chr(33) & "Clean Water Act of 2004." & CRLF&  CRLF & Chr(10) _
 '					& Chr(27) & Chr(97) & Chr(49) &  Chr(10) & FULLCUT
-					'Php4.00/cm3 Environmental Fee for the implementation of the Clean Water Act of 2004 shall be charge on your February Bill.
+					'Php4.00/cm3 Environmental Fee For the implementation of the Clean Water Act of 2004 shall be charge on your February Bill.
 '				Else If GlobalVar.BranchID = 61 Then
 '					If AcctClass = "RES" Then
 '						PrintBuffer = PrintBuffer & Chr(27) & Chr(97) & Chr(48) _
@@ -4278,6 +4345,48 @@ Private Sub PrintBillData(iReadID As Int)
 '					& Chr(27) & Chr(97) & Chr(49) &  Chr(10) & FULLCUT
 
 		'///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+'		If GlobalVar.BranchID = 15 And AcctClass = "RES" Then 'Bamban Branch
+'			PrintBuffer = PrintBuffer & Chr(27) & Chr(97) & Chr(48) _
+'					& Chr(27) & "!" & Chr(33) & Chr(2) _
+'					& REVERSE & " NOTE: " &  Chr(10) _
+'					& Chr(27) & "!" & Chr(1) & UNREVERSE & "    Disregard Arrears if Payment has been made. Please pay on or before the due date to avoid any inconveniences." & CRLF & Chr(10) _
+'					& Chr(27) & "!" & Chr(0) & "Reader: " & GlobalVar.SF.Upper(GlobalVar.EmpName) &  Chr(10) _
+'					& Chr(27) & "!" & Chr(0) & "Date & Time: " & sReadDate & " " & sReadTime  & CRLF & Chr(10) _
+'					& Chr(27) & Chr(97) & Chr(49) _
+'					& Chr(27) & "!" & Chr(33) & Chr(2) & Chr(10) _
+'					& Chr(27) & "!" & Chr(16) & REVERSE & "   A N N O U N C E M E N T   " & Chr(10) _
+'					& Chr(27) & Chr(97) & Chr(48) _
+'					& Chr(27) & "!" & Chr(1) & UNREVERSE & "Starting January 2024 Bill, there will be" & Chr(10) _
+'					& Chr(27) & "!" & Chr(1) & "a slight increase on our water rates as" & Chr(10) _
+'					& Chr(27) & "!" & Chr(1) & "approved by " & Chr(27) & "!" & Chr(8) & "NWRB"& Chr(27) & "!" & Chr(1) & " and resumption of our" & Chr(10) _
+'					& Chr(27) & "!" & Chr(1) & "Environmental Fee Billing & Collection." & Chr(10) & Chr(10) _
+'					& Chr(27) & Chr(97) & Chr(49) &  Chr(10) & FULLCUT
+'		Else If GlobalVar.BranchID = 43 And AcctClass = "RES" Then 'Bamban Branch
+'			PrintBuffer = PrintBuffer & Chr(27) & Chr(97) & Chr(48) _
+'					& Chr(27) & "!" & Chr(33) & Chr(2) _
+'					& REVERSE & " NOTE: " &  Chr(10) _
+'					& Chr(27) & "!" & Chr(1) & UNREVERSE & "    Disregard Arrears if Payment has been made. Please pay on or before the due date to avoid any inconveniences." & CRLF & Chr(10) _
+'					& Chr(27) & "!" & Chr(0) & "Reader: " & GlobalVar.SF.Upper(GlobalVar.EmpName) &  Chr(10) _
+'					& Chr(27) & "!" & Chr(0) & "Date & Time: " & sReadDate & " " & sReadTime  & CRLF & Chr(10) _
+'					& Chr(27) & Chr(97) & Chr(49) _
+'					& Chr(27) & "!" & Chr(33) & Chr(2) & Chr(10) _
+'					& Chr(27) & "!" & Chr(16) & REVERSE & "   A N N O U N C E M E N T   " & Chr(10) _
+'					& Chr(27) & Chr(97) & Chr(48) _
+'					& Chr(27) & "!" & Chr(1) & UNREVERSE & "Starting January 2024 Bill, there will be" & Chr(10) _
+'					& Chr(27) & "!" & Chr(1) & "a slight increase on our water rates as approved by " & Chr(27) & "!" & Chr(8) & "NWRB" & Chr(27) & "!" & Chr(1) & "." & Chr(10) & Chr(10) _
+'					& Chr(27) & Chr(97) & Chr(49) &  Chr(10) & FULLCUT
+'		Else
+'			PrintBuffer = PrintBuffer & Chr(27) & Chr(97) & Chr(48) _
+'					& Chr(27) & "!" & Chr(33) & Chr(2) _
+'					& REVERSE & " NOTE: " &  Chr(10) _
+'					& Chr(27) & "!" & Chr(1) & UNREVERSE & "    Disregard Arrears if Payment has been made. Please pay on or before the due date to avoid any inconveniences." & CRLF & Chr(10) _
+'					& Chr(27) & "!" & Chr(0) & "Reader: " & GlobalVar.SF.Upper(GlobalVar.EmpName) &  Chr(10) _
+'					& Chr(27) & "!" & Chr(0) & "Date & Time: " & sReadDate & " " & sReadTime  & Chr(10) _
+'					& Chr(27) & Chr(97) & Chr(49) &  Chr(10) & FULLCUT
+'		End If
+'			Php4.00/cm3 Environmental Fee For the implementation of the Clean Water Act of 2004 shall be charge on your February Bill.
+
 		If iHasSeptage = 1 Then 'Footer No Septage Fee
 '		Else 'With Septage Fee
 			
@@ -4289,19 +4398,37 @@ Private Sub PrintBillData(iReadID As Int)
 			GTotalAfterDueAmt = (CurrentAmt + AddToBillAmt + ArrearsAmt + MeterCharges + FranchiseTaxAmt + PenaltyAmt) - (SeniorAfterAmt + DiscAmt2)
 	
 			LogColor(GTotalDueAmt,Colors.Yellow)
-			GTotalSeptage = SeptageArrears + SeptageFee
-	
-			If ((GTotalDueAmt + GTotalSeptage) - AdvPayment) < 0 Then
-				GTotalDue = 0
-			Else
-				GTotalDue = (GTotalDueAmt + GTotalSeptage) - AdvPayment
-			End If
 			
-'			If AdvPayment > (GTotalDueAmt + SeptageFee + PenaltyAmt - SeniorAfterAmt) Then
-			If AdvPayment > GTotalAfterDueAmt + GTotalSeptage Then
-				GTotalAfterDue = 0
+			If GlobalVar.BranchID = 28 Or GlobalVar.BranchID = 29 Or GlobalVar.BranchID = 30 Then
+				GTotalSeptage = SeptageArrears + SeptageFee
+				
+				If ((GTotalDueAmt + GTotalSeptage) - AdvPayment) < 0 Then
+					GTotalDue = 0
+				Else
+					GTotalDue = (GTotalDueAmt + GTotalSeptage) - AdvPayment
+				End If
+
+				'			If AdvPayment > (GTotalDueAmt + SeptageFee + PenaltyAmt - SeniorAfterAmt) Then
+				If AdvPayment > GTotalAfterDueAmt + GTotalSeptage Then
+					GTotalAfterDue = 0
+				Else
+					GTotalAfterDue = (GTotalAfterDueAmt + GTotalSeptage) - AdvPayment
+				End If
 			Else
-				GTotalAfterDue = (GTotalAfterDueAmt + GTotalSeptage) - AdvPayment
+				GTotalSeptage = SeptageFee
+			
+				If ((GTotalDueAmt + GTotalSeptage) - AdvPayment) < 0 Then
+					GTotalDue = 0
+				Else
+					GTotalDue = (GTotalDueAmt + GTotalSeptage) - AdvPayment
+				End If
+
+				'			If AdvPayment > (GTotalDueAmt + SeptageFee + PenaltyAmt - SeniorAfterAmt) Then
+				If AdvPayment > GTotalAfterDueAmt + GTotalSeptage Then
+					GTotalAfterDue = 0
+				Else
+					GTotalAfterDue = (GTotalAfterDueAmt + GTotalSeptage) - AdvPayment
+				End If
 			End If
 			
 			LogColor($"Septage Fee: "$ & GTotalSeptage,Colors.Cyan)
@@ -4394,7 +4521,7 @@ Private Sub PrintBillData(iReadID As Int)
 						& Chr(27) & "!" & Chr(0) & "ADVANCES           " & AddWhiteSpaces("(" & NumberFormat2(sAdvPayment,1, 2, 2,True) & ")") & "(" & NumberFormat2(sAdvPayment,1, 2, 2,True) & ")" &  Chr(10) _
 						& Chr(27) & "!" & Chr(16) & "TOTAL DUE          " & AddWhiteSpaces(NumberFormat2(GTotalDue,1, 2, 2,True)) & NumberFormat2(GTotalDue,1, 2, 2,True) & Chr(10) _
 						& Chr(27) & "!" & Chr(8) & "AMT. AFTER DUE DATE" & AddWhiteSpaces(NumberFormat2(GTotalAfterDue,1, 2, 2,True)) & NumberFormat2(GTotalAfterDue,1, 2, 2,True) & Chr(10) _
-						& Chr(27) & "!" & Chr(1) & "==========================================" & CRLF & Chr(10)					
+						& Chr(27) & "!" & Chr(1) & "==========================================" & Chr(10) & Chr(10) & Chr(10)					
 				End If
 			Else If GlobalVar.SeptageProv = 2 Then
 				If GlobalVar.BranchID = 9 Then 'Sto Domingo
@@ -4480,7 +4607,7 @@ Private Sub PrintBillData(iReadID As Int)
 							& Chr(27) & "!" & Chr(0) & "ADVANCES           " & AddWhiteSpaces("(" & NumberFormat2(sAdvPayment,1, 2, 2,True) & ")") & "(" & NumberFormat2(sAdvPayment,1, 2, 2,True) & ")" &  Chr(10) _
 							& Chr(27) & "!" & Chr(16) & "TOTAL DUE          " & AddWhiteSpaces(NumberFormat2(GTotalDue,1, 2, 2,True)) & NumberFormat2(GTotalDue,1, 2, 2,True) & Chr(10) _
 							& Chr(27) & "!" & Chr(8) & "AMT. AFTER DUE DATE" & AddWhiteSpaces(NumberFormat2(GTotalAfterDue,1, 2, 2,True)) & NumberFormat2(GTotalAfterDue,1, 2, 2,True) & Chr(10) _
-							& Chr(27) & "!" & Chr(1) & "==========================================" & CRLF & Chr(10)
+							& Chr(27) & "!" & Chr(1) & "==========================================" & CRLF & CRLF & Chr(10)
 			End If
 		Else
 			sepBuffer = Chr(27) & "@" _
@@ -4560,10 +4687,6 @@ Private Sub PrintBillData(iReadID As Int)
 '	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		StartPrinter
-	Catch
-		ToastMessageShow($"Unable to Print Bill Statement due to "$ & LastException.Message, True)
-		Log(LastException)
-	End Try
 
 '		If DBaseFunctions.IsWithDueDate(iReadID) = True Then
 '			PrintBuffer = PrintBuffer & Chr(27) & Chr(97) & Chr(48) _
