@@ -1,0 +1,98 @@
+#Region Project Attributes 
+	#ApplicationLabel: Meter Reader on Android
+	#VersionCode: 11
+	#VersionName: Version 3.5
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: Portrait
+	#CanInstallToExternalStorage: False
+	
+'	#Extends: C:\Program Files (x86)\Anywhere Software\Basic4android\Additional Libraries\android.support.v7.app.appcompat
+	#AdditionalRes: C:\BWSI-Meter-Reader\resource
+	#AdditionalRes: C:\BWSI-Meter-Reader\md-app\res
+	#AdditionalRes: C:\BWSI-Meter-Reader\md-lib\res
+	#AdditionalRes: ..\resAX_CustomAlertViewDialog
+#End Region
+	#Extends: android.support.v4.widget.DrawerLayout
+	#Extends: android.support.v7.app.AppCompatActivity
+	#AdditionalJar:WoosimLib251
+
+#Region  Activity Attributes 
+	#FullScreen: True
+	#IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+	Public Permissions As RuntimePermissions
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	'These variables can only be accessed from this module.
+	Dim MyFade As SplashFade
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	'Do not forget to load the layout file created with the visual designer. For example:
+	MyScale.SetRate(0.5)
+	Activity.LoadLayout("Splash")
+	MyFade.Initialize(Activity, Me, "splash.png", Gravity.FILL, 1500, 0, "Right", True)
+
+	CheckPermissions
+End Sub
+
+Sub Activity_KeyPress (KeyCode As Int) As Boolean 'Return True to consume the event
+	If KeyCode = 4 Then
+		Return False
+	End If
+End Sub
+
+Sub Activity_Resume
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+Private Sub CheckPermissions
+
+	'    Use Whatever permissions you require here - This is my set of permissions in one of my Apps
+	' Also CheckAndRequest - Checks - If not granted - then requests i.o.w's if it is the second time you are entering the App - it will check - if all is in place the user will not be requested to give permissions again.
+
+	Log("Checking Permissions")
+  
+	Permissions.CheckAndRequest(Permissions.PERMISSION_READ_EXTERNAL_STORAGE)
+	Permissions.CheckAndRequest(Permissions.PERMISSION_WRITE_EXTERNAL_STORAGE)
+	Permissions.CheckAndRequest(Permissions.PERMISSION_ACCESS_COARSE_LOCATION)
+	Permissions.GetAllSafeDirsExternal("")
+  
+	Permissions.CheckAndRequest(Permissions.PERMISSION_CAMERA)
+	Permissions.CheckAndRequest(Permissions.PERMISSION_BODY_SENSORS)
+	Return
+  
+End Sub
+
+Sub Activity_PermissionResult (Permission As String, Result As Boolean)
+	If Permission = Permissions.PERMISSION_CAMERA Then
+		Result = True
+		LogColor("YOU CAN USE THE CAMERA",Colors.Red)
+	Else
+		Result = False
+	End If
+	Log (Permission)
+End Sub
+
+Sub Splash_Complete
+	If CustomFunctions.IsThereUserData = True Then
+		CustomFunctions.RetrieveUserSettings
+		DBaseFunctions.GetUserInfo(GlobalVar.UserName, GlobalVar.UserPW)
+		DBaseFunctions.GetBranchInfo(GlobalVar.BranchID)
+		If DBaseFunctions.GetBillSettings(GlobalVar.BranchID) = False Then
+			ExitApplication
+		End If
+		Activity.Finish
+		StartActivity(MainScreen)
+	Else
+		Activity.Finish
+		StartActivity(Login)
+	End If
+End Sub

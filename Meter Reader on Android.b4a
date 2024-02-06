@@ -379,15 +379,12 @@ End Sub
 Sub Globals
 	'These global variables will be redeclared each time the activity is created.
 	'These variables can only be accessed from this module.
-	Dim MyFade As SplashFade
-	Private LiquidProgress1 As LiquidProgress
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	'Do not forget to load the layout file created with the visual designer. For example:
 	MyScale.SetRate(0.5)
-	Activity.LoadLayout("Splash")
-	MyFade.Initialize(Activity, Me, "splash.png", Gravity.FILL, 1500, 0, "Right", True)
+	Activity.LoadLayout("LoginNew")
 
 	CheckPermissions
 End Sub
@@ -433,18 +430,18 @@ Sub Activity_PermissionResult (Permission As String, Result As Boolean)
 	Log (Permission)
 End Sub
 
-Sub Splash_Complete
-	If CustomFunctions.IsThereUserData = True Then
-		CustomFunctions.RetrieveUserSettings
-		DBaseFunctions.GetUserInfo(GlobalVar.UserName, GlobalVar.UserPW)
-		DBaseFunctions.GetBranchInfo(GlobalVar.BranchID)
-		If DBaseFunctions.GetBillSettings(GlobalVar.BranchID) = False Then
-			ExitApplication
-		End If
-		Activity.Finish
-		StartActivity(MainScreen)
-	Else
-		Activity.Finish
-		StartActivity(Login)
-	End If
-End Sub
+'Sub Splash_Complete
+'	If CustomFunctions.IsThereUserData = True Then
+'		CustomFunctions.RetrieveUserSettings
+'		DBaseFunctions.GetUserInfo(GlobalVar.UserName, GlobalVar.UserPW)
+'		DBaseFunctions.GetBranchInfo(GlobalVar.BranchID)
+'		If DBaseFunctions.GetBillSettings(GlobalVar.BranchID) = False Then
+'			ExitApplication
+'		End If
+'		Activity.Finish
+'		StartActivity(MainScreen)
+'	Else
+'		Activity.Finish
+'		StartActivity(Login)
+'	End If
+'End Sub

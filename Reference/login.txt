@@ -269,6 +269,20 @@ Sub btnLogin_Click
 				snack.Show
 				Return
 			End If
+			Log($"Is connected to server: "$ & CustomFunctions.IsConnectedToServer(GlobalVar.ServerAddress))
+			
+			If CustomFunctions.IsConnectedToServer(GlobalVar.ServerAddress) = True Then
+				ToastMessageShow($"Connected to Server"$, True)
+			Else
+				vibration.vibrateOnce(1000)
+				snack.Initialize("SetServer", Activity,"Server IP not configured...", snack.DURATION_LONG)
+				CustomFunctions.SetSnackBarBackground(snack,Colors.Red)
+				CustomFunctions.SetSnackBarTextColor(snack,Colors.White, "SetServer")
+				snack.SetAction("Configure")
+				snack.Show
+				Return
+			End If
+
 			
 			ProgressDialogShow2($"Checking Database Server Connection."$ & CRLF & $"Please Wait..."$, False)
 			
@@ -1246,10 +1260,11 @@ End Sub
 
 Private Sub AdminPassword_OnInputClicked (View As View, Dialog As Object, InputSList As List)
 	Dim Alert As AX_CustomAlertDialog
-	imeKeyBoard.HideKeyboard
+
 	Alert.Initialize.Dismiss(Dialog)
 	
 	If InputSList.Get(0) <> GlobalVar.AdminPassword Then
+		imeKeyBoard.HideKeyboard
 		vibration.vibrateOnce(2000)
 		snack.Initialize("RetryButton", Activity, "Password is Incorrect!", snack.DURATION_LONG)
 		snack.SetAction("RETRY")
@@ -1285,19 +1300,20 @@ Private Sub AdminPassword_OnBindView (View As View, ViewType As Int)
 		CS.Typeface(GlobalVar.Font).Size(18).Append(lbl.Text).Pop
 
 		lbl.Text = CS.PopAll
-	End If
-	
-	If ViewType = Alert.VIEW_MESSAGE Then
+	else If ViewType = Alert.VIEW_MESSAGE Then
 		Dim lbl As Label = View
 		lbl.TextSize = 14
 		lbl.TextColor = Colors.Gray
 	Else If ViewType = Alert.VIEW_LINE_INPUT Then
 		Dim txt As EditText = View
+		InpTyp.Initialize
+		InpTyp.SetInputType(txt,Array As Int(InpTyp.TYPE_CLASS_TEXT, InpTyp.TYPE_TEXT_FLAG_AUTO_CORRECT, InpTyp.TYPE_TEXT_VARIATION_PASSWORD))
 		txt.TextSize = 17
 		txt.TextColor = Colors.Black
 '		txt.Typeface = GlobalVar.Font
-		txt.PasswordMode = True
 		txt.ForceDoneButton = False
+		txt.SingleLine = True
+		txt.PasswordMode = True
 	End If
 End Sub
 
